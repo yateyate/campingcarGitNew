@@ -84,7 +84,7 @@ public class CarUserController {
 	@RequestMapping(value="user/login", method = RequestMethod.GET)
 	public String login() {
 		System.out.println("===== 로그인 폼 =====");
-		return "rent/login";
+		return "user/login";
 	}
 	
 	
