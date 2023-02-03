@@ -158,7 +158,7 @@ geocoder.addressSearch(a, function(result, status) {
 			 <!-- 카카오맵이용해서 창띄우기 
 			<a href="https://map.kakao.com/link/search/${GarageDTO.garage_addr }" target="_blank">지도보기</a>
 			-->
-			<button type="button" class="btn btn-primary btn-sm" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
+			<button type="button" class="btn btn-outline-primary btn-sm" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
 			</th>
 			
 		</tr>
@@ -170,6 +170,7 @@ geocoder.addressSearch(a, function(result, status) {
 	</table>
 	
 	
+
 </div>
 
 <c:if test="${pageMaker.cri.keyword !=null }">
@@ -195,12 +196,13 @@ geocoder.addressSearch(a, function(result, status) {
 
 
 <form name="search_garage" autocomplete="on">
-	<div class="container text-center"> 
-		
-	<input  type="search" id="keyword" name="keyword" 
+	<div class="container text-center" style="padding-top: 15px"> 
+	
+	<input type="search" id="keyword" name="keyword" 
 					value="${pageMaker.cri.keyword}" placeholder="정비소를 검색하세요"/>
-				<button id="searchBtn" class="btn btn-primary">검색</button>
-				
+				<button id="searchBtn" class="btn btn-outline-primary btn-sm">검색</button>
+
+    	
 	</div>
 </form>
 

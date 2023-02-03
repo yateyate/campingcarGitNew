@@ -38,10 +38,14 @@ $(document).ready(function(){
     });
  })
 </script>
+
+
+
 <meta charset="UTF-8">
 <title>자바 캠핑카 - 정비소 등록신청</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -68,7 +72,7 @@ $(document).ready(function(){
 <h2 style="text-align: center">정비소 등록 신청</h2><br>
 <!-- ================================================== -->
 
-<div class="board_write">
+<div class="board_write" style="width: 50%; margin: 0 auto;">
 	<form action="register" method="post">
 		
 	<div class="input-group">
@@ -85,15 +89,20 @@ $(document).ready(function(){
 		<input type="text" class="form-control" name="garage_phone" placeholder="정비소 연락처 입력" />
 	</div>
 	<div class="input-group">
-		<span class="input-group-text">정비소 영업상태</span>
-		<select name="garage_state" size="1">
-			<option value="1"> 영업중 </option>
-			<option value="2"> 휴업중 </option>
-		</select>		
+		<span class="input-group-text" >정비소 영업상태</span>
+			 <div class="group" style="margin: 0 auto; padding-top: 5px">
+			    <input type="radio" name="garage_state" value="1" checked="checked"/>
+			    <label for="rb1" style="padding-right: 50px">영업중</label>
+			    
+			    <input type="radio" name="garage_state" value="2"  />
+			    <label for="rb2">휴업중</label>
+			    
+			  </div>
+			
 	</div>
-	<div class="input-group">
+	<div class="input-group" style="width:100%">
 		<span class="input-group-text">정비소 지역</span>	
-					<select id="garage_code" name="garage_code" size="1">			
+					<select id="garage_code" name="garage_code" size="1" style="border-radius: 5px; border:1px solid #ccc; width: 66%">			
 							<option value="">지역을 선택하세요.</option>
 							<option value="41820">가평군</option>
 							<option value="41610">경기광주시</option>
@@ -135,8 +144,12 @@ $(document).ready(function(){
 		<span class="input-group-text">정비소등록상태</span>
 		<input type="text" class="form-control" name="state_modify" value="0"/>
 	</div>
-	
-		<button type="submit" id="register">정비소 등록하기</button>
+	<div style="float: right">
+		<button type="submit" id="register" class="btn btn-outline-secondary">정비소 등록하기</button>
+		<button type="button" class="btn btn-outline-danger"
+		onclick='location.href="${contextPath }/garage/list?keyword="'
+		>돌아가기</button>
+	</div>
 	</form>
 </div>	
 
