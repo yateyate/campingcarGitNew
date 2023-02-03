@@ -12,12 +12,60 @@
 <title>게시판 목록</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+<style>
+.basic-slide {
+  display: inline-block;
+  width: 215px;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  color: #377D6A;
+  background: #efefef;
+  border: 0;
+  border-radius: 3px 0px 0px 3px;
+  outline: 0;
+  
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #efefef;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+}
+.basic-slide:focus,
+.basic-slide:active {
+  color: #377D6A;
+  text-indent: 0;
+  background: #efefef;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+
+}
+
+.orange {
+    border-top: 2px solid orange;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid white;
+    border-left: 1px solid #ccc;
+    color: black;
+    margin-top: -2px;
+  }
+
+</style>
+
 <script>
 window.addEventListener('load',function(){
 	window.scrollTo(0,1100);
 }); //자동으로 스크롤내려주기
 
-	function search(){
+	function search(){//검색기능
 			var $keyword = $('#keyword');
 			$('#searchBtn').on('click',function(){
 				var keywordVal = $keyword.val();
@@ -27,6 +75,19 @@ window.addEventListener('load',function(){
 				window.location.href = url;			
 			})	
 	}
+	
+	
+	//해당페이지 active 만들기
+	const tab = $('.tab-button');
+	for(let i = 0; i< tab.length; i++){
+	    tab.eq(i).click(function(){
+	        tab.removeClass('orange');	
+	        tab.eq(i).addClass('orange');
+	
+	    })
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -177,18 +238,31 @@ geocoder.addressSearch(a, function(result, status) {
 	<div class="container text-center">
 	 
 		<ul>
+		
 			<c:if test="${pageMaker.prev }">			
-				<a class="btn btn-outline-secondary" href = "list${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>				
+				<a class="btn btn-outline-secondary "  href = "list${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>				
 			</c:if>		
-				
+			
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">				
-				<a class="btn btn-outline-secondary" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>				
-			</c:forEach>			
-						
+				<c:choose>
+				
+				<c:when test="${cri.page != idx }">
+				<a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:when>
+				
+				<c:otherwise>
+				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:otherwise>
+				
+				</c:choose>	
+			</c:forEach>
+
+				
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 				<a class="btn btn-outline-secondary " href = "list${pageMaker.makeSearch(pageMaker.endPage +1 )}">&raquo;</a>
 			</c:if>
 		</ul>
+
 				
 </div>
 </c:if>
@@ -198,11 +272,16 @@ geocoder.addressSearch(a, function(result, status) {
 <form name="search_garage" autocomplete="on">
 	<div class="container text-center" style="padding-top: 15px"> 
 	
-	<input type="search" id="keyword" name="keyword" 
-					value="${pageMaker.cri.keyword}" placeholder="정비소를 검색하세요"/>
-				<button id="searchBtn" class="btn btn-outline-primary btn-sm">검색</button>
+	
 
-    	
+    <span>
+    <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    placeholder="정비소를 검색하세요" />
+    
+	<button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
+	id="searchBtn" class="btn btn-secondary btn-sm">검색</button>
+	
+	</span>		
 	</div>
 </form>
 

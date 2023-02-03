@@ -61,8 +61,9 @@ $(document).ready(function(){
 <!-- ================================================== -->
 
 
-<div class="board_write">
-			<h4>정보를 수정하세요</h4>
+<div class="board_write" style="width: 40%; margin: 0 auto;">
+			<h4 style="text-align: center">정비소 정보 수정</h4>
+			<br>
 
 			<form method = "post">
 			
@@ -82,16 +83,20 @@ $(document).ready(function(){
 				value="${dto.garage_phone }"/>
 			</div>
 			<div class="input-group">
-				<span class="input-group-text">정비소 상태</span>
-				  <input class="form-check-input" type="radio" name="garage_state" value="1" checked>
-				  <label class="form-check-label" for="garage_state">영업중&nbsp;&nbsp;</label>
-					
-				  <input class="form-check-input" type="radio" name="garage_state" value="2">
-				  <label class="form-check-label" for="grage_state">휴업중</label>
+				<span class="input-group-text" >정비소 영업상태</span>
+					 <div class="group" style="margin: 0 auto; padding-top: 5px">
+					    <input type="radio" name="garage_state" value="1" checked="checked"/>
+					    <label for="rb1" style="padding-right: 50px">영업중</label>
+					    
+					    <input type="radio" name="garage_state" value="2"  />
+					    <label for="rb2">휴업중</label>
+					    
+			 		</div>
 			</div>
 			<div class="input-group">
 				<span class="input-group-text">정비소 지역</span>
-					<select id="garage_code" name="garage_code" size="1" >			
+					<select id="garage_code" name="garage_code" size="1"
+					style="color:#6e6e6e; border-radius: 5px; border:1px solid #ccc; width: 67%" >			
 							<option value="">지역을 선택하세요.</option>
 							<option value="41820">가평군</option>
 							<option value="41610">경기광주시</option>
@@ -126,10 +131,12 @@ $(document).ready(function(){
 							<option value="41450">하남시</option>
 							<option value="41590">화성시</option>						
 						</select>
-			</div>	
+			</div>
+			<div style="float: right">	
 				<button class="btn btn-success" type="submit" id="update">수정</button>
 				<button class="btn btn-danger" type ="reset" value="초기화">초기화</button>
 				<button class="btn btn-secondary" type="button" onclick='location.href="${contextPath }/admin/garage/list?keyword="'>돌아가기</button>
+			</div>
 	</form>
 </div>
 

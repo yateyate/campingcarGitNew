@@ -36,6 +36,19 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=08c7f5459534f8433e8a8e73d7707bc1&libraries=services"></script>
 <script>
+
+//해당페이지 active 만들기
+const tab = $('.tab-button');
+for(let i = 0; i< tab.length; i++){
+    tab.eq(i).click(function(){
+        tab.removeClass('orange');	
+        tab.eq(i).addClass('orange');
+
+    })
+}
+
+
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.268070, 127.000157), // 지도의 중심좌표
@@ -161,10 +174,18 @@ geocoder.addressSearch(a, function(result, status) {
 				
 			</c:if>		
 				
-			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">
-							
-					<a class="btn btn-outline-secondary"  href = "register${pageMaker.makeSearch(idx)}">${idx }</a>
+			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">				
+				<c:choose>
 				
+				<c:when test="${cri.page != idx }">
+				<a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "register${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:when>
+				
+				<c:otherwise>
+				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:otherwise>
+				
+				</c:choose>	
 			</c:forEach>			
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">

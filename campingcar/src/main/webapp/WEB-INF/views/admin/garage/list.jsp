@@ -30,6 +30,16 @@ window.addEventListener('load',function(){
 				window.location.href = url;			
 			})	
 	}
+	
+	//해당페이지 active 만들기
+	const tab = $('.tab-button');
+	for(let i = 0; i< tab.length; i++){
+	    tab.eq(i).click(function(){
+	        tab.removeClass('orange');	
+	        tab.eq(i).addClass('orange');
+	
+	    })
+	}
 </script>
 </head>
 <body>
@@ -194,10 +204,18 @@ geocoder.addressSearch(a, function(result, status) {
 				
 			</c:if>		
 				
-			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">
-							
-					<a class="btn btn-outline-secondary"  href = "list${pageMaker.makeSearch(idx)}">${idx }</a>
+			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">				
+				<c:choose>
 				
+				<c:when test="${cri.page != idx }">
+				<a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:when>
+				
+				<c:otherwise>
+				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:otherwise>
+				
+				</c:choose>	
 			</c:forEach>			
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
