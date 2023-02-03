@@ -17,9 +17,9 @@
 	<div id="gnb">
 	<ul>
 	
-		<li><a href="${contextPath }/rent/join">회원가입</a>　
+		<li><a href="${contextPath }/user/join">회원가입</a>　
 	<c:if test="${user.car_uid == null}">
-		<a class="one" href="${contextPath }/rent/login">로그인</a>
+		<a class="one" href="${contextPath }/user/login">로그인</a>
 	</c:if>
 	
 	<c:if test="${user.car_uid != null}">

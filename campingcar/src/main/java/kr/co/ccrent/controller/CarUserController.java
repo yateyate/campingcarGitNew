@@ -43,26 +43,26 @@ public class CarUserController {
 	  
 	 
 	//회원가입 페이지 이동
-	@GetMapping(value="rent/join")
+	@GetMapping(value="user/join")
 	public String nowtime(Model model) {
 		System.out.println("===== JOIN =====");
-		return "rent/join";
+		return "user/join";
 		
 	}
 	
 //	회원가입 기능구현
-	@PostMapping(value="rent/join")
+	@PostMapping(value="user/join")
 	public ModelAndView register(CarUserDTO dto) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		car.register(dto);
-		mav.setViewName("rent/list");
+		mav.setViewName("user/list");
 		System.out.println("===== JOINING =====");
 		return mav;
 	}
 	    
 	
 //	아이디 중복체크
-	@RequestMapping(value = "rent/memberIdChk", method = RequestMethod.POST)
+	@RequestMapping(value = "user/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String memberIdChkPOST(String memberId) throws Exception{
 		logger.info("memberIdChk() 진입");
@@ -81,15 +81,15 @@ public class CarUserController {
 	
 	
 //	로그인 페이지 이동
-	@RequestMapping(value="rent/login", method = RequestMethod.GET)
+	@RequestMapping(value="user/login", method = RequestMethod.GET)
 	public String login() {
 		System.out.println("===== 로그인 폼 =====");
-		return "rent/login";
+		return "user/login";
 	}
 	
 	
 //	로그인 기능 구현
-	@RequestMapping(value="rent/login", method = RequestMethod.POST)
+	@RequestMapping(value="user/login", method = RequestMethod.POST)
 	public String login(CarUserDTO carUserDTO, HttpServletRequest req) throws Exception{
 		HttpSession session = req.getSession();
 		CarUserDTO carUserDTO2 = car.login(carUserDTO);

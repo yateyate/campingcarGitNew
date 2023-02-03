@@ -28,7 +28,7 @@
 		}
 		
 				//폼 내부의 데이터를 전송할 주소
-			 document.form1.action= "/rent/login";
+			 document.form1.action= "/user/login";
 			 document.form1.submit(); //제출
 			 });
 		});
