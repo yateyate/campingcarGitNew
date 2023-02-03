@@ -49,14 +49,6 @@
 
 }
 
-.orange {
-    border-top: 2px solid orange;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid white;
-    border-left: 1px solid #ccc;
-    color: black;
-    margin-top: -2px;
-  }
 
 </style>
 

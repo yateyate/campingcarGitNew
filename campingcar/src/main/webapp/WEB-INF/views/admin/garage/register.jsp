@@ -15,6 +15,7 @@
 <title>자바 캠핑카 - 관리자 페이지</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/ajsbutton.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -143,15 +144,15 @@ geocoder.addressSearch(a, function(result, status) {
 	<th name="garage_code" value="${GarageDTO.garage_code }"
 		style="display: none">${GarageDTO.garage_code}</th>
 	<th>
-	<button type="button" 
+	<button type="button" class="ajs ajsbutton3"
 	onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')">지도보기</button>
 	</th>
 	<th>							
-		<button  type="button" 
+		<button  type="button" class="ajs ajsbutton1" 
 		onclick='location.href="${contextPath}/admin/garage/insert?garage_no=${GarageDTO.garage_no}"'>등록완료
 		</button>
 	
-		<button type="button" 
+		<button type="button" class="ajs ajsbutton2"
 		onclick='location.href="${contextPath}/admin/garage/delete?garage_no=${GarageDTO.garage_no}"'>등록취소
 		</button>
 	</th>
