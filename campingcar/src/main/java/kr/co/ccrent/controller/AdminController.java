@@ -131,7 +131,7 @@ public class AdminController {
 		return "redirect:/admin/car/list";
 	}
 	
-	/*========================================================================================== 예약 */
+	/*========================================================================================== 예약 관리 */
 	@GetMapping("/rent/today")
 	public void rentTodayGET(Model model) {
 		System.out.println("<Admin Controller> rent today GET");
@@ -181,7 +181,26 @@ public class AdminController {
 		rentService.remove(rent_id);
 		return "redirect:/admin/rent/"+listtype;
 	}
-	
+	@GetMapping("/rent/register")
+	public void rentRegisterGET(Model model, int car_regid) {
+		System.out.println("<Admin Controller> rent register GET");
+		System.out.println("car_regid : "+car_regid);
+		model.addAttribute("carlist", carService.getAll());
+		model.addAttribute("car", carService.getOne(car_regid));
+		HashMap<String, Object> datemap = dateProcess.dateCalculate(null, null, 1);
+		HashMap<String, Object> varmap = new HashMap<>();
+		varmap.put("car_regid", car_regid);
+		varmap.put("firstday", datemap.get("firstday"));
+		varmap.put("lastday", datemap.get("lastday"));
+		varmap.put("dummy", "1");	
+		HashMap<String, RentDTO> map = rentService.getByCarId(varmap);
+		model.addAttribute("rentlist", map);		
+	}
+	@PostMapping("/rent/register")
+	public String rentRegisterPOST(RentDTO rentDTO) {
+		rentService.register(rentDTO);
+		return "redirect:/admin/rent/calendar";
+	}	
 	
 	
 	//=======================================garage / 정비소	

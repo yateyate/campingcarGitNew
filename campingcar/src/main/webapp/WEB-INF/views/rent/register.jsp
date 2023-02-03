@@ -68,8 +68,8 @@ String limitdate = sdf.format(lastcal.getTime());
 <!-- ================================================== -->
 
 <div class="board_write">
-	<form action="register" method="post">
-	<input type="hidden" name="rent_paystate" value="0" />
+<form action="register" method="post" id="rent_form">
+<input type="hidden" name="rent_paystate" value="0" />
 	<div class="input-group">
 		<span class="input-group-text">차량 선택</span>
 		<select name="car_regid" class="form-control" onchange="if(this.value) location.href='register?car_regid='+(this.value)+'&rent_startdate=${param.rent_startdate}';">
@@ -85,7 +85,8 @@ String limitdate = sdf.format(lastcal.getTime());
 	</div>
 	<div class="input-group">
 		<span class="input-group-text">연락처</span>
-		<input type="text" class="form-control" name="rent_phone1" value="" placeholder="필수 연락처" required /><input type="text" class="form-control" name="rent_phone2" value="" placeholder="예비 연락처" required />
+		<input type="text" class="form-control" name="rent_phone1" value="" placeholder="필수 연락처" required oninput="autoHyphen(this)" maxlength="13" />
+		<input type="text" class="form-control" name="rent_phone2" value="" placeholder="예비 연락처" oninput="autoHyphen(this)" maxlength="13" />
 	</div>
 	<div class="input-group">
 		<span class="input-group-text">차량 출고일/반납일</span>
@@ -123,7 +124,8 @@ String limitdate = sdf.format(lastcal.getTime());
 		<span class="input-group-text">추가 문의</span>
 		<input type="text" class="form-control" name="rent_memo" value="" />
 	</div>
-	<button type="submit">예약하기</button>
+	<a onclick="datecheck();"  class="btn btn-primary">날짜 중복 체크</a>
+	<a onclick="formsubmit();"  class="btn btn-primary">예약하기</a>
 	</form>
 </div>		
 		
@@ -198,8 +200,80 @@ $(function() {
       $('input[name="rent_price"]').val('${car.car_rentprice}');
       
   });
+  
+
 
 });
+
+// 핸드폰 번호 처리
+const autoHyphen = (target) => {
+	 target.value = target.value
+	   .replace(/[^0-9]/g, '')
+	   .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}
+
+//예약 날짜 중복 체크
+function datecheck(){
+	var result = "";
+	var url = "${pageContext.request.contextPath}/rent/datecheck";
+	$.ajax({
+		type : "post",
+		url : url,
+		data : $("#rent_form").serialize(),
+		async: false,     //값을 리턴시 해당코드를 추가하여 동기로 변경
+		success : function(data){
+			console.log("datecheck ajax 전송 성공");
+			result = data;
+		},
+		error : function(result){
+		}
+	});
+	return result;
+}
+
+// 폼 전송
+function formsubmit(){
+	var datecheckvalue = datecheck();
+	// 유효성 검사
+	if($("input[name='rent_name']").val() == ""){
+	    alert("예약자 성명을 입력하세요.");
+	    $("input[name='rent_name']").focus();
+	    return false;
+	}	
+	if($("input[name='rent_phone1']").val() == ""){
+	    alert("핸드폰 번호를 입력하세요.");
+	    $("input[name='rent_phone1']").focus();
+	    return false;
+	}
+	if($("input[name='rent_startdate']").val() == ""){
+	    alert("예약 날짜를 선택하세요.");
+	    $("input[name='datefilter']").focus();
+	    return false;
+	}
+	if($("input[name='rent_enddate']").val() == ""){
+	    alert("예약 날짜를 선택하세요.");
+	    $("input[name='datefilter']").focus();
+	    return false;
+	}	
+	if($("input:radio[name=rent_paytype]:checked").length < 1){
+	    alert("결제 방식을 선택해주세요.");
+	    return false;
+	}
+	if(datecheckvalue>0){
+		if(confirm("이미 예약된 차량입니다. 예약 목록 페이지로 돌아가시겠습니까?")){
+			location.href="${contextPath}/rent/list";
+		}else{
+			return false;
+		}
+	}else if(datecheckvalue==0){
+		alert("예약이 완료되었습니다.");
+		$("#rent_form").submit();
+	}else{
+		alert("무효한 요청입니다. 예약 목록으로 돌아갑니다.");
+		location.href="${contextPath}/rent/list";
+	}
+}  
+
 </script>		
 
 <!-- ================================================== -->		

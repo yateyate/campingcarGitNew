@@ -14,13 +14,14 @@ public interface RentMapper {
 	List<RentVO> selectList(PageRequestDTO pageRequestDTO);
 	List<RentVO> selectByCarId(HashMap<String, Object> varmap);
 	int selectCount(PageRequestDTO pageRequestDTO);
-	RentVO selectOne(int rent_id); // ±Û 1°³ Á¶È¸
-	// ¿¹¾à »óÅÂ ¾÷µ¥ÀÌÆ®
+	RentVO selectOne(int rent_id);
 	void updateState(RentVO rentVO);
-	// ¿¹¾à±Û »èÁ¦
 	void delete(int rent_id);
 	
-	// ¿À´Ã Ãâ°í, ¹İ³³ Â÷·®
+	// ì˜¤ëŠ˜ì˜ ì¶œê³ , ë°˜ë‚©
 	List<RentVO> selectTodayStart(String today);
 	List<RentVO> selectTodayEnd(String today);
+	
+	// ì˜ˆì•½ ë‚ ì§œ ì¤‘ë³µ í™•ì¸
+	RentVO selectDateRedundancy(HashMap<String, Object> varmap);
 }

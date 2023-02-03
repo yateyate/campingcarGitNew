@@ -63,7 +63,6 @@ public class RentServiceImpl implements RentService {
 	@Override
 	public HashMap<String, RentDTO> getByCarId(HashMap<String,Object> varmap) {
 		
-		// car_regid, firstday, lastday�� ������ select, dto�� �ҷ�����
 		List<RentVO> volist = rentMapper.selectByCarId(varmap);
 		List<RentDTO> dtolist = null;
 		System.out.println(volist);
@@ -73,11 +72,7 @@ public class RentServiceImpl implements RentService {
 					.map(vo -> modelMapper.map(vo, RentDTO.class))
 					.collect(Collectors.toList());
 			
-			// DTO�� Ű�� ��¥(re_startday)�� ��� �ؽøʿ� �ֱ�
-
-			// ���� ������ ���� ���� ������ ó��
 			for(int i=0; i<dtolist.size(); i++) {
-				// �����, �ݳ��� ���
 				Date startday = java.sql.Date.valueOf(dtolist.get(i).getRent_startdate());
 				Date endday = java.sql.Date.valueOf(dtolist.get(i).getRent_enddate());
 				long Sec = (endday.getTime() - startday.getTime()) / 1000; // ��
@@ -170,6 +165,16 @@ public class RentServiceImpl implements RentService {
 				.map(vo -> modelMapper.map(vo, RentDTO.class))
 				.collect(Collectors.toList());
 		return dtolist;
+	}
+
+	@Override
+	public RentDTO getDateRedundancy(HashMap<String, Object> varmap) {
+		RentVO rentVO = rentMapper.selectDateRedundancy(varmap);
+		RentDTO rentDTO = null; 
+		if(rentVO!=null) {
+				rentDTO = modelMapper.map(rentVO, RentDTO.class);
+		}
+		return rentDTO;
 	}
 
 }
