@@ -217,7 +217,7 @@ public class AdminController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(garageService.garage_get_regcount(cri));
 		model.addAttribute("pageMaker",pageMaker);		
-		
+		model.addAttribute("cri",cri);
 		// 기능 수행		
 		List<GarageDTO> list = garageService.garage_get_reg(cri);
 		mav.addObject("garage_reglist", list);		
@@ -250,7 +250,7 @@ public class AdminController {
 		pageMaker.setTotalCount(garageService.garage_get_count(cri));
 		
 		model.addAttribute("pageMaker",pageMaker);
-		
+		model.addAttribute("cri",cri);
 		
 	}
 	

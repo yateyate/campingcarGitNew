@@ -15,6 +15,44 @@
 <title>자바 캠핑카 - 관리자 페이지</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/ajsbutton.css" rel="stylesheet" />
+<style>
+.basic-slide {
+  display: inline-block;
+  width: 215px;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  color: #377D6A;
+  background: #fff;
+  border: 0;
+  border-radius: 3px 0px 0px 3px;
+  outline: 0;
+  
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #efefef;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+}
+.basic-slide:focus,
+.basic-slide:active {
+  color: #377D6A;
+  text-indent: 0;
+  background: #fff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  
+
+}
+
+
+
+</style>
+</style>
 <script>
 window.addEventListener('load',function(){
 	window.scrollTo(0,1100);
@@ -29,6 +67,16 @@ window.addEventListener('load',function(){
 					+ "&keyword=" + encodeURIComponent(keywordVal);
 				window.location.href = url;			
 			})	
+	}
+	
+	//해당페이지 active 만들기
+	const tab = $('.tab-button');
+	for(let i = 0; i< tab.length; i++){
+	    tab.eq(i).click(function(){
+	        tab.removeClass('orange');	
+	        tab.eq(i).addClass('orange');
+	
+	    })
 	}
 </script>
 </head>
@@ -151,9 +199,9 @@ geocoder.addressSearch(a, function(result, status) {
   			<c:if test="${admin==1}">
 			</c:if>
 			<th>			
-			<button type="button" class="btn btn-primary btn-sm" 
+			<button type="button" class="ajs ajsbutton4" 
 			 onclick='location.href="${contextPath}/admin/garage/update?garage_no=${GarageDTO.garage_no}"'>수정</button>
-			<button type="button" class="btn btn-danger btn-sm"
+			<button type="button" class="ajs ajsbutton2" style="padding: 5px 10px 5px 10px;"
 			onclick='location.href="${contextPath}/admin/garage/update_delete?garage_no=${GarageDTO.garage_no}"'>삭제</button>
 			</th>
 			
@@ -172,7 +220,7 @@ geocoder.addressSearch(a, function(result, status) {
 			 <!-- 카카오맵이용해서 창띄우기 
 			<a href="https://map.kakao.com/link/search/${GarageDTO.garage_addr }" target="_blank">지도보기</a>
 			-->
-			<button type="button" class="btn btn-primary btn-sm" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
+			<button type="button" class="ajs ajsbutton3" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
 			</th>
 			
 		</tr>
@@ -194,10 +242,18 @@ geocoder.addressSearch(a, function(result, status) {
 				
 			</c:if>		
 				
-			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">
-							
-					<a class="btn btn-outline-secondary"  href = "list${pageMaker.makeSearch(idx)}">${idx }</a>
+			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">				
+				<c:choose>
 				
+				<c:when test="${cri.page != idx }">
+				<a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:when>
+				
+				<c:otherwise>
+				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:otherwise>
+				
+				</c:choose>	
 			</c:forEach>			
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
@@ -208,12 +264,18 @@ geocoder.addressSearch(a, function(result, status) {
 </div>
 
 <form name="search_garage" autocomplete="on">
-	<div class="container text-center"> 
-		
-	<input  type="search" id="keyword" name="keyword" 
-					value="${pageMaker.cri.keyword}" placeholder="정비소를 검색하세요"/>
-				<button id="searchBtn" class="btn btn-primary">검색</button>
-				
+	<div class="container text-center" style="padding-top: 15px"> 
+	
+	
+
+    <span>
+    <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    placeholder="정비소를 검색하세요" />
+    
+	<button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
+	id="searchBtn" class="btn btn-secondary btn-sm">검색</button>
+	
+	</span>		
 	</div>
 </form>
 

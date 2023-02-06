@@ -90,20 +90,19 @@ $(document).ready(function(){
 	</div>
 	<div class="input-group">
 		<span class="input-group-text" >정비소 영업상태</span>
-			 <div class="group" style="margin: 0 auto; padding-top: 5px">
-			    <input type="radio" name="garage_state" value="1" checked="checked"/>
-			    <label for="rb1" style="padding-right: 50px">영업중</label>
+			<div class="group" style="margin: 0 auto; padding-top: 5px">
+				<input type="radio" name="garage_state" value="1" checked="checked"/>
+				<label for="rb1" style="padding-right: 50px">영업중</label>
 			    
-			    <input type="radio" name="garage_state" value="2"  />
-			    <label for="rb2">휴업중</label>
-			    
-			  </div>
-			
+				<input type="radio" name="garage_state" value="2"  />
+				<label for="rb2">휴업중</label>			    
+			</div>			
 	</div>
 	<div class="input-group" style="width:100%">
 		<span class="input-group-text">정비소 지역</span>	
-					<select id="garage_code" name="garage_code" size="1" style="border-radius: 5px; border:1px solid #ccc; width: 66%">			
-							<option value="">지역을 선택하세요.</option>
+					<select id="garage_code" name="garage_code" size="1" 
+					style="color:#6e6e6e; border-radius: 5px; border:1px solid #ccc; width: 66%">			
+							<option value="" >지역을 선택하세요.</option>
 							<option value="41820">가평군</option>
 							<option value="41610">경기광주시</option>
 							<option value="41280">고양시</option>
