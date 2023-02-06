@@ -54,7 +54,7 @@ public class CarUserController {
 	public ModelAndView register(CarUserDTO dto) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		car.register(dto);
-		mav.setViewName("user/list");
+		mav.setViewName("home");
 		System.out.println("===== JOINING =====");
 		return mav;
 	}
