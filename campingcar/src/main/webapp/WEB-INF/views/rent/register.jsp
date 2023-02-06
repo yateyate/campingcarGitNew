@@ -4,6 +4,10 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="ismember" value="1" />
+<c:if test="${sessionScope.user.car_uid=='' or sessionScope.user.car_uid==null }">
+	<c:set var="ismember" value="0" />
+</c:if>
 
 <%
 Calendar cal = Calendar.getInstance();
@@ -82,7 +86,7 @@ String limitdate = sdf.format(lastcal.getTime());
 	<input type="hidden" name="user_id" value="" />
 	<input type="hidden" name="car_uid" value="${sessionScope.user.car_uid }" />
 	<!-- 비회원 -->
-	<c:if test="${sessionScope.user.car_uid eq '' }">
+	<c:if test="${ismember==0 }">
 		<div class="input-group">
 			<span class="input-group-text">예약자</span>		
 			<input type="text" class="form-control" name="rent_name" value="" required />
@@ -94,7 +98,7 @@ String limitdate = sdf.format(lastcal.getTime());
 		</div>			
 	</c:if>
 	<!-- 회원 -->
-	<c:if test="${sessionScope.user.car_uid ne '' }">
+	<c:if test="${ismember==1 }">
 		<div class="input-group">
 			<input type="hidden" name="rent_password" value="" required />
 			<span class="input-group-text">예약자</span>			
@@ -143,7 +147,6 @@ String limitdate = sdf.format(lastcal.getTime());
 		<span class="input-group-text">추가 문의</span>
 		<input type="text" class="form-control" name="rent_memo" value="" />
 	</div>
-	<a onclick="datecheck();"  class="btn btn-primary">날짜 중복 체크</a>
 	<a onclick="formsubmit();"  class="btn btn-primary">예약하기</a>
 	</form>
 </div>		
