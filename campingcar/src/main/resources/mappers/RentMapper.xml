@@ -131,5 +131,11 @@
 		on r.car_regid = c.car_regid
 		where rent_name = #{rent_name} and rent_password = #{rent_password} and rent_phone1 = #{rent_phone1}
 	</select>
-	
+	<select id="selectMember" parameterType="String" resultMap="RentVO">
+		select r.*, c.car_regid, c.car_name, c.car_modelname
+		from rent r
+		join car c
+		on r.car_regid = c.car_regid
+		where car_uid = #{car_uid}
+	</select>	
 </mapper>

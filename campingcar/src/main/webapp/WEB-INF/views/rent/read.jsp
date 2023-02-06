@@ -4,6 +4,11 @@
 <%@ page import="java.util.*" %>
 <%@ include file="../admin/rent/category.jsp" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="member" value="${sessionScope.user }" />
+<c:set var="ismember" value="1" />
+<c:if test="${member.car_uid eq '' or member.car_uid eq null }">
+	<c:set var="ismember" value="0" />
+</c:if>
 
 <!DOCTYPE html>
 <html>
@@ -41,9 +46,7 @@
 .input-group-text {width:180px;}
 </style>
 
-${sessionScope.user }
-
-<c:if test="${check != 1 }">
+<c:if test="${check != 1 and (sessionScope.user.car_uid eq '' or sessionScope.user.car_uid eq null ) }">
 <form action="read" method="post">
 <div class="login">
 	<div class="input-group">
@@ -63,7 +66,7 @@ ${sessionScope.user }
 </form>
 </c:if>
 
-<c:if test="${check==1 and not empty dtolist }">
+<c:if test="${(check==1 and not empty dtolist) or (ismember==1) }">
 <table class="table table-bordered center">
 <thead>
 <tr class="table-secondary">

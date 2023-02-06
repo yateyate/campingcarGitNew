@@ -26,4 +26,6 @@ public interface RentService {
 	
 	// 예약 확인
 	List<RentDTO> getGuest(RentDTO rentDTO);
+	List<RentDTO> getMember(String car_uid);
+	
 }
