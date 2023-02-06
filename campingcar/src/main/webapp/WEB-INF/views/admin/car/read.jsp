@@ -41,6 +41,7 @@ $(document).ready(function(){
     });
  })
 </script>
+
 </head>
 <body>
 
@@ -150,7 +151,7 @@ $(document).ready(function(){
 		        	<tr>
 		        		<th class="table-dark thmm">정비일자</th>
 		        		<th ><input type="date" id="repairdate" name="repair_date" /></th>		
-				
+
 		        	</tr>
 
 		        	<tr>
@@ -220,7 +221,12 @@ $(document).ready(function(){
 		        	<tr>
 		        		<th class="table-dark thmm">정비일자</th>
 		        		<th ><input style="width: 70%" type="date" id="repairdate" name="repair_date" value="${repair.repair_date }" /></th>		
-				
+						<script>
+							var now_utc = Date.now()
+							var timeOff = new Date().getTimezoneOffset()*60000;
+							var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+							document.getElementById("repairdate").setAttribute("max", today);
+						</script>
 		        	</tr>
 
 		        	<tr>
