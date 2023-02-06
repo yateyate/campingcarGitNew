@@ -38,16 +38,6 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=08c7f5459534f8433e8a8e73d7707bc1&libraries=services"></script>
 <script>
 
-//해당페이지 active 만들기
-const tab = $('.tab-button');
-for(let i = 0; i< tab.length; i++){
-    tab.eq(i).click(function(){
-        tab.removeClass('orange');	
-        tab.eq(i).addClass('orange');
-
-    })
-}
-
 
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

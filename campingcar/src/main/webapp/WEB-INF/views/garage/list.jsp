@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>자바 캠핑카 - 정비소 검색</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 <style>
@@ -69,16 +69,7 @@ window.addEventListener('load',function(){
 	}
 	
 	
-	//해당페이지 active 만들기
-	const tab = $('.tab-button');
-	for(let i = 0; i< tab.length; i++){
-	    tab.eq(i).click(function(){
-	        tab.removeClass('orange');	
-	        tab.eq(i).addClass('orange');
-	
-	    })
-	}
-	
+
 	
 </script>
 </head>
