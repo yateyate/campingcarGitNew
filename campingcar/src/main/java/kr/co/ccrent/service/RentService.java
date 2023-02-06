@@ -14,11 +14,13 @@ public interface RentService {
 	PageResponseDTO<RentDTO> getList(PageRequestDTO pageRequestDTO);
 	HashMap<String, RentDTO> getByCarId(HashMap<String,Object> varmap);
 	RentDTO getOne(int rent_id);
-	// »óÅÂ º¯°æ
 	void modifyState(RentDTO rentDTO);
 	void remove(int rent_id);
 	
-	// ¿À´ÃÀÇ Ãâ°í, ¹İ³³ Â÷·®
+	// ì˜¤ëŠ˜ì˜ ì¶œê³ , ë°˜ë‚©
 	List<RentDTO> getTodayStart(String today);
 	List<RentDTO> getTodayEnd(String today);
+	
+	// ì˜ˆì•½ ë‚ ì§œ ì¤‘ë³µ ì²´í¬
+	RentDTO getDateRedundancy(HashMap<String,Object> varmap);
 }

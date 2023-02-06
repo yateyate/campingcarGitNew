@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ccrent.config.DateProcess;
 import kr.co.ccrent.dto.CarDTO;
@@ -28,16 +29,16 @@ public class RentController {
 	@GetMapping("/list")
 	public void listGET(String curYear, String curMon, Model model) {
 		System.out.println("<Controller> rent list GET");
-		HashMap<String, Object> datemap = dateProcess.dateCalculate(curYear, curMon, 0); // ���� ��, �� ���� ��¥ ���	
-		HashMap<Integer, Object> maplist = new HashMap<>(); // ���� ����Ʈ ��
-		HashMap<String, Object> varmap = new HashMap<>(); // �Ű����� �� 
-		List<CarDTO> carlist = carService.getAll(); // ���� ��� �ҷ�����
+		HashMap<String, Object> datemap = dateProcess.dateCalculate(curYear, curMon, 0);
+		HashMap<Integer, Object> maplist = new HashMap<>();
+		HashMap<String, Object> varmap = new HashMap<>();
+		List<CarDTO> carlist = carService.getAll(); 
 		System.out.println(datemap.get("firstday"));
 		System.out.println(datemap.get("lastday"));
 		for(int i=0; i<carlist.size(); i++) {
 			varmap.clear();
 			varmap.put("car_regid", carlist.get(i).getCar_regid());
-			System.out.println("����ȣ : "+carlist.get(i).getCar_regid());
+			System.out.println("차 번호 : "+carlist.get(i).getCar_regid());
 			varmap.put("firstday", datemap.get("firstday"));
 			varmap.put("lastday", datemap.get("lastday"));	
 			varmap.put("dummy", "1");				
@@ -69,6 +70,25 @@ public class RentController {
 		rentService.register(rentDTO);
 		return "redirect:/rent/list";
 	}
+	@ResponseBody
+	@PostMapping("/datecheck")
+	public int datecheckPOST (RentDTO rentDTO) {
+		System.out.println("<Rent Controller> datecheck POST");
+		System.out.println(rentDTO);
+		HashMap<String, Object> varmap = new HashMap<>();
+		varmap.put("car_regid", rentDTO.getCar_regid());
+		varmap.put("rent_startdate", rentDTO.getRent_startdate());
+		varmap.put("rent_enddate", rentDTO.getRent_enddate());
+		RentDTO resultDTO = rentService.getDateRedundancy(varmap);
+		System.out.println("예약 날짜 중복 확인 중");
+		System.out.println(resultDTO);
+		int result = 0;
+		if(resultDTO!=null) {
+			result = resultDTO.getRent_id();
+		}
+		return result;
+	}
+	
 	@GetMapping("/read")
 	public void readGET() {
 		System.out.println("<Rent Controller> read GET");

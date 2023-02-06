@@ -112,4 +112,11 @@
 		select r.*, c.car_regid, c.car_name, c.car_modelname from rent r join car c on r.car_regid = c.car_regid
 		where r.rent_enddate = #{today} order by rent_id desc
 	</select>
+	
+	<!-- 예약 날짜 중복 검사 -->
+	<select id="selectDateRedundancy" parameterType="HashMap" resultType="kr.co.ccrent.domain.RentVO">
+		select rent_id, rent_startdate, rent_enddate from rent
+		<![CDATA[where car_regid = #{car_regid} and rent_enddate > #{rent_enddate} and rent_startdate < #{rent_enddate}]]>
+		order by rent_id limit 1
+	</select>
 </mapper>
