@@ -26,7 +26,7 @@ public class CarUserDTO{
 	private int car_uno;
 	private String car_udriverid;
 	private String car_uid;
-	private String car_upw;
+	private int car_upw;
 	private String car_uname;
 	private String car_uyear;
 	private String car_uaddr;
@@ -57,10 +57,10 @@ public class CarUserDTO{
 	public void setCar_uid(String car_uid) {
 		this.car_uid = car_uid;
 	}
-	public String getCar_upw() {
+	public int getCar_upw() {
 		return car_upw;
 	}
-	public void setCar_upw(String car_upw) {
+	public void setCar_upw(int car_upw) {
 		this.car_upw = car_upw;
 	}
 	public String getCar_uname() {
