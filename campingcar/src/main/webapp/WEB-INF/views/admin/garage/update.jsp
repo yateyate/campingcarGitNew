@@ -40,7 +40,7 @@ $(document).ready(function(){
           $("#garage_code").focus();
           return false;
        }
-      
+       alert('정비소정보 수정이 완료되었습니다')
     });
  })
 </script>
