@@ -12,9 +12,36 @@
 <title>자바 캠핑카 - 관리자 페이지</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
-<style>
+<script>
 
-</style>
+$(document).ready(function(){  
+     
+       //유효성검사
+    $("#updatesubmit").on("click", function(){
+    	
+       if($("#garage_name").val()==""){
+          alert("정비소명을 입력해주세요.");
+          $("#garage_name").focus();
+          return false;
+       }
+       //유효성검사
+       if($("#repair_info").val()==""){
+          alert("정비내역을 입력해주세요.");
+          $("#repair_info").focus();
+          return false;
+       }
+       //유효성검사
+       if($("#repairdate").val()==""){
+          alert("정비일자를 선택해주세요.");
+          $("#repairdate").focus();
+          return false;
+       }
+      
+       alert('정비내역 수정이 완료되었습니다')
+    });
+ })
+</script>
+
 </head>
 <body>
 
@@ -124,7 +151,7 @@
 		        	<tr>
 		        		<th class="table-dark thmm">정비일자</th>
 		        		<th ><input type="date" id="repairdate" name="repair_date" /></th>		
-				
+
 		        	</tr>
 
 		        	<tr>
@@ -194,7 +221,12 @@
 		        	<tr>
 		        		<th class="table-dark thmm">정비일자</th>
 		        		<th ><input style="width: 70%" type="date" id="repairdate" name="repair_date" value="${repair.repair_date }" /></th>		
-				
+						<script>
+							var now_utc = Date.now()
+							var timeOff = new Date().getTimezoneOffset()*60000;
+							var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+							document.getElementById("repairdate").setAttribute("max", today);
+						</script>
 		        	</tr>
 
 		        	<tr>
@@ -221,7 +253,7 @@
 			    </form>
 		   
 		       	
-			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">돌아가기</button>
 			   	
 				
 		        
