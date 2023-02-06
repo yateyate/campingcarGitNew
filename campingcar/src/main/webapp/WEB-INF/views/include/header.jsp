@@ -44,8 +44,8 @@
 				<li><a style="padding: 5px 5px 15px 25px"; href="${contextPath }/garage/list">정비소 검색</a></li>
 				<li><a style="padding: 5px 5px 15px 25px"; href="${contextPath }/garage/register">정비소 등록신청</a></li>
 				<c:if test="${user.car_uid == 'admin'}">
-				<li><a style="padding: 5px 5px 15px 25px"; href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
-				<li><a style="padding: 5px 5px 15px 25px"; href="${contextPath }/admin/garage/update">정비소 정보 수정 및 삭제</a></li>
+				<li><a href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
+				<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 수정 및 삭제</a></li>
 				</c:if>				
 			</ul>		
 			</li>
