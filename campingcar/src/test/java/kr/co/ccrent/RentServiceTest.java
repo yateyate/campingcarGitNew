@@ -30,7 +30,7 @@ public class RentServiceTest {
 		System.out.println(rentDTO);
 	}
 
-	@Test
+	// @Test
 	public void getGuestTest() {
 		RentDTO rentDTO = RentDTO.builder()
 				.rent_name("아무개")
@@ -40,6 +40,10 @@ public class RentServiceTest {
 		List<RentDTO> dtolist = rentService.getGuest(rentDTO);
 		dtolist.forEach(dto -> System.out.println(dto));
 		
+	}
+	@Test
+	public void getMemberTest() {
+		List<RentDTO> dtolist = rentService.getMember("user00");
+		dtolist.forEach(dto -> System.out.println(dto));		
 	}	
-	
 }

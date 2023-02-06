@@ -48,6 +48,7 @@
 <tr class="table-secondary">
 	<th>#</th>
 	<th>차량</th>
+	<th>회원</th>
 	<th>예약자</th>
 	<th>필수 연락처</th>
 	<th>예비 연락처</th>
@@ -63,8 +64,12 @@
 <tbody>
 <c:forEach items="${responseDTO.dtoList }" var="dto">
 <tr onclick="location.href='read?rent_id=${dto.rent_id}&listtype=list';">
-	<td>${dto.rent_id }</td>	
-	<td>${dto.car_regid }</td>	
+	<td>${dto.rent_id }</td>
+	<td>${dto.car_regid }</td>
+	<td>
+		<c:if test="${dto.car_uid!='' }"><strong>${dto.car_uid }</strong></c:if>
+		<c:if test="${dto.car_uid eq '' or dto.car_uid eq null }"><p style="color:#c8c8c8;">비회원</p></c:if>
+	</td>	
 	<td>${dto.rent_name }</td>	
 	<td>${fn:substring(dto.rent_phone1,0,3) }-${fn:substring(dto.rent_phone1,3,7) }-${fn:substring(dto.rent_phone1,7,11) }</td>	
 	<td>${fn:substring(dto.rent_phone2,0,3) }-${fn:substring(dto.rent_phone2,3,7) }-${fn:substring(dto.rent_phone2,7,11) }</td>	

@@ -186,4 +186,12 @@ public class RentServiceImpl implements RentService {
 		return dtolist;
 	}
 
+	@Override
+	public List<RentDTO> getMember(String car_uid) {
+		List<RentDTO> dtolist = rentMapper.selectMember(car_uid).stream()
+				.map(vo -> modelMapper.map(vo, RentDTO.class))
+				.collect(Collectors.toList());
+		return dtolist;
+	}
+
 }

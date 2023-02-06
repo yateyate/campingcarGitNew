@@ -29,7 +29,7 @@ public class RentMapperTest {
 		System.out.println(rentVO);
 	}
 	
-	@Test
+	// @Test
 	public void selectGuestTest() {
 		RentVO rentVO = RentVO.builder()
 				.rent_name("아무개")
@@ -38,5 +38,10 @@ public class RentMapperTest {
 				.build();
 		List<RentVO> volist = rentMapper.selectGuest(rentVO);
 		volist.forEach(vo -> System.out.println(vo));
+	}
+	@Test
+	public void selectMemberTest() {
+		List<RentVO> volist = rentMapper.selectMember("user00");
+		volist.forEach(vo -> System.out.println(vo));		
 	}
 }
