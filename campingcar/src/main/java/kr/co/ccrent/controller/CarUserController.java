@@ -47,7 +47,6 @@ public class CarUserController {
 	public String nowtime(Model model) {
 		System.out.println("===== JOIN =====");
 		return "user/join";
-		
 	}
 	
 //	회원가입 기능구현
