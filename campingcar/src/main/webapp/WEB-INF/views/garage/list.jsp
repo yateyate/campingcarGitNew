@@ -67,11 +67,8 @@ window.addEventListener('load',function(){
 				window.location.href = url;			
 			})	
 	}
-	
-	
-
-	
 </script>
+	
 </head>
 <body>
 
@@ -176,10 +173,10 @@ geocoder.addressSearch(a, function(result, status) {
 <div   class="container text-center" > <br>
 
 	
-		<table id="garagetable"class="table table-bordered text-center";>
-	  	<thead class="table-dark theadmm">
+		<table id="garagetable"class="table table-bordered table-hover center";>
+	  	<thead class="theadmm">
 
-			<tr>
+			<tr class="table-secondary">
 				<th style="width: 100px;">정비소명</th>
 				<th style="width: 150px;">주소</th>
 				<th style="width: 50px;">전화번호</th>
