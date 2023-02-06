@@ -84,6 +84,11 @@ String limitdate = sdf.format(lastcal.getTime());
 		<input type="text" class="form-control" name="rent_name" value="" required />
 	</div>
 	<div class="input-group">
+		<span class="input-group-text">비밀번호</span>
+		<input type="text" class="form-control" name="rent_password" value="" required />
+		<input type="text" class="form-control" name="rent_password_check" value="" required />
+	</div>	
+	<div class="input-group">
 		<span class="input-group-text">연락처</span>
 		<input type="text" class="form-control" name="rent_phone1" value="" placeholder="필수 연락처" required oninput="autoHyphen(this)" maxlength="13" />
 		<input type="text" class="form-control" name="rent_phone2" value="" placeholder="예비 연락처" oninput="autoHyphen(this)" maxlength="13" />

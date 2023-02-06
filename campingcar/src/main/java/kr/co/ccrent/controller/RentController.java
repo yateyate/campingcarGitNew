@@ -87,12 +87,18 @@ public class RentController {
 			result = resultDTO.getRent_id();
 		}
 		return result;
-	}
-	
+	}	
 	@GetMapping("/read")
 	public void readGET() {
 		System.out.println("<Rent Controller> read GET");
 	}
+	@PostMapping("/read")
+	public void readPOST(RentDTO rentDTO, Model model) {
+		System.out.println("<Rent Controller> read POST");
+		System.out.println(rentDTO);
+		model.addAttribute("dtolist", rentService.getGuest(rentDTO));
+		model.addAttribute("check", 1);
+	}	
 	@GetMapping("/template")
 	public void templateGET() {
 		
