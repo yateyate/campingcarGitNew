@@ -43,7 +43,8 @@
 
 <style>
 .login {width:440px; margin:0px auto;}
-.input-group-text {width:180px;}
+.input-group-text {width:180px; font-weight:400; text-align:center;}
+.input-group {margin:0px 0px 5px 0px;}
 </style>
 
 <c:if test="${check != 1 and (sessionScope.user.car_uid eq '' or sessionScope.user.car_uid eq null ) }">
@@ -61,7 +62,10 @@
 		<span class="input-group-text">비밀번호</span>
 		<input type="text" class="form-control" name="rent_password" value="" required />
 	</div>	
-	<button type="submit">예약 확인</button>
+	<div class="d-grid gap-2">
+		<button type="submit" class="btn btn-primary">예약 확인</button>
+	</div>	
+	
 </div>
 </form>
 </c:if>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.ccrent.dto.CarDTO;
+import kr.co.ccrent.dto.PageRequestDTO;
 import kr.co.ccrent.dto.RepairDTO;
 import kr.co.ccrent.service.BoardFileService;
 import kr.co.ccrent.service.CarService;
@@ -49,10 +50,11 @@ public class CarController {
 		return "redirect:/car/list";
 	}
 	@GetMapping("/list")
-	public void listGET(Model model) {
+	public void listGET(Model model, PageRequestDTO pageRequestDTO) {
 		System.out.println("<Controller> list GET ==============================");
 		model.addAttribute("time", carService.getTime());
-		model.addAttribute("dtolist", carService.getAll());
+		// model.addAttribute("dtolist", carService.getAll());
+		model.addAttribute("responseDTO", carService.getList(pageRequestDTO));
 	}
 	@GetMapping("/read")
 	public void readGET(Model model, int car_regid) {

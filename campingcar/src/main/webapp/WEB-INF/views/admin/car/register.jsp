@@ -58,11 +58,11 @@ pageContext.setAttribute("optionArr", optionArr);
 	<div id="wrap">
 <!-- ================================================== -->
 
-<form action="${action }" method="post"  enctype="multipart/form-data" id="write">
+<form action="${action }" method="post" enctype="multipart/form-data" id="write">
 <c:if test="${action eq 'modify'}"><input type="hidden" name="car_regid" value="${dto.car_regid }" /></c:if>
 <div class="input-group">
 	<span class="input-group-text">캠핑카 대여 회사</span>
-	<select class="form-control" name="car_rentcompid">
+	<select class="form-control" name="comp_id">
 		<option value="1" selected>임시 대여 회사</option>
 	</select>
 </div>
