@@ -34,7 +34,7 @@
 	<h1><a href="${contextPath }/"><img src="${contextPath }/resources/img/header/logo.png" alt="자바 캠핑카" /></a></h1>
 	<div id="topmenu">
 		<ul>
-			<li><a href="#">회사 소개</a></li>
+			<li><a href="${contextPath }/company/list">회사 소개</a></li>
 			<li><a href="${contextPath }/car/list">보유 차량</a></li>
 			<li><a href="${contextPath }/rent/list">실시간 예약</a></li>
 			<li><a href="#">예약 확인</a></li>
