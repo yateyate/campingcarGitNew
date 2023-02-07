@@ -123,6 +123,7 @@
 <div id="container">
 	<!-- #header start -->
 	<%@ include file="../include/header.jsp" %>
+	
 	<!--// #header end -->
 	
 	<div id="body_head">
@@ -230,7 +231,7 @@
    </div>
    
       <select name="car_ptype" style="margin-left: 15px; width: 97.5%;"  class="form-select form-select-sm" aria-label=".form-select-sm example">
-		<option>선호 차량</option> 
+		<option>선호 차량</option>
 		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 10호</option>
 		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 9호</option>
 		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 8호</option>
