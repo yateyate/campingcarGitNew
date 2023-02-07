@@ -1,22 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
-	<title>Home</title>
+<title>자바 캠핑카</title>
+<link href="${contextPath}/resources/css/main_all.css" rel="stylesheet" />
+<%@ include file="include/plugin.jsp" %>
 </head>
 <body>
-<h1>
-홈화면입니다.  
-</h1>
 
-	<li><a href="${contextPath }/admin/">관리자목록</a></li>
-	<li><a href="${contextPath }/board/list">게시판 목록</a></li>
-	<li><a href="${contextPath }/car/list">렌트카 목록</a></li>
-	<li><a href="${contextPath }/rent/list">렌트예약 목록</a></li>
-
+<div id="container">
+	<!-- #header start -->
+	<%@ include file="include/header.jsp" %>
+	<!--// #header end -->
+	
+	<div id="wrap">
+		내용
+	</div>
+</div>
 
 </body>
 </html>

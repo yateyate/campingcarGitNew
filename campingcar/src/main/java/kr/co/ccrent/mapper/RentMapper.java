@@ -24,4 +24,8 @@ public interface RentMapper {
 	
 	// 예약 날짜 중복 확인
 	RentVO selectDateRedundancy(HashMap<String, Object> varmap);
+	
+	// 예약 확인
+	List<RentVO> selectGuest(RentVO rentVO);
+	List<RentVO> selectMember(String car_uid);
 }

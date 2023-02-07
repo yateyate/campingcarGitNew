@@ -3,6 +3,8 @@ package kr.co.ccrent.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ccrent.config.DateProcess;
 import kr.co.ccrent.dto.CarDTO;
+import kr.co.ccrent.dto.CarUserDTO;
 import kr.co.ccrent.dto.RentDTO;
 import kr.co.ccrent.service.CarService;
 import kr.co.ccrent.service.RentService;
@@ -87,12 +90,28 @@ public class RentController {
 			result = resultDTO.getRent_id();
 		}
 		return result;
-	}
-	
+	}	
 	@GetMapping("/read")
-	public void readGET() {
+	public void readGET(HttpSession session, Model model) {
 		System.out.println("<Rent Controller> read GET");
+		System.out.println(session.getAttribute("user"));
+		CarUserDTO carUserDTO = (CarUserDTO) session.getAttribute("user");
+		if(carUserDTO==null) {
+			System.out.println("guest");
+		}else {
+			System.out.println("member login");
+			String car_uid = carUserDTO.getCar_uid();
+			model.addAttribute("dtolist", rentService.getMember(car_uid));
+		}
+
 	}
+	@PostMapping("/read")
+	public void readPOST(RentDTO rentDTO, Model model) {
+		System.out.println("<Rent Controller> read POST");
+		System.out.println(rentDTO);
+		model.addAttribute("dtolist", rentService.getGuest(rentDTO));
+		model.addAttribute("check", 1);
+	}	
 	@GetMapping("/template")
 	public void templateGET() {
 		

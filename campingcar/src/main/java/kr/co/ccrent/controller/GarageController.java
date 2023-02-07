@@ -1,5 +1,7 @@
 package kr.co.ccrent.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ccrent.dto.Criteria;
 import kr.co.ccrent.dto.GarageDTO;
 import kr.co.ccrent.dto.PageMaker;
 import kr.co.ccrent.service.GarageService;
+
 
 @Controller
 public class GarageController {
@@ -51,18 +58,12 @@ public class GarageController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.garage_get_count(cri));
 		
+		model.addAttribute("cri",cri);
 		model.addAttribute("pageMaker",pageMaker);
+		
+		
 	}
-	
 
-		
-		
-		
-		
-				
-		
-	
-	
 }
 
 	

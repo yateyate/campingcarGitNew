@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -12,9 +13,36 @@
 <title>자바 캠핑카 - 관리자 페이지</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
-<style>
+<script>
 
-</style>
+$(document).ready(function(){  
+     
+       //유효성검사
+    $("#updatesubmit").on("click", function(){
+    	
+       if($("#garage_name").val()==""){
+          alert("정비소명을 입력해주세요.");
+          $("#garage_name").focus();
+          return false;
+       }
+       //유효성검사
+       if($("#repair_info").val()==""){
+          alert("정비내역을 입력해주세요.");
+          $("#repair_info").focus();
+          return false;
+       }
+       //유효성검사
+       if($("#repairdate").val()==""){
+          alert("정비일자를 선택해주세요.");
+          $("#repairdate").focus();
+          return false;
+       }
+      
+       alert('정비내역 수정이 완료되었습니다')
+    });
+ })
+</script>
+
 </head>
 <body>
 
@@ -31,48 +59,51 @@
 <!-- ================================================== -->
 
 
-<h2>차량 조회</h2>
+<style>
+.table th {border:1px solid #c8c8c8; text-align:center;}
+</style>
 
-<table border="1" width="100%">
-<colgroupd>
-	<col width="20%" />
-	<col width="*" />
-</colgroupd>
-<tr>
-	<th>등록 번호</th><td>${dto.car_regid }</td>
-</tr>
-<tr>
-	<th>대여 회사</th><td>${dto.comp_id }</td>
-</tr>
-<tr>
-	<th>모델 명</th><td>${dto.car_modelname }</td>
-</tr>
-<tr>
-	<th>차량 이름</th><td>${dto.car_name }</td>
-</tr>
-<tr>
-	<th>차량 번호</th><td>${dto.car_number }</td>
-</tr>
-<tr>
-	<th>탑승 인원</th><td>${dto.car_capa }</td>
-</tr>
-<tr>
-	<th>내부 옵션</th><td>${dto.car_option }</td>
-</tr>
-<tr>
-	<th>세부 내용</th><td>${dto.car_detail }</td>
-</tr>
-<tr>
-	<th>대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
-</tr>
-<tr>
-	<th>등록 일</th><td>${dto.car_regdate }</td>
-</tr>
-</table>
-
-<c:forEach items="${filelist }" var="file">
-	<div><img src="${contextPath }/resources/data/car/${file.bf_source}" /></div>
-</c:forEach>
+<div class="carread clearfix">
+	<div>
+		<img src="${contextPath }/resources/data/car/${dto.car_file }" alt="" />
+	</div>
+	<table class="table table-bordered">
+	<colgroupd>
+		<col width="30%" />
+		<col width="*" />
+	</colgroupd>
+	<tr>
+		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">대여 회사</th><td>${dto.comp_id }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">차량 이름</th><td>${dto.car_name }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">차량 번호</th><td>${dto.car_number }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">탑승 인원</th><td>${dto.car_capa }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">내부 옵션</th><td>${fn:replace(dto.car_option, ',', ', ')}</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">세부 내용</th><td>${dto.car_detail }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">등록 일</th><td>${dto.car_regdate }</td>
+	</tr>
+	</table>
+</div>
 
 
 <button onclick="location.href='list';">목록</button>
@@ -124,7 +155,7 @@
 		        	<tr>
 		        		<th class="table-dark thmm">정비일자</th>
 		        		<th ><input type="date" id="repairdate" name="repair_date" /></th>		
-				
+
 		        	</tr>
 
 		        	<tr>
@@ -194,7 +225,12 @@
 		        	<tr>
 		        		<th class="table-dark thmm">정비일자</th>
 		        		<th ><input style="width: 70%" type="date" id="repairdate" name="repair_date" value="${repair.repair_date }" /></th>		
-				
+						<script>
+							var now_utc = Date.now()
+							var timeOff = new Date().getTimezoneOffset()*60000;
+							var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+							document.getElementById("repairdate").setAttribute("max", today);
+						</script>
 		        	</tr>
 
 		        	<tr>
@@ -221,7 +257,7 @@
 			    </form>
 		   
 		       	
-			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">돌아가기</button>
 			   	
 				
 		        
@@ -243,7 +279,7 @@
 
 
 <form action="remove" method="post">
-	<input type="text" name="car_regid" value="${dto.car_regid }" />
+	<input type="hidden" name="car_regid" value="${dto.car_regid }" />
 	<button type="submit">삭제</button>
 </form>
 <!-- ================================================== -->

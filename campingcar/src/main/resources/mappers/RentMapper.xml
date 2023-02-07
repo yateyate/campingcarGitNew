@@ -9,8 +9,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="kr.co.ccrent.domain.RentVO">
-		insert into rent (car_regid, user_id, rent_name, rent_phone1, rent_phone2, rent_startdate, rent_enddate, rent_option1, rent_option2, rent_price, rent_paytype, rent_paystate, rent_state, rent_memo, rent_datetime) 
-		values (#{car_regid}, #{user_id}, #{rent_name}, #{rent_phone1}, #{rent_phone2}, #{rent_startdate}, #{rent_enddate}, #{rent_option1}, #{rent_option2}, #{rent_price}, #{rent_paytype}, #{rent_paystate}, #{rent_state}, #{rent_memo}, now())
+		insert into rent (car_regid, car_uid, rent_name, rent_password, rent_phone1, rent_phone2, rent_startdate, rent_enddate, rent_option1, rent_option2, rent_price, rent_paytype, rent_paystate, rent_state, rent_memo, rent_datetime) 
+		values (#{car_regid}, #{car_uid}, #{rent_name}, #{rent_password}, #{rent_phone1}, #{rent_phone2}, #{rent_startdate}, #{rent_enddate}, #{rent_option1}, #{rent_option2}, #{rent_price}, #{rent_paytype}, #{rent_paystate}, #{rent_state}, #{rent_memo}, now())
 	</insert>
 	
 	<select id="selectAll" resultType="kr.co.ccrent.domain.RentVO">
@@ -73,6 +73,8 @@
 	<resultMap type="kr.co.ccrent.domain.RentVO" id="RentVO">
 		<result column="rent_id" property="rent_id" />
 		<result column="user_id" property="user_id" />
+		<result column="car_uid" property="car_uid" />
+		<result column="rent_name" property="rent_name" />
 		<result column="rent_phone1" property="rent_phone1" />
 		<result column="rent_phone2" property="rent_phone2" />
 		<result column="rent_startdate" property="rent_startdate" />
@@ -84,6 +86,7 @@
 		<result column="rent_paystate" property="rent_paystate" />
 		<result column="rent_state" property="rent_state" />
 		<result column="rent_memo" property="rent_memo" />
+		<result column="rent_datetime" property="rent_datetime" />
 		<collection property="car" resultMap="CarVO" />
 	</resultMap>
 	
@@ -119,4 +122,20 @@
 		<![CDATA[where car_regid = #{car_regid} and rent_enddate > #{rent_enddate} and rent_startdate < #{rent_enddate}]]>
 		order by rent_id limit 1
 	</select>
+	
+	<!-- 예약 확인 -->
+	<select id="selectGuest" parameterType="kr.co.ccrent.domain.RentVO" resultMap="RentVO">
+		select r.*, c.car_regid, c.car_name, c.car_modelname
+		from rent r
+		join car c
+		on r.car_regid = c.car_regid
+		where rent_name = #{rent_name} and rent_password = #{rent_password} and rent_phone1 = #{rent_phone1}
+	</select>
+	<select id="selectMember" parameterType="String" resultMap="RentVO">
+		select r.*, c.car_regid, c.car_name, c.car_modelname
+		from rent r
+		join car c
+		on r.car_regid = c.car_regid
+		where car_uid = #{car_uid}
+	</select>	
 </mapper>

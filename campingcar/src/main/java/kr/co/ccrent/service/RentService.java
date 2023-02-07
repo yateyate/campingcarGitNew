@@ -23,4 +23,9 @@ public interface RentService {
 	
 	// 예약 날짜 중복 체크
 	RentDTO getDateRedundancy(HashMap<String,Object> varmap);
+	
+	// 예약 확인
+	List<RentDTO> getGuest(RentDTO rentDTO);
+	List<RentDTO> getMember(String car_uid);
+	
 }

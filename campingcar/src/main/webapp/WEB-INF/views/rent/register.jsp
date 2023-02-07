@@ -4,6 +4,10 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="ismember" value="1" />
+<c:if test="${sessionScope.user.car_uid=='' or sessionScope.user.car_uid==null }">
+	<c:set var="ismember" value="0" />
+</c:if>
 
 <%
 Calendar cal = Calendar.getInstance();
@@ -78,14 +82,33 @@ String limitdate = sdf.format(lastcal.getTime());
 			</c:forEach>
 		</select>
 	</div>
-	<div class="input-group">
-		<span class="input-group-text">예약자</span>
-		<input type="hidden" name="user_id" value="user01" />
-		<input type="text" class="form-control" name="rent_name" value="" required />
-	</div>
+
+	<input type="hidden" name="user_id" value="" />
+	<input type="hidden" name="car_uid" value="${sessionScope.user.car_uid }" />
+	<!-- 비회원 -->
+	<c:if test="${ismember==0 }">
+		<div class="input-group">
+			<span class="input-group-text">예약자</span>		
+			<input type="text" class="form-control" name="rent_name" value="" required />
+		</div>
+		<div class="input-group">
+			<span class="input-group-text">비밀번호</span>
+			<input type="text" class="form-control" name="rent_password" value="" required />
+			<input type="text" class="form-control" name="rent_password_check" value="" required />
+		</div>			
+	</c:if>
+	<!-- 회원 -->
+	<c:if test="${ismember==1 }">
+		<div class="input-group">
+			<input type="hidden" name="rent_password" value="" required />
+			<span class="input-group-text">예약자</span>			
+			<input type="text" class="form-control" name="rent_name" value="${sessionScope.user.car_uname }" readonly />
+		</div>
+	</c:if>
+
 	<div class="input-group">
 		<span class="input-group-text">연락처</span>
-		<input type="text" class="form-control" name="rent_phone1" value="" placeholder="필수 연락처" required oninput="autoHyphen(this)" maxlength="13" />
+		<input type="text" class="form-control" name="rent_phone1" value="${sessionScope.user.car_uphone }" placeholder="필수 연락처" required oninput="autoHyphen(this)" maxlength="13" />
 		<input type="text" class="form-control" name="rent_phone2" value="" placeholder="예비 연락처" oninput="autoHyphen(this)" maxlength="13" />
 	</div>
 	<div class="input-group">
@@ -124,7 +147,6 @@ String limitdate = sdf.format(lastcal.getTime());
 		<span class="input-group-text">추가 문의</span>
 		<input type="text" class="form-control" name="rent_memo" value="" />
 	</div>
-	<a onclick="datecheck();"  class="btn btn-primary">날짜 중복 체크</a>
 	<a onclick="formsubmit();"  class="btn btn-primary">예약하기</a>
 	</form>
 </div>		

@@ -177,4 +177,21 @@ public class RentServiceImpl implements RentService {
 		return rentDTO;
 	}
 
+	@Override
+	public List<RentDTO> getGuest(RentDTO rentDTO) {
+		RentVO rentVO = modelMapper.map(rentDTO, RentVO.class);
+		List<RentDTO> dtolist = rentMapper.selectGuest(rentVO).stream()
+				.map(vo -> modelMapper.map(vo, RentDTO.class))
+				.collect(Collectors.toList());
+		return dtolist;
+	}
+
+	@Override
+	public List<RentDTO> getMember(String car_uid) {
+		List<RentDTO> dtolist = rentMapper.selectMember(car_uid).stream()
+				.map(vo -> modelMapper.map(vo, RentDTO.class))
+				.collect(Collectors.toList());
+		return dtolist;
+	}
+
 }

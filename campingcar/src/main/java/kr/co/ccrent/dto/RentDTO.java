@@ -19,9 +19,11 @@ public class RentDTO {
 	private int rent_id;
 	private int car_regid;
 	private String user_id;
+	private String car_uid;
 	private String rent_name;
 	private String rent_phone1;
 	private String rent_phone2;
+	private String rent_password;
 	private LocalDate rent_startdate;
 	private LocalDate rent_enddate;
 	private int rent_diffdate;

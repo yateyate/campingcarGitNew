@@ -48,3 +48,17 @@ table.center th, table.center td {text-align:center;}
 
 .left {text-align:left !important;}
 .right {text-align:right !important;}
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    line-height: 0;
+}
+
+.clearfix:after {
+    clear:both;
+}
+
+.clearfix {
+	*zoom: 1;
+}

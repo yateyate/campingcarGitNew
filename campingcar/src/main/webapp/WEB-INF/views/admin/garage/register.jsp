@@ -15,6 +15,7 @@
 <title>자바 캠핑카 - 관리자 페이지</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/ajsbutton.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -36,6 +37,19 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=08c7f5459534f8433e8a8e73d7707bc1&libraries=services"></script>
 <script>
+
+//해당페이지 active 만들기
+const tab = $('.tab-button');
+for(let i = 0; i< tab.length; i++){
+    tab.eq(i).click(function(){
+        tab.removeClass('orange');	
+        tab.eq(i).addClass('orange');
+
+    })
+}
+
+
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.268070, 127.000157), // 지도의 중심좌표
@@ -130,15 +144,15 @@ geocoder.addressSearch(a, function(result, status) {
 	<th name="garage_code" value="${GarageDTO.garage_code }"
 		style="display: none">${GarageDTO.garage_code}</th>
 	<th>
-	<button type="button" 
+	<button type="button" class="ajs ajsbutton3"
 	onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')">지도보기</button>
 	</th>
 	<th>							
-		<button  type="button" 
+		<button  type="button" class="ajs ajsbutton1" 
 		onclick='location.href="${contextPath}/admin/garage/insert?garage_no=${GarageDTO.garage_no}"'>등록완료
 		</button>
 	
-		<button type="button" 
+		<button type="button" class="ajs ajsbutton2"
 		onclick='location.href="${contextPath}/admin/garage/delete?garage_no=${GarageDTO.garage_no}"'>등록취소
 		</button>
 	</th>
@@ -161,10 +175,18 @@ geocoder.addressSearch(a, function(result, status) {
 				
 			</c:if>		
 				
-			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">
-							
-					<a class="btn btn-outline-secondary"  href = "register${pageMaker.makeSearch(idx)}">${idx }</a>
+			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">				
+				<c:choose>
 				
+				<c:when test="${cri.page != idx }">
+				<a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "register${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:when>
+				
+				<c:otherwise>
+				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
+				</c:otherwise>
+				
+				</c:choose>	
 			</c:forEach>			
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
