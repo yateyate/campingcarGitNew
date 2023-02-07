@@ -18,7 +18,7 @@
 		</li>
 		<li><a href="#">대여 회사 관리</a>
 			<ul>
-				<li><a href="#">대여 회사 현황</a></li>
+				<li><a href="${contextPath }/admin/company/listForm">대여 회사 현황</a></li>
 			</ul>		
 		</li>
 		<li><a href="#">정비소 관리</a>
