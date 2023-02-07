@@ -68,6 +68,7 @@
 							<li><a href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
 							<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 수정 및 삭제</a></li>
 						</c:if>							
+						<li><a href="${contextPath }/company/list">대여회사 등록신청</a></li>
 					</ul>					
 				</li>
 			</ul>
@@ -81,9 +82,9 @@
 <script>
 $(document).ready(function(){
 	$("#header_outer").mouseenter(function(){
-		$(this).stop().animate({"height":"340px"}, 500, "easeOutQuint");
+		$(this).stop().animate({"height":"370px"}, 500, "easeOutQuint");
 		$(this).addClass("over");
-		$("#header_over").stop().animate({"height":"340px"}, 500, "easeOutQuint");
+		$("#header_over").stop().animate({"height":"370px"}, 500, "easeOutQuint");
 		var logo = $(this).find("h1 img");
 		logo.attr("src", logo.attr("src").replace("off", "on"));
 		$(this).find("#topmenu li > a").stop().animate({"width":"150px"},150, "easeOutCubic");
