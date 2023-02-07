@@ -45,7 +45,17 @@ $(document).ready(function(){
 <title>자바 캠핑카 - 정비소 등록신청</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+<style>
+.fs-2{
+	position: relative;
+}
+.helpimg{
+width: 35px;
+position: absolute;
+top: 16px;
+}
 
+</style>
 </head>
 <body>
 
@@ -64,12 +74,44 @@ $(document).ready(function(){
 	<div id="wrap">
 		<div id="submenu">
 			<ul>
-				<li class="on"><a href="#">정비소 등록양식</a></li>
+				<li><a href="${contextPath }/garage/list">정비소 검색</a></li>
+				<li class="on"><a href="${contextPath }/garage/register">정비소 등록신청</a></li>
 			</ul>
 		</div>
 		
 		<div id="body_contents" style="padding: 30px 0px 120px 0px">
-<h2 style="text-align: center">정비소 등록 신청</h2><br>
+
+<p class="fs-2"style="text-align: center">정비소 등록 신청  
+
+
+ <img class="helpimg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+ src="${contextPath }/resources/img/garage/help.png" alt="등록 유의사항"/>
+</p>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" >
+      <div class="modal-header" style="text-align: center;" >
+        <h2 "class="modal-title fs-5" id="exampleModalLabel">정비소 등록신청 참고사항</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       1. 정비소 명과 주소를 정확하게 기입해주세요
+			<br>- 정비소 명과 정비소 주소를 확인하여 정확하지 않을경우 신청이 거부될 수 있습니다.
+       
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 <!-- ================================================== -->
 
 <div class="board_write" style="width: 50%; margin: 0 auto;">
