@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>자바 캠핑카 - 정비소 검색</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 <style>
@@ -67,20 +67,8 @@ window.addEventListener('load',function(){
 				window.location.href = url;			
 			})	
 	}
-	
-	
-	//해당페이지 active 만들기
-	const tab = $('.tab-button');
-	for(let i = 0; i< tab.length; i++){
-	    tab.eq(i).click(function(){
-	        tab.removeClass('orange');	
-	        tab.eq(i).addClass('orange');
-	
-	    })
-	}
-	
-	
 </script>
+	
 </head>
 <body>
 
@@ -102,11 +90,6 @@ window.addEventListener('load',function(){
 			<ul>
 				<li class="on"><a href="${contextPath }/garage/list">정비소 검색</a></li>
 				<li><a href="${contextPath }/garage/register">정비소 등록신청</a></li>
-				<c:if test="${user.car_uid == 'admin'}">
-				<li><a href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
-				<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 수정 및 삭제</a></li>
-				</c:if>	
-
 			</ul>
 		</div>
 		
@@ -185,10 +168,10 @@ geocoder.addressSearch(a, function(result, status) {
 <div   class="container text-center" > <br>
 
 	
-		<table id="garagetable"class="table table-bordered text-center";>
-	  	<thead class="table-dark theadmm">
+		<table id="garagetable"class="table table-bordered table-hover center";>
+	  	<thead class="theadmm">
 
-			<tr>
+			<tr class="table-secondary">
 				<th style="width: 100px;">정비소명</th>
 				<th style="width: 150px;">주소</th>
 				<th style="width: 50px;">전화번호</th>

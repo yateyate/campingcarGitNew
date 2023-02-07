@@ -42,7 +42,7 @@
 					<ul>
 						<li><a href="#">회사소개</a></li>
 						<li><a href="#">포트폴리오</a></li>
-						<li><a href="#">오시는 길</a></li>
+						<li><a href="${contextPath }/direction">오시는 길</a></li>
 					</ul>					
 				</li>
 				<li>
@@ -63,11 +63,15 @@
 						<li><a href="#">공지사항</a></li>
 						<li><a href="#">자주하는 질문</a></li>
 						<li><a href="${contextPath }/garage/register">정비소 등록신청</a></li>
+<<<<<<< HEAD
 						<c:if test="${user.car_uid == 'admin'}">
 							<li><a href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
 							<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 수정 및 삭제</a></li>
 						</c:if>							
 						<li><a href="${contextPath }/company/list">대여회사 등록신청</a></li>
+=======
+									
+>>>>>>> 43dda6ef50137ce46e841c1eecbf515339dcb485
 					</ul>					
 				</li>
 			</ul>
