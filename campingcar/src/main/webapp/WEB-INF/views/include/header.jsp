@@ -64,10 +64,7 @@
 						<li><a href="#">공지사항</a></li>
 						<li><a href="#">자주하는 질문</a></li>
 						<li><a href="${contextPath }/garage/register">정비소 등록신청</a></li>
-						<c:if test="${user.car_uid == 'admin'}">
-							<li><a href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
-							<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 수정 및 삭제</a></li>
-						</c:if>							
+									
 					</ul>					
 				</li>
 			</ul>
