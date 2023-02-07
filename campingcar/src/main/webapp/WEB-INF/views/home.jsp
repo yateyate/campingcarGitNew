@@ -19,7 +19,30 @@
 	<!--// #header end -->
 	
 	<div id="wrap">
-		내용
+<!-- ================================================================================ -->
+
+<style>
+#mainvisual {}
+.mainrow.para01 {background:url("${contextPath}/resources/img/main/dummy.jpg"); height:2120px;}
+
+</style>
+
+<div id="mainvisual">
+</div>
+
+<div class="mainrow para01">
+	&nbsp;
+</div>
+
+<script>
+$(document).ready(function(){
+	var windowHeight = window.innerHeight;
+	$("#mainvisual").css({"height":windowHeight+"px"});
+});
+
+</script>
+
+<!-- ================================================================================ -->		
 	</div>
 </div>
 
