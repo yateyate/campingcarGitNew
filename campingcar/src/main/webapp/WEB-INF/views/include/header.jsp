@@ -81,20 +81,20 @@
 <script>
 $(document).ready(function(){
 	$("#header_outer").mouseenter(function(){
-		$(this).stop().animate({"height":"340px"}, 300);
+		$(this).stop().animate({"height":"340px"}, 500, "easeOutQuint");
 		$(this).addClass("over");
-		$("#header_over").stop().animate({"height":"340px"}, 300);
+		$("#header_over").stop().animate({"height":"340px"}, 500, "easeOutQuint");
 		var logo = $(this).find("h1 img");
 		logo.attr("src", logo.attr("src").replace("off", "on"));
-		$(this).find("#topmenu li > a").animate({"width":"150px"});
+		$(this).find("#topmenu li > a").stop().animate({"width":"150px"},150, "easeOutCubic");
 	});
 	$("#header_outer").mouseleave(function(){
-		$(this).stop().animate({"height":"140px"}, 300);
+		$(this).stop().animate({"height":"140px"}, 500, "easeOutQuint");
 		$(this).removeClass("over");
-		$("#header_over").stop().animate({"height":"1px"}, 300);
+		$("#header_over").stop().animate({"height":"1px"}, 500, "easeOutQuint");
 		var logo = $(this).find("h1 img");
 		logo.attr("src", logo.attr("src").replace("on", "off"));
-		$(this).find("#topmenu li > a").animate({"width":"120px"});
+		$(this).find("#topmenu li > a").stop().animate({"width":"120px"},150, "easeOutCubic");
 	});	
 });
 </script>
