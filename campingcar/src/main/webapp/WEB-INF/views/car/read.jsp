@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -59,57 +60,76 @@ width:120px;
 		<div id="body_contents">
 <!-- ================================================== -->
 
-<h2>차량 조회</h2>
+<style>
+.table th {border:1px solid #c8c8c8; text-align:center;}
+.carread div,
+.carread table {float:left;}
+.carread div {width:430px;}
+.carread img {width:400px;}
+.carread table {width:770px;}
+</style>
 
-<table border="1" width="100%">
-<colgroupd>
-	<col width="20%" />
-	<col width="*" />
-</colgroupd>
-<tr>
-	<th>등록 번호</th><td>${dto.car_regid }</td>
-</tr>
-<tr>
-	<th>대여 회사</th><td>${dto.comp_id }</td>
-</tr>
-<tr>
-	<th>모델 명</th><td>${dto.car_modelname }</td>
-</tr>
-<tr>
-	<th>차량 이름</th><td>${dto.car_name }</td>
-</tr>
-<tr>
-	<th>차량 번호</th><td>${dto.car_number }</td>
-</tr>
-<tr>
-	<th>탑승 인원</th><td>${dto.car_capa }</td>
-</tr>
-<tr>
-	<th>내부 옵션</th><td>${dto.car_option }</td>
-</tr>
-<tr>
-	<th>세부 내용</th><td>${dto.car_detail }</td>
-</tr>
-<tr>
-	<th>대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
-</tr>
-<tr>
-	<th>등록 일</th><td>${dto.car_regdate }</td>
-</tr>
-</table>
+<div class="carread clearfix">
+	<div>
+		<img src="${contextPath }/resources/data/car/${dto.car_file }" alt="" />
+	</div>
+	<table class="table table-bordered">
+	<colgroupd>
+		<col width="30%" />
+		<col width="*" />
+	</colgroupd>
+	<tr>
+		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">대여 회사</th><td>${dto.comp_id }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">차량 이름</th><td>${dto.car_name }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">차량 번호</th><td>${dto.car_number }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">탑승 인원</th><td>${dto.car_capa }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">내부 옵션</th><td>${fn:replace(dto.car_option, ',', ', ')}</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">세부 내용</th><td>${dto.car_detail }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">등록 일</th><td>${dto.car_regdate }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">자량 정비 내역</th>
+		<td>
+			<c:if test="${repair.repair_no == null }">
+			<button  onclick="emptyrepair()" class="btn btn-outline-dark btn-sm">차량정비 내역보기</button>
+			</c:if>
+			<c:if test="${repair.repair_no !=null }">
+			<button data-bs-toggle="modal" href="#exampleModalToggle" role="button" class="btn btn-outline-dark btn-sm">차량정비 내역보기</button>
+			</c:if>	
+		</td>
+	</tr>
+	</table>
+</div>
 
-<button onclick="location.href='list';">목록</button>
-<button onclick="location.href='register?car_regid=${dto.car_regid }';">수정</button>
 
+<div style="text-align:center; padding:60px 0px 0px 0px; border-top:1px solid #dcdcdc; margin:50px 0px 0px 0px;">
+<button onclick="location.href='list';" class="btn btn-primary" style="width:150px; height:40px;">목록</button>
+</div>
 <!-- 모달&모달테스트 -->
 		
 		
-		<c:if test="${repair.repair_no == null }">
-		<button  onclick="emptyrepair()">차량정비 내역보기</button>
-		</c:if>
-		<c:if test="${repair.repair_no !=null }">
-		<button data-bs-toggle="modal" href="#exampleModalToggle" role="button">차량정비 내역보기</button>
-		</c:if>
+
 		<script>
 		function emptyrepair() {
 			
@@ -170,13 +190,7 @@ width:120px;
 		  </div>
 		  </div>
 		  </div>
-		  
 
-
-<form action="remove" method="post">
-	<input type="text" name="car_regid" value="${dto.car_regid }" />
-	<button type="submit">삭제</button>
-</form>
 
 <!-- ================================================== -->		
 		</div> <!-- // #body_contents end -->

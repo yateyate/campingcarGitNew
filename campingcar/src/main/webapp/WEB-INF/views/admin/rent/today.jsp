@@ -31,7 +31,7 @@
 <!-- ================================================== -->
 
 <style>
-.renttoday .col1, .renttoday .col2 {width:50%; float:left; min-height:300px; border:1px solid #ff0000;}
+.renttoday .col1, .renttoday .col2 {width:50%; float:left; min-height:300px;}
 </style>
 
 <div class="renttoday">
@@ -69,26 +69,25 @@
 		<h3>오늘의 반납 차량</h3>
 		<c:forEach items="${endlist }" var="dto">
 		<div>
-			<table class="table table-bordered" width="50%" onclick="location.href='read?rent_id=${dto.rent_id}&listtype=today';">
-			<tr>
-				<td colspan="4"></td>
-			</tr>
-			<tr>
-				<th>차량 번호</th>
-				<td>${dto.car_regid }</td>
-			</tr>			
+			<table class="table table-bordered" onclick="location.href='read?rent_id=${dto.rent_id}&listtype=today';">
+			<colgroup>
+				<col width="15%" />
+				<col width="35%" />
+				<col width="15%" />
+				<col width="35%" />
+			</colgroup>
 			<tr>
 				<th>예약 번호</th>
 				<td>${dto.rent_id }</td>
-			</tr>
+				<th>차량 번호</th>
+				<td>(${dto.car.car_regid }) [${dto.car.car_modelname }] ${dto.car.car_name }</td>
+			</tr>			
+
 			<tr>
-				<th>예약자</th>
+				<th>고객명</th>
 				<td>${dto.rent_name }</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					${dto }
-				</td>
+				<th>연락처</th>
+				<td>${dto.rent_phone1 }</td>
 			</tr>
 			</table>
 		</div>

@@ -18,7 +18,9 @@
 	<%@ include file="include/header.jsp" %>
 	<!--// #header end -->
 	
-	생각해보니까 이거 내용이 밀리나?
+	<div id="wrap">
+		내용
+	</div>
 </div>
 
 </body>
