@@ -230,13 +230,18 @@
    </div>
    
       <select name="car_ptype" style="margin-left: 15px; width: 97.5%;"  class="form-select form-select-sm" aria-label=".form-select-sm example">
-		<option>선호 차량</option>
-		<option value="zeus560A">제우스560 A / 4 ~ 5인취침</option>
-		<option value="zeus640B">제우스640 B / 5 ~ 6인취침</option>
-		<option value="zeus640C">제우스640 C / 5 ~ 6인취침</option> 
-		<option value="zeus640D">제우스640 D / 5 ~ 6인취침</option>
-		<option value="zeus640E">제우스640 E / 5 ~ 6인취침</option>
-		<option value="zeus640F">제우스640 F / 5 ~ 6인취침</option>
+		<option>선호 차량</option> 
+		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 10호</option>
+		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 9호</option>
+		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 8호</option>
+		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 7호</option>
+		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 6호</option>
+		<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 / 캠핑카 5호</option>
+		<option value="현대 스타리아">현대 스타리아 / 5 ~ 6인승 / 캠핑카 4호</option>
+		<option value="현대 스타리아">현대 스타리아 / 3 ~ 4인승 / 캠핑카 3호</option>
+		<option value="기아 카니발">기아 카니발 / 3 ~ 4인승 / 캠핑카 2호</option>
+		<option value="기아 카니발">기아 카니발 / 5 ~ 6인승 / 캠핑카 1호</option>
+		
 	</select><br>
 	<div class="input-bu">
 		<input class="btn btn-primary" type="submit" value="회원가입" id="join">
