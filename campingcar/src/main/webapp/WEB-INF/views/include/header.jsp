@@ -43,7 +43,7 @@
 					<ul>
 						<li><a href="#">회사소개</a></li>
 						<li><a href="#">포트폴리오</a></li>
-						<li><a href="#">오시는 길</a></li>
+						<li><a href="${contextPath }/direction">오시는 길</a></li>
 					</ul>					
 				</li>
 				<li>

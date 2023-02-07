@@ -74,7 +74,8 @@ top: 16px;
 	<div id="wrap">
 		<div id="submenu">
 			<ul>
-				<li class="on"><a href="#">정비소 등록양식</a></li>
+				<li><a href="${contextPath }/garage/list">정비소 검색</a></li>
+				<li class="on"><a href="${contextPath }/garage/register">정비소 등록신청</a></li>
 			</ul>
 		</div>
 		
@@ -83,8 +84,8 @@ top: 16px;
 <p class="fs-2"style="text-align: center">정비소 등록 신청  
 
 
- <img class="helpimg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" src="${contextPath }/resources/img/garage/help.png" alt="등록 유의사항"
- />
+ <img class="helpimg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+ src="${contextPath }/resources/img/garage/help.png" alt="등록 유의사항"/>
 </p>
 
 <!-- Button trigger modal -->
