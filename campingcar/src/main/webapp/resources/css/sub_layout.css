@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {background:url("../img/inc/bg01.jpg") no-repeat center top;}
-#body_head {clear:both; height:500px; padding:200px 0px 0px 0px;}
+#body_head {clear:both; height:760px; padding:340px 0px 0px 0px;}
 #body_head h2 {font-family: 'GmarketSansMedium'; font-size:60px; color:#ffffff; text-align:center;}
 #body_head .location {color:#ffffff; text-align:center;}
 #body_head .location span {color:#ffffff; font-weight:bold;}
