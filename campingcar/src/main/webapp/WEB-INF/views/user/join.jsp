@@ -100,6 +100,13 @@ form {
 	top: 55px;
 	position: absolute;
 }
+.id_input_re_2 {
+	display: none;
+	position: absolute;
+	left: 20px;
+	top: 55px;
+	position: absolute;
+}
 
 .two {
 	left: 20px;
@@ -302,16 +309,16 @@ form {
 							class="form-select form-select-sm"
 							aria-label=".form-select-sm example">
 							<option>선호 차량</option>
-							<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 10호</option>
-							<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 9호</option>
-							<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 8호</option>
-							<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 7호</option>
-							<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 6호</option>
-							<option value="쌍용 렉스턴스포츠칸">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 / 캠핑카 5호</option>
-							<option value="현대 스타리아">현대 스타리아 / 5 ~ 6인승 / 캠핑카 4호</option>
-							<option value="현대 스타리아">현대 스타리아 / 3 ~ 4인승 / 캠핑카 3호</option>
-							<option value="기아 카니발">기아 카니발 / 3 ~ 4인승 / 캠핑카 2호</option>
-							<option value="기아 카니발">기아 카니발 / 5 ~ 6인승 / 캠핑카 1호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 10호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 10호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 9호 ">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 9호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 8호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 8호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 7호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 7호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 6호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 6호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 5호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 / 캠핑카 5호</option>
+							<option value="현대 스타리아 / 5 ~ 6인승 / 캠핑카 4호">현대 스타리아 / 5 ~ 6인승 / 캠핑카 4호</option>
+							<option value="현대 스타리아 / 3 ~ 4인승 / 캠핑카 3호">현대 스타리아 / 3 ~ 4인승 / 캠핑카 3호</option>
+							<option value="기아 카니발 / 3 ~ 4인승 / 캠핑카 2호">기아 카니발 / 3 ~ 4인승 / 캠핑카 2호</option>
+							<option value="기아 카니발 / 5 ~ 6인승 / 캠핑카 1호">기아 카니발 / 5 ~ 6인승 / 캠핑카 1호</option>
 
 						</select><br>
 						<div class="input-bu">
