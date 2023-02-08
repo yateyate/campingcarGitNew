@@ -111,7 +111,15 @@ public class RentController {
 		System.out.println(rentDTO);
 		model.addAttribute("dtolist", rentService.getGuest(rentDTO));
 		model.addAttribute("check", 1);
-	}	
+	}
+	@PostMapping("/cancel")
+	public String cancelPOST(RentDTO rentDTO) {
+		System.out.println("<Rent Controller> cancel POST");
+		System.out.println(rentDTO);
+		rentService.modifyCancel(rentDTO);
+		return "redirect:/rent/read";
+	}
+	
 	@GetMapping("/template")
 	public void templateGET() {
 		

@@ -194,4 +194,11 @@ public class RentServiceImpl implements RentService {
 		return dtolist;
 	}
 
+	@Override
+	public void modifyCancel(RentDTO rentDTO) {
+		RentVO rentVO = modelMapper.map(rentDTO, RentVO.class);
+		rentMapper.updateCancel(rentVO);
+		
+	}
+
 }
