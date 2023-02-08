@@ -28,4 +28,7 @@ public interface RentService {
 	List<RentDTO> getGuest(RentDTO rentDTO);
 	List<RentDTO> getMember(String car_uid);
 	
+	// 예약 취소
+	void modifyCancel(RentDTO rentDTO);
+	
 }

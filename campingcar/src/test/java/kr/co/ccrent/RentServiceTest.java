@@ -45,5 +45,14 @@ public class RentServiceTest {
 	public void getMemberTest() {
 		List<RentDTO> dtolist = rentService.getMember("user00");
 		dtolist.forEach(dto -> System.out.println(dto));		
+	}
+	
+	@Test
+	public void updateCancelTest() {
+		RentDTO rentDTO = RentDTO.builder()
+				.rent_id(3)
+				.rent_state(2)
+				.build();
+		rentService.modifyCancel(rentDTO);
 	}	
 }

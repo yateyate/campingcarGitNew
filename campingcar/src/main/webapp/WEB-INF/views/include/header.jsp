@@ -38,11 +38,11 @@
 		<div id="topmenu">
 			<ul class="clearfix">
 				<li>
-					<a href="#">회사 소개</a>
+					<a href="${contextPath }/html/intro">회사 소개</a>
 					<ul>
-						<li><a href="#">회사소개</a></li>
+						<li><a href="${contextPath }/html/intro">회사소개</a></li>
 						<li><a href="#">포트폴리오</a></li>
-						<li><a href="${contextPath }/direction">오시는 길</a></li>
+						<li><a href="${contextPath }/html/direction">오시는 길</a></li>
 					</ul>					
 				</li>
 				<li>
