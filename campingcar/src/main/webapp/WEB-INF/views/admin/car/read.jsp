@@ -16,7 +16,7 @@
 <script>
 
 $(document).ready(function(){  
-     
+	
        //유효성검사
     $("#updatesubmit").on("click", function(){
     	
@@ -25,13 +25,13 @@ $(document).ready(function(){
           $("#garage_name").focus();
           return false;
        }
-       //유효성검사
+      
        if($("#repair_info").val()==""){
           alert("정비내역을 입력해주세요.");
           $("#repair_info").focus();
           return false;
        }
-       //유효성검사
+       
        if($("#repairdate").val()==""){
           alert("정비일자를 선택해주세요.");
           $("#repairdate").focus();
@@ -40,7 +40,38 @@ $(document).ready(function(){
       
        alert('정비내역 수정이 완료되었습니다')
     });
+       
+       //정비내역 등록 유효성검사
+    $("#registersubmit").on("click", function(){
+    	
+        if($("#garage_name").val()==""){
+           alert("정비소명을 입력해주세요.");
+           $("#garage_name").focus();
+           return false;
+        }
+       
+        if($("#repair_info").val()==""){
+           alert("정비내역을 입력해주세요.");
+           $("#repair_info").focus();
+           return false;
+        }
+        
+        if($("#repairdate").val()==""){
+           alert("정비일자를 선택해주세요.");
+           $("#repairdate").focus();
+           return false;
+        }
+       
+        alert('정비내역 등록이 완료되었습니다')
+     });
+    
+$("#deletesubmit").on("click", function(){
+
+        alert('정비내역 삭제가 완료되었습니다.')
+     }); 
+       
  })
+ 
 </script>
 
 </head>
@@ -130,6 +161,8 @@ $(document).ready(function(){
 			    	<tr style="display: none">
 			    		<th class="table-dark thmm">차량ID</th>
 			    		<th><input type ="text" id="car_regid" name="car_regid" value="${dto.car_regid }" readonly/></th>
+			    		<th class="table-dark thmm">대여회사ID</th>
+			    		<th><input type ="text" id="comp_id" name="comp_id" value="${companyDTO.comp_id }" readonly/></th>
 			    	</tr>
 			    	
 			       	<tr>
@@ -142,7 +175,7 @@ $(document).ready(function(){
 		        	</tr>
 		        	<tr>
 		        		<th class="table-dark thmm">렌트회사</th>
-		        		<th><input type="text" id="comp_name" name="comp_name" value="${repair.comp_name }" /></th>
+		        		<th><input type="text" id="comp_name" name="comp_name" value="${companyDTO.comp_name }" readonly /></th>
 		        		
 		        	</tr>
 		        	<tr>
@@ -172,7 +205,8 @@ $(document).ready(function(){
 		      </div>
 			
 		      <div class="modal-footer">
-			    <button class="btn btn-success" type="submit" name="submit">등록</button>
+			    <button class="btn btn-success" type="submit" name="submit"
+			    id="registersubmit" >등록</button>
 			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
 			    </div>
 			</form>
@@ -212,7 +246,7 @@ $(document).ready(function(){
 		        	</tr>
 		        	<tr>
 		        		<th class="table-dark thmm">렌트회사</th>
-		        		<th><input type="text" id="comp_name" name="comp_name" value="${repair.comp_name }" /></th>
+		        		<th><input type="text" id="comp_name" name="comp_name" value="${companyDTO.comp_name }" readonly/></th>
 		        		
 		        	</tr>
 		        	<tr>
@@ -250,13 +284,16 @@ $(document).ready(function(){
 			    <button class="btn btn-success" type="submit" id="updatesubmit"
 			    name="modify" value="${repair.car_regid }">수정완료</button>
 			</form>
-			    <form action="repair/remove" method="get">
-				
+			
+			    <form action="repair/remove" method="get">				
 			    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" 
-			    name="car_regid" id="car_regid" value="${repair.car_regid }">내역 삭제</button>
+			    name="car_regid" id="deletesubmit" value="${repair.car_regid}">
+			    <input type="text" name="comp_id" value="${companyDTO.comp_id}" style="display: none" readonly/>
+			    내역 삭제</button>
+			    
+				
 			    </form>
-		   
-		       	
+		   	
 			    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">돌아가기</button>
 			   	
 				

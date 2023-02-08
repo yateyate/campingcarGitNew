@@ -50,7 +50,7 @@
 <tr>
 	<th>${dto.car_regid }</th>
 	<td>${dto.comp_id }</td>
-	<td class="left"><a href="read?car_regid=${dto.car_regid }">${dto.car_modelname } <span>　|　</span> ${dto.car_name }</a></td>
+	<td class="left"><a href="read?car_regid=${dto.car_regid }&comp_id=${dto.comp_id}">${dto.car_modelname } <span>　|　</span> ${dto.car_name }</a></td>
 	<td>${dto.car_number }</td>
 	<td>${dto.car_capa }</td>
 	<td class="right"><fmt:formatNumber value="${dto.car_rentprice }" pattern="#,###" /></td>
