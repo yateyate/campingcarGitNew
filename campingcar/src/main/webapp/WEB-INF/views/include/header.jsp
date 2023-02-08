@@ -10,7 +10,6 @@
 .one{
 	display: inline-block;
 }
-
 </style>
 
 <div id="header_over">
