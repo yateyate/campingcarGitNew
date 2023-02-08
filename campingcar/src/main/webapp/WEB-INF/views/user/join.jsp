@@ -200,6 +200,7 @@ form {
 																				.css(
 																						"display",
 																						"none");
+																		
 																	} else {
 																		$(
 																				'.id_input_re_2')

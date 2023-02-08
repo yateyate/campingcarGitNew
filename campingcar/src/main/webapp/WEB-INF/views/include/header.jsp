@@ -83,9 +83,9 @@
 <script>
 $(document).ready(function(){
 	$("#header_outer").mouseenter(function(){
-		$(this).stop().animate({"height":"370px"}, 500, "easeOutQuint");
+		$(this).stop().animate({"height":"400px"}, 500, "easeOutQuint");
 		$(this).addClass("over");
-		$("#header_over").stop().animate({"height":"370px"}, 500, "easeOutQuint");
+		$("#header_over").stop().animate({"height":"400px"}, 500, "easeOutQuint");
 		var logo = $(this).find("h1 img");
 		logo.attr("src", logo.attr("src").replace("off", "on"));
 		$(this).find("#topmenu li > a").stop().animate({"width":"150px"},150, "easeOutCubic");
