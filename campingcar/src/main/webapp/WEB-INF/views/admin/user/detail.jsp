@@ -19,6 +19,9 @@
 	h1{
 		margin-bottom: 50px;
 	}
+	.table{
+		text-align: center;
+	}
 </style>
 </head>
 <body>
