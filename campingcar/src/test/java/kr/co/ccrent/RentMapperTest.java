@@ -39,9 +39,18 @@ public class RentMapperTest {
 		List<RentVO> volist = rentMapper.selectGuest(rentVO);
 		volist.forEach(vo -> System.out.println(vo));
 	}
-	@Test
+	// @Test
 	public void selectMemberTest() {
 		List<RentVO> volist = rentMapper.selectMember("user00");
 		volist.forEach(vo -> System.out.println(vo));		
+	}
+	
+	@Test
+	public void updateCancelTest() {
+		RentVO rentVO = RentVO.builder()
+				.rent_id(3)
+				.rent_state(1)
+				.build();
+		rentMapper.updateCancel(rentVO);
 	}
 }

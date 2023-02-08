@@ -62,7 +62,6 @@
 				  	<td><h5><b>전화번호</b></h5></td>
 				  	<td><h5><b>담당자</b></h5></td>
 				  	<td><h5><b>담당자 이메일</b></h5></td>
-				  	<td><h5><b>승인 상태</b></h5></td>
 				  </tr>
 				  </thead>
 				  <div class="container text-center">
@@ -76,7 +75,6 @@
 				 	<td><h5><b>${company.comp_phone}</b></h5></td>
 				 	<td><h5><b>${company.comp_pic}</b></h5></td>
 				 	<td><h5><b>${company.comp_pic_email}</b></h5></td>
-				 	<td><h5><b>${company.comp_status}</b></h5></td>
 				</c:if>
 				 	</tr>
 				</c:forEach>
@@ -123,7 +121,7 @@
 				  <br>
 				  	<div class="box">
 				<div class="container text-right">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='/campingcar/company/registerForm'"><b>파트너 제휴 신청하러 가기 ←</b></button>
+					<button type="button" class="btn btn-outline-dark" onclick="location.href='/company/registerForm'"><b>파트너 제휴 신청하러 가기 ←</b></button>
 				</div>
 			</div>
 				</div>

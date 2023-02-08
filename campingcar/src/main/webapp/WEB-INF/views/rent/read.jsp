@@ -70,7 +70,11 @@
 </form>
 </c:if>
 
+<!-- 비회원 정보 일치 or 회원인 경우 예약 목록 출력 -->
 <c:if test="${(check==1 and not empty dtolist) or (ismember==1) }">
+<form action="cancel" method="post" id="cancelform">
+<input type="hidden" name="rent_id" value="" />
+<input type="hidden" name="rent_state" value="1" />
 <table class="table table-bordered center">
 <thead>
 <tr class="table-secondary">
@@ -81,6 +85,7 @@
 	<th>차량 예약일</th>
 	<th>예약 등록일</th>
 	<th>예약 상태</th>
+	<th>예약 취소</th>
 </tr>
 </thead>
 <tbody>
@@ -94,11 +99,30 @@
 		<td>${dto.rent_startdate } ~ ${dto.rent_enddate }</td>
 		<td>${dto.rent_datetime }</td>
 		<td><p class="state type${paystate}">${cateArr[dto.rent_paystate] }</p></td>
+		<td>
+			<c:if test="${dto.rent_state==0 }"><a class="btn btn-danger" onclick="rentCancel(${dto.rent_id});">예약 취소</a></c:if>
+			<c:if test="${dto.rent_state==1 }">예약 취소 대기</c:if>
+			<c:if test="${dto.rent_state==2 }">예약 취소 완료</c:if>
+		</td>
 	</tr>
 	</c:forEach>
 </tbody>
 </table>
+</form>
+<script>
+function rentCancel(rent_id){
+	$("input[name='rent_id']").val(rent_id);
+	if(confirm("해당 예약을 취소하시겠습니까?")){
+		$("#cancelform").submit();
+	}else{
+		return;
+	}	
+	
+}
+</script>
 </c:if>
+
+
 
 <c:if test="${check==1 and empty dtolist }">
 <table class="table table-bordered center">

@@ -65,7 +65,7 @@
 		<button type="submit">상태 변경</button>
 		</form>
 	</td>
-	<th>예약 취소</th>
+	<th>예약 삭제</th>
 	<td>
 		<form action="remove" method="post" id="remove">
 		<input type="hidden" name="rent_id" value="${dto.rent_id }" />
@@ -76,14 +76,29 @@
 </tr>
 <script>
 function confirmAlert(){
-	if(confirm("해당 예약을 취소하시겠습니까?\r\n한번 삭제한 예약글은 복구할 수 없습니다.")){
+	if(confirm("해당 예약을 삭제하시겠습니까?\r\n한번 삭제한 예약글은 복구할 수 없습니다.")){
 		$("#remove").submit();
 	}else{
 		return;
 	}
 }
 </script>
-
+<tr>
+	<th>취소 상태</th>
+	<td>${cancelArr[dto.rent_state] }</td>
+	<th>취소 처리</th>
+	<td>
+		<c:if test="${dto.rent_state==1 }">
+			<form action="cancel" method="post" id="cancel">
+			<input type="hidden" name="rent_id" value="${dto.rent_id }" />
+			<input type="hidden" name="listtype" value="${param.listtype }" />
+			<input type="hidden" name="rent_state" value="2" />
+			<a class="btn btn-danger" href="#" role="button" onclick="confirmAlert();">예약 취소</a>
+			</form>		
+		</c:if>
+		<c:if test="${dto.rent_state==0 or  dto.rent_state==2 }">&nbsp;</c:if>
+	</td>
+</tr>
 <tr><th>차량 정보</th><td colspan="3">(${dto.car.car_regid }) ${dto.car.car_modelname } ${dto.car.car_name }</td></tr>
 <tr><th>예약자</th><td>${dto.user_id }</td><th>유저 ID</th><td>${dto.user_id }</td></tr>
 <tr><th>필수 연락처</th><td>${dto.rent_phone1 }</td><th>예비 연락처</th><td>${dto.rent_phone2 }</td></tr>

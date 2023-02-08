@@ -101,6 +101,15 @@ form {
 	position: absolute;
 }
 
+.id_input_re_2 {
+	display: none;
+	position: absolute;
+	left: 20px;
+	top: 55px;
+	position: absolute;
+}
+
+
 .two {
 	left: 20px;
 	top: 55px;
@@ -136,6 +145,190 @@ form {
 			<!--// #header end -->
 
 
+			<div id="body_contents">
+				<!-- ================================================== -->
+				<div id="body_head">
+					<h2>회원가입</h2>
+					<div class="location">
+						HOME <i class="fa-solid fa-circle-chevron-right"></i> <span>회원가입</span>
+					</div>
+				</div>
+
+				<div id="wrap">
+					<div id="submenu">
+						<ul>
+							<li class="on"><a href="#">회원가입</a></li>
+						</ul>
+					</div>
+					<h1>회원가입</h1>
+					<form method="post" action="join">
+
+						<div class="input-group">
+							<span class="input-group-text">아이디</span> <input type="text"
+								class="car_uid form-control id_input" id="car_uid"
+								name="car_uid" placeholder="아이디" value=${list.car_uid }>
+							<!-- 아이디 중복확인 -->
+							<span class="id_input_re_1 two">사용 가능한 아이디입니다.</span> <span
+								class="id_input_re_2 two">아이디가 이미 존재합니다.</span> <br>
+							<!-- 아이디 중복확인 스크립트 -->
+							<script>
+								$('.id_input')
+										.on(
+												"propertychange change keyup paste input",
+												function() {
+													var memberId = $(
+															'.id_input').val(); // .id_input에 입력되는 값
+													var data = {
+														memberId : memberId
+													} // '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+
+													$
+															.ajax({
+																type : "post",
+																url : "memberIdChk",
+																data : data,
+																success : function(
+																		result) {
+																	//console.log("성공 여부" + result);
+																	if (result != "fail") {
+																		$(
+																				'.id_input_re_1')
+																				.css(
+																						"display",
+																						"inline-block");
+																		$(
+																				'.id_input_re_2')
+																				.css(
+																						"display",
+																						"none");
+																	} else {
+																		$(
+																				'.id_input_re_2')
+																				.css(
+																						"display",
+																						"inline-block");
+																		$(
+																				'.id_input_re_1')
+																				.css(
+																						"display",
+																						"none");
+																	}
+																} //success종료
+															}); //ajax 종료
+												}); //function 종료
+							</script>
+						</div>
+						<div class="input-group">
+							<span class="input-group-text">비밀번호</span> <input type="password"
+								class="car_uid form-control" id="car_upw" name="car_upw"
+								placeholder="비밀번호"> <span class="input-group-text">비밀번호
+								확인</span> <input type="password" class="car_uid form-control"
+								id="upw_c" name="upw_c" placeholder="비밀번호확인"> <span
+								class="pw_input_re_1">비밀번호가 일치 합니다.</span><br>
+							<!-- 비밀번호 중복체크 -->
+							<script>
+								//비밀번호 확인 
+								$(function() {
+									$('#upw_c')
+											.blur(
+													function() {
+														if ($('#car_upw').val() != $(
+																'#upw_c').val()) {
+															if ($('#upw_c')
+																	.val() != '') {
+																alert("비밀번호가 일치하지 않습니다.");
+																$('#upw_c')
+																		.val('');
+																$('#upw_c')
+																		.focus();
+															}
+														} else {
+															$('.pw_input_re_1')
+																	.css(
+																			"display",
+																			"inline-block");
+
+														}
+													});
+								});
+							</script>
+						</div>
+						<div class="input-group">
+							<span class="input-group-text">이름</span> <input type="text"
+								class="car_uid form-control" id="car_uname" name="car_uname"
+								placeholder="이름" value=${list.car_uname }>
+						</div>
+						<div class="input-group">
+							<span class="input-group-text">생년월일</span> <input type="date"
+								class="car_uid form-control" id="car_uyear" name="car_uyear"
+								placeholder="생년월일" value=${list.car_uyear }>
+						</div>
+						<div class="input-group">
+							<span class="input-group-text">이메일</span> <input type="text"
+								class="car_uid form-control" id="car_uemail" name="car_uemail"
+								placeholder="이메일" value=${list.car_uemail }>
+						</div>
+						<div class="input-group">
+							<span class="input-group-text">주소</span> <input type="text"
+								class="car_uid form-control" id="car_uaddr" name="car_uaddr"
+								placeholder="주소" value=${list.car_uaddr }>
+						</div>
+						<div class="input-group">
+							<span class="input-group-text">핸드폰</span> <input type="text"
+								class="car_uid form-control" id="car_uphone" name="car_uphone"
+								placeholder=" '-' 없이 입력해주세요 " value=${list.car_uphone }>
+						</div>
+						<script>
+							$(document)
+									.on(
+											"keyup",
+											"#car_uphone",
+											function() {
+												$(this)
+														.val(
+																$(this)
+																		.val()
+																		.replace(
+																				/[^0-9]/g,
+																				"")
+																		.replace(
+																				/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+																				"$1-$2-$3")
+																		.replace(
+																				"--",
+																				"-"));
+											});
+						</script>
+						<div class="input-group">
+							<span class="input-group-text">운전면허번호</span> <input type="text"
+								class="car_uid form-control" id="car_udriverid"
+								name=car_udriverid placeholder="운전등록번호"
+								value=${list.car_udriverid }><br>
+						</div>
+
+						<select name="car_ptype" style="margin-left: 15px; width: 97.5%;"
+							class="form-select form-select-sm"
+							aria-label=".form-select-sm example">
+							<option>선호 차량</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 10호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 10호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 9호 ">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 9호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 8호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 8호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 7호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 7호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 6호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 6호</option>
+							<option value="쌍용 렉스턴스포츠칸 / 5 ~ 6인승 캠핑카 5호">쌍용 렉스턴스포츠칸 / 5 ~ 6인승 / 캠핑카 5호</option>
+							<option value="현대 스타리아 / 5 ~ 6인승 / 캠핑카 4호">현대 스타리아 / 5 ~ 6인승 / 캠핑카 4호</option>
+							<option value="현대 스타리아 / 3 ~ 4인승 / 캠핑카 3호">현대 스타리아 / 3 ~ 4인승 / 캠핑카 3호</option>
+							<option value="기아 카니발 / 3 ~ 4인승 / 캠핑카 2호">기아 카니발 / 3 ~ 4인승 / 캠핑카 2호</option>
+							<option value="기아 카니발 / 5 ~ 6인승 / 캠핑카 1호">기아 카니발 / 5 ~ 6인승 / 캠핑카 1호</option>
+
+						</select><br>
+						<div class="input-bu">
+							<input class="btn btn-primary" type="submit" value="회원가입"
+								id="join"> <input class="btn btn-primary" type="reset"
+								value="다시쓰기" id="cencle">
+						</div>
+					</form>
+				<hr>
 
 			<div id="body_contents">
 				<!-- ================================================== -->

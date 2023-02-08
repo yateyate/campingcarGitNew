@@ -56,7 +56,7 @@
 	<select id="selectByCarId" parameterType="HashMap" resultType="kr.co.ccrent.domain.RentVO">
 		select * from rent 
 		<!-- <![CDATA[where car_regid = #{car_regid} and rent_startdate >= #{firstday} and rent_startdate <= #{lastday}]]>  -->
-		<![CDATA[where car_regid = #{car_regid} and ((rent_enddate >= #{firstday} and rent_enddate <= #{lastday}) or (rent_startdate >= #{firstday} and rent_startdate <= #{lastday})) ]]>
+		<![CDATA[where car_regid = #{car_regid} and rent_state != 2 and ((rent_enddate >= #{firstday} and rent_enddate <= #{lastday}) or (rent_startdate >= #{firstday} and rent_startdate <= #{lastday})) ]]>
 	</select>
 	
 	<!--<select id="selectOne" resultType="kr.co.ccrent.domain.RentVO">
@@ -98,8 +98,14 @@
 		where r.rent_id = #{rent_id}
 	</select>
 	
+	<!-- 예약 상태 변경 (rent_paystate) -->
 	<update id="updateState" parameterType="kr.co.ccrent.domain.RentVO">
 		update rent set rent_paystate=#{rent_paystate} where rent_id=#{rent_id}
+	</update>
+	
+	<!-- 예약 취소 상태 변경 (rent_state) -->
+	<update id="updateCancel" parameterType="kr.co.ccrent.domain.RentVO">
+		update rent set rent_state=#{rent_state} where rent_id=#{rent_id}
 	</update>
 	
 	<delete id="delete" parameterType="int">

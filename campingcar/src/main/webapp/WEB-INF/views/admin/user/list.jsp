@@ -32,7 +32,7 @@
 		text-align: center;
 	}
 	.t-style > tr > th{
-		padding: 15px
+		padding: 15px;
 	}
 	.tb-style > tr > td{
 		padding: 15px
@@ -72,7 +72,7 @@
 				<th>주소</th>
 				<th>이메일</th>
 				<th>핸드폰 번호</th>
-				<th>포인트</th>
+				<th style="display: none;">포인트</th>
 				<th>가입날자</th>
 				<th>선호차량</th>
 			</tr>
@@ -92,7 +92,7 @@
 					<td>${list.car_uaddr }</td>
 					<td>${list.car_uemail }</td>
 					<td>${list.car_uphone }</td>
-					<td>${list.car_upoint }</td>
+					<td style="display: none;">${list.car_upoint }</td>
 					<td>${list.car_pdate }</td>
 					<td>${list.car_ptype }</td>
 				</tr>

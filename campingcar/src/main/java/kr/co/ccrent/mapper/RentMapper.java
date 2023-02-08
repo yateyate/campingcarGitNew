@@ -28,4 +28,8 @@ public interface RentMapper {
 	// 예약 확인
 	List<RentVO> selectGuest(RentVO rentVO);
 	List<RentVO> selectMember(String car_uid);
+	
+	// 예약 취소
+	void updateCancel(RentVO rentVO);
+	
 }
