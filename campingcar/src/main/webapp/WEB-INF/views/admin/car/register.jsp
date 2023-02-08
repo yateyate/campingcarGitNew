@@ -63,7 +63,11 @@ pageContext.setAttribute("optionArr", optionArr);
 <div class="input-group">
 	<span class="input-group-text">캠핑카 대여 회사</span>
 	<select class="form-control" name="comp_id">
-		<option value="1" selected>임시 대여 회사</option>
+		<option value="">캠핑카 대여 회사를 선택해주세요</option>
+		<c:forEach items="${list }" var="companyDTO">
+			<option value="${companyDTO.comp_id }">${companyDTO.comp_name }</option>					
+		</c:forEach>
+		
 	</select>
 </div>
 <div class="input-group">
