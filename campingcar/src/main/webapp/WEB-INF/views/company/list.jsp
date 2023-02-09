@@ -5,6 +5,11 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="mn" value="2" />
+<c:set var="sn" value="2" />
+
+
+
 <!DOCTYPE html>
 
 <html>
@@ -18,28 +23,27 @@
 </head>
 
 <body>
-	<div id="container">
+
+<div id="container">
 	<!-- #header start -->
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
-	<div id="body_head">
-		<h2>회사 소개</h2>
-		<div class="location">
-			HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>회사 소개</span>
-		</div>
-	</div>
+   <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
+	
 	<div id="wrap">
-		<div id="submenu">
-			<ul>
-				<li class="on"><a href="#">회사 소개</a></li>
-			</ul>
-		</div>
+	
+      <!-- #submenu start -->
+      <%@ include file="../include/submenu.jsp" %>
+      <!-- // #submenu end -->
 		
 		<div id="body_contents">
-	 
-
-
+<!-- ================================================== -->
     	<section class="content container-fluid">
 			<div class="table-responsive">
 				  <table width="100%" border="1" class="table table-bordered text-center">

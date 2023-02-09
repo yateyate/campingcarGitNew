@@ -76,19 +76,26 @@
 				 	<table class="table table-bordered">
 				 	<tr class="table-secondary">
 				 		<th><h4><b>신청 상태 변경</b></h4></th>
-				  <td><select id="company_status" name="count" size="1" style="border-radius: 5px; border:1px solid #ccc; width: 33%" >
-				  		<option value="">신청 상태를 선택하세요</option>
-				  		<option  value="1">승인</option>
-						<option  value="-1">거절</option>
-				  </select>　　　　　　　
-				  <button type="button" class="btn btn-outline-dark" onclick="location.href='listForm'"><b>이전으로</b></button>
-				  <button type="submit" class="btn btn-outline-dark"><b>변경하기</b></button></td>
+				 <th>							
+					<button  type="submit" class="btn btn-outline-dark" 
+					onclick='location.href="${contextPath}/admin/company/stsmodify${company.comp_status}"'>승인
+					</button>
+					</form>		  
+			    
+			    
+				<form role="form" method="GET" action="stsmodify2">
+					<button type="button" class="btn btn-outline-dark"
+					onclick='location.href="${contextPath}/admin/company/stsmodify2${company.comp_id}"'>거절
+					</button>
+				　</form>　　
+				</th>　
 				 	</tr>
 				 	</table>
+				  <button type="button" class="btn btn-outline-dark" onclick="location.href='listForm'"><b>이전으로</b></button>
 				 	<br>
 				 	</div>
 				 	</div>
-					</form>		  
+				  
 				  </section>
 				  </div>
 				  <br>

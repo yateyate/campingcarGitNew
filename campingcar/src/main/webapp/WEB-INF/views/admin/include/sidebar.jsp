@@ -18,13 +18,16 @@
 		</li>
 		<li><a href="#">대여 회사 관리</a>
 			<ul>
-				<li><a href="${contextPath }/admin/company/listForm">대여 회사 현황</a></li>
+				<li><a href="${contextPath }/admin/company/listForm2">대여 회사 목록</a></li>
+			</ul>
+			<ul>
+				<li><a href="${contextPath }/admin/company/listForm">대여 회사 승인 및 거절</a></li>
 			</ul>		
 		</li>
 		<li><a href="#">정비소 관리</a>
 			<ul>
 				<li><a href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
-				<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 수정 및 삭제</a></li>				
+				<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 승인 및 거절</a></li>				
 			</ul>		
 		</li>
 		<li><a href="#">게시판 관리</a></li>

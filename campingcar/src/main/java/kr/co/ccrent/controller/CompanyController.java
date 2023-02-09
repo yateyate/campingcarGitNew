@@ -90,29 +90,58 @@ public class CompanyController {
 	
 	
 	
-//	승인안되어 있는 목록 관리자에서 전체조회
-	@RequestMapping(value = "/admin/company/listForm", method = RequestMethod.GET)
-	public ModelAndView list2() throws Exception {
-		logger.info("/admin/company/listForm");
-		ModelAndView mav = new ModelAndView();
-		List<CompanyDTO> list2 = companyService.getAll2();
-		List<CompanyDTO> list3 = companyService.getAll3();
-		mav.addObject("list3", list3);
-		mav.addObject("list2", list2);
-		mav.setViewName("/admin/company/listForm");
-		return mav;
+//  승인안되어 있는 목록 관리자에서 전체조회 + 페이징처리
+	@GetMapping(value="/admin/company/listForm")
+	public void list2(Criteria cri, Model model) throws Exception{
+		System.out.println(cri.toString());
+		model.addAttribute("list2", companyService.getAll2(cri));
+		model.addAttribute("list3", companyService.getAll3(cri));
+		//페이징처리
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(companyService.getAll2_Count(cri));
+		
+		model.addAttribute("cri",cri);
+		model.addAttribute("pageMaker",pageMaker);
 	}	
 	
+//	승인안되어 있는 목록 관리자에서 전체조회
+//	@RequestMapping(value = "/admin/company/listForm", method = RequestMethod.GET)
+//	public ModelAndView list2() throws Exception {
+//		logger.info("/admin/company/listForm");
+//		ModelAndView mav = new ModelAndView();
+//		List<CompanyDTO> list2 = companyService.getAll2();
+//		List<CompanyDTO> list3 = companyService.getAll3();
+//		mav.addObject("list3", list3);
+//		mav.addObject("list2", list2);
+//		mav.setViewName("/admin/company/listForm");
+//		return mav;
+//	}	
+	
+//  승인되어있는 목록 관리자에서 전체 조회 + 페이징처리
+	@GetMapping(value="/admin/company/listForm2")
+	public void list3(Criteria cri, Model model) throws Exception{
+		System.out.println(cri.toString());
+		model.addAttribute("list3", companyService.getAll3(cri));
+		
+		//페이징처리
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(companyService.getAll3_Count(cri));
+		
+		model.addAttribute("cri",cri);
+		model.addAttribute("pageMaker",pageMaker);
+	}	
 //	승인되어있는 목록 관리자에서 전체 조회
-	@RequestMapping(value = "/admin/company/listForm2", method = RequestMethod.GET)
-	public ModelAndView list3() throws Exception {
-		logger.info("/admin/company/listForm2");
-		ModelAndView mav = new ModelAndView();
-		List<CompanyDTO> list3 = companyService.getAll3();
-		mav.addObject("list3", list3);
-		mav.setViewName("/admin/company/listForm2");
-		return mav;
-	}
+//	@RequestMapping(value = "/admin/company/listForm2", method = RequestMethod.GET)
+//	public ModelAndView list3() throws Exception {
+//		logger.info("/admin/company/listForm2");
+//		ModelAndView mav = new ModelAndView();
+//		List<CompanyDTO> list3 = companyService.getAll3();
+//		mav.addObject("list3", list3);
+//		mav.setViewName("/admin/company/listForm2");
+//		return mav;
+//	}
 	
 //	선택조회
 //	@RequestMapping(value ="/read",method = RequestMethod.GET)
@@ -146,36 +175,38 @@ public class CompanyController {
 	
 	
 	
-//	신청상태 변경하기(수정)       +1 = 승인       -1 = 거절
+//	신청상태 변경하기(수정)       +1 = 승인
 	@RequestMapping(value = "/admin/company/stsmodify",method = RequestMethod.POST)
 	public ModelAndView modify(@RequestParam("count") int comp_status, @RequestParam("comp_id") int comp_id, Model model) {
 		 
 		System.out.println("넘어온 value : " + comp_status);
 		CompanyDTO companyDTO =companyService.get(comp_id);
-		companyDTO.setComp_status(comp_status);
-		int result = companyService.stsmodify(companyDTO);
-		model.addAttribute("/admin/company/stsmodify", result);
+	
+		companyService.stsmodify(companyDTO);
+
+		
+		
 		ModelAndView mav = new ModelAndView();
 		List<CompanyDTO> list2 = companyService.getAll2();
 		List<CompanyDTO> list3 = companyService.getAll3();
 		mav.addObject("list3", list3);
 		mav.addObject("list2", list2);
-		mav.setViewName("/admin/company/listForm");
+		mav.setViewName("redirect:/admin/company/listForm");
 		return mav;
 	}
 	
 
+	// 신청 상태 거절 (삭제)
+	@RequestMapping(value = "/admin/company/stsmodify2",method = RequestMethod.GET)
+		public String modify2( @RequestParam("comp_id") int comp_id) {
+
+			companyService.stsmodify2(comp_id);
+			System.out.println("==<admin Controller> 삭제");
+
+			return "redirect:/admin/company/listForm";
+		}
 	
-	
-	
-//	신청상태 변경 (거절)
-//	@RequestMapping(value = "/stsmodify2", method = RequestMethod.GET)
-//	public String modify2(@RequestParam("comp_status") int comp_status,Model model) {
-//		companyService.stsmodify2(comp_status);
-//		model.addAttribute("stsmodify2",comp_status);
-//		return "listForm";
-//	}
-	
+
 
 	
 	

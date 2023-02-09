@@ -20,17 +20,6 @@ public class CompanyServiceImpl implements CompanyService{
 
 
 	@Override
-	public List<CompanyDTO> getAll2() {
-		// TODO Auto-generated method stub
-		return (List<CompanyDTO>) companyMapper.getAll2();
-	}
-	
-	@Override
-	public List<CompanyDTO> getAll3() {
-		// TODO Auto-generated method stub
-		return (List<CompanyDTO>) companyMapper.getAll3();
-	}
-	@Override
 	public CompanyDTO get(int comp_id) {
 		
 		return companyMapper.get(comp_id);
@@ -69,6 +58,40 @@ public class CompanyServiceImpl implements CompanyService{
 
 
 
+	
+	@Override
+	public List<CompanyDTO> getAll2(Criteria cri)throws Exception {
+		// TODO Auto-generated method stub
+		return companyMapper.selectAll2(cri);
+	}
+	@Override
+	public int getAll2_Count(Criteria cri) throws Exception {
+		
+		return companyMapper.selectAll2_Count(cri);
+	}
+	
+	@Override
+	public List<CompanyDTO> getAll3(Criteria cri)throws Exception {
+		// TODO Auto-generated method stub
+		return companyMapper.selectAll3(cri);
+	}
+	@Override
+	public int getAll3_Count(Criteria cri) throws Exception {
+		
+		return companyMapper.selectAll3_Count(cri);
+	}
+
+	@Override
+	public List<CompanyDTO> getAll2() {
+		// TODO Auto-generated method stub
+		return (List<CompanyDTO>) companyMapper.getAll2();
+	}
+
+	@Override
+	public List<CompanyDTO> getAll3() {
+		// TODO Auto-generated method stub
+		return (List<CompanyDTO>) companyMapper.getAll3();
+	}
 
 
 }

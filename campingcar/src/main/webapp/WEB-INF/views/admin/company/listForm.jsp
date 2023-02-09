@@ -14,7 +14,7 @@
 <title>자바 캠핑카 - 관리자 페이지</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
-<c:set var="title" value="대여 회사 현황" />
+<c:set var="title" value="대여 회사 승인 및 거절" />
 </head>
 <style>
 
@@ -33,7 +33,7 @@
 	<div id="wrap">
 	
 		
-	<%@include file="listForm2.jsp" %>
+	
 			
 		
 			<section class="content container-fluid">
@@ -67,6 +67,38 @@
 			 	</tr>
 			</c:forEach>
 			 </table>	
+		  <c:if test="${pageMaker.cri.page!=null }">
+   <div class="container text-center">
+    
+      <ul>
+      <b>
+         <c:if test="${pageMaker.prev }">         
+            <a class="btn btn-outline-secondary "  href = "listForm${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>            
+         </c:if>      
+         
+         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">            
+            <c:choose>
+            
+            <c:when test="${cri.page != idx }">
+            <a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "listForm${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            </c:when>
+            
+            <c:otherwise>
+            <a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "listForm${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            </c:otherwise>
+            
+            </c:choose>   
+         </c:forEach>
+            
+         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+            <a class="btn btn-outline-secondary " href = "listForm${pageMaker.makeSearch(pageMaker.endPage +1 )}">&raquo;</a>
+         </c:if>
+      </b>
+      </ul>
+
+            
+</div>
+</c:if>
 			 </div>
 			 </div>
 		  </div>
