@@ -24,12 +24,10 @@ public interface GarageService {
 	//정비소 삭제하기(관리자)
 	public int garage_remove(int garage_no); 
 	
-	//정비소 검색관련
+	//정비소 리스트/검색
 	public List<GarageDTO> garage_get(Criteria cri)throws Exception;
 	public int garage_get_count(Criteria cri)throws Exception;
-	//정비소 리스트관련 dao	
-	public List<GarageDTO> garage_get_all(Criteria cri) throws Exception;
-	public int garage_get_allcount(Criteria cri) throws Exception;
+
 
 
 
