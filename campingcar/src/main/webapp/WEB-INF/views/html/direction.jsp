@@ -12,7 +12,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>자바 캠핑카 - 오시는 길</title>
+<title>오시는 길 - 자바 캠핑카</title>
 <%@ include file="../include/plugin.jsp" %>
     <!-- AOS 라이브러리 불러오기-->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> 

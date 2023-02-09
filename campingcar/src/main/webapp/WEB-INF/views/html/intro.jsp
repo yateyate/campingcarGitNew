@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>서브 메뉴 템플릿 페이지</title>
+<title>회사 소개 - 자바 캠핑카카</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 <style>
