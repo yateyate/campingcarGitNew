@@ -174,10 +174,8 @@ public class AdminController {
 		return "redirect:/admin/car/list";
 	}
 
-	/*
-	 * =============================================================================
-	 * ============= 예약 관리
-	 */
+	/* ============================================================================= 예약 관리 */ 
+
 	@GetMapping("/rent/today")
 	public void rentTodayGET(Model model) {
 		System.out.println("<Admin Controller> rent today GET");
@@ -253,6 +251,14 @@ public class AdminController {
 	public String rentRegisterPOST(RentDTO rentDTO) {
 		rentService.register(rentDTO);
 		return "redirect:/admin/rent/calendar";
+	}
+	
+	@PostMapping("/rent/cancel")
+	public String rentCancelPOST(RentDTO rentDTO, String listtype) {
+		System.out.println("<Admin Controller> rent cancel POST");
+		System.out.println(rentDTO);
+		rentService.modifyCancel(rentDTO);
+		return "redirect:/admin/rent/read?rent_id=" + rentDTO.getRent_id() + "&listtype=" + listtype;
 	}
 
 	// =======================================garage / 정비소
