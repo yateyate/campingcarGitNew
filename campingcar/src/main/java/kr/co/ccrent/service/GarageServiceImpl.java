@@ -18,12 +18,12 @@ public class GarageServiceImpl implements GarageService{
 	@Autowired
 	GarageDAO garageDao;
 	
-	//정비소검색 리스트
+	//정비소리스트 /검색리스트
 	@Override
 	public List<GarageDTO> garage_get(Criteria cri) throws Exception {		
 		return garageDao.garage_select(cri);
 	}	
-	//정비소검색 리스트count
+	//정비소리스트 /검색 리스트count
 	@Override
 	public int garage_get_count(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
@@ -31,17 +31,7 @@ public class GarageServiceImpl implements GarageService{
 	}
 
 
-	//정비소 전체리스트	
-	@Override
-	public List<GarageDTO> garage_get_all(Criteria cri) throws Exception {
-		
-		return garageDao.garage_select_all(cri);
-	}
-	//정비소 전체리스트카운트
-	@Override
-	public int garage_get_allcount(Criteria cri) throws Exception {
-		return garageDao.garage_select_allcount(cri);
-	}
+
 	
 	
 	//정비소 등록
