@@ -62,10 +62,10 @@ pageContext.setAttribute("optionArr", optionArr);
 <c:if test="${action eq 'modify'}"><input type="hidden" name="car_regid" value="${dto.car_regid }" /></c:if>
 <div class="input-group">
 	<span class="input-group-text">캠핑카 대여 회사</span>
-	<select class="form-control" name="comp_id">
+	<select class="form-control" name="comp_id" required >
 		<option value="">캠핑카 대여 회사를 선택해주세요</option>
 		<c:forEach items="${list }" var="companyDTO">
-			<option value="${companyDTO.comp_id }">${companyDTO.comp_name }</option>					
+			<option value="${companyDTO.comp_id }" <c:if test="${companyDTO.comp_id==dto.comp_id }">selected</c:if>>${companyDTO.comp_name }</option>					
 		</c:forEach>
 		
 	</select>
