@@ -56,7 +56,7 @@
 				  	<th>담당자 이메일</th>
 				  	<th>신청 상태</th>
 				  </tr>
-				 	.
+				 	
 				 	<tr>
 				 	<th>${company.comp_id}</th>
 				 	<td>${company.comp_name}</td>
