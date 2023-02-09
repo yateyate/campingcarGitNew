@@ -26,13 +26,10 @@ public interface GarageDAO {
 	//정비소 삭제하기(관리자)
 	public int garage_delete(int garage_no); 
 	
-	//정비소 검색관련
+	//정비소 리스트 / 검색관련
 	public List<GarageDTO> garage_select(Criteria cri)throws Exception;
 	public int garage_select_count(Criteria cri)throws Exception;
 	
-	//정비소 리스트관련 dao	
-	public List<GarageDTO> garage_select_all(Criteria cri) throws Exception;
-	public int garage_select_allcount(Criteria cri) throws Exception;
-	
+
 	
 }
