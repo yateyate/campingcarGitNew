@@ -75,7 +75,13 @@ public class AdminController {
 		System.out.println(carDTO);
 		// carService.register(carDTO, file, request, request.getParameter("order"));
 		carService.register(carDTO, request);
+
+
+		
+		
+		
 		return "redirect:/admin/car/list";
+
 	}
 
 	@PostMapping("/car/modify")
@@ -92,13 +98,7 @@ public class AdminController {
 		System.out.println(pageRequestDTO);
 		// model.addAttribute("dtolist", carService.getAll());
 		model.addAttribute("responseDTO", carService.getList(pageRequestDTO));
-		// 대여 회사 불러오기
-		List<CompanyDTO> companylist = companyService.getAll3();
-		HashMap<Integer, Object> companymap = new HashMap<>();
-		for(int i=0; i<companylist.size(); i++) {
-			companymap.put(companylist.get(i).getComp_id(), companylist.get(i));
-		}
-		model.addAttribute("companymap", companymap);		
+
 	}
 
 	@GetMapping("/car/read")
