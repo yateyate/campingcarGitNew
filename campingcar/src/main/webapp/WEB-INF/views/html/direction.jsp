@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
 <script>
 window.addEventListener('load',function(){
-	window.scrollTo(0,1100);
+	window.scrollTo(0,550);
 }); //자동으로 스크롤내려주기
 </script>
 
