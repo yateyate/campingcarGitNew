@@ -153,6 +153,7 @@ geocoder.addressSearch(a, function(result, status) {
         infowindow.open(map, marker);
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
+        window.scrollTo({ left: 0, top: 0, behavior: "smooth" }); // 위치보기 클릭시 지도로 스크롤올리기
     } 
 });    
 }
