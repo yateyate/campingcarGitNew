@@ -121,7 +121,7 @@
 				  <br>
 				  	<div class="box">
 				<div class="container text-right">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='/company/registerForm'"><b>파트너 제휴 신청하러 가기 ←</b></button>
+					<button type="button" class="btn btn-outline-dark" onclick="location.href='registerForm'"><b>파트너 제휴 신청하러 가기 ←</b></button>
 				</div>
 			</div>
 				</div>
