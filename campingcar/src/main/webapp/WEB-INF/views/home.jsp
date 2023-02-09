@@ -23,7 +23,7 @@
 
 <style>
 #mainvisual {}
-.mainrow.para01 {background:url("${contextPath}/resources/img/main/dummy.jpg"); height:2120px;}
+.mainrow.para01 {background:url("${contextPath}/resources/img/main/dummy.jpg"); height:1877px;}
 
 </style>
 
@@ -34,6 +34,8 @@
 	&nbsp;
 </div>
 
+
+
 <script>
 $(document).ready(function(){
 	var windowHeight = window.innerHeight;
@@ -43,8 +45,15 @@ $(document).ready(function(){
 </script>
 
 <!-- ================================================================================ -->		
-	</div>
-</div>
+	</div> <!-- // #wrap end -->
+
+	<!-- #footer start -->
+	<%@ include file="include/footer.jsp" %>
+	<!-- //#footer end -->	
+	
+</div><!-- // #container end -->
+
+
 
 </body>
 </html>
