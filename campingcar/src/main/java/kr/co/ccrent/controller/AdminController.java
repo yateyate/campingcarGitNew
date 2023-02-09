@@ -60,6 +60,11 @@ public class AdminController {
 			fieldmap.put("bo_table", "car");
 			fieldmap.put("wr_id", car_regid);
 			model.addAttribute("filelist", boardFileService.getFileList(fieldmap));
+			
+			// 정비회사 리스트 전부 가져오기
+			List<CompanyDTO> list3 = companyService.getAll3();
+			model.addAttribute("list", list3);
+
 
 		} else {
 			System.out.println("<Controller> register GET ==============================");
@@ -120,6 +125,7 @@ public class AdminController {
 		// 정비회사id 가져오기
 		CompanyDTO companyDTO = companyService.get(comp_id);
 		model.addAttribute("companyDTO", companyDTO);
+
 
 	}
 
