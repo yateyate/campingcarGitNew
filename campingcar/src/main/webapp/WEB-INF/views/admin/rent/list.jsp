@@ -60,6 +60,7 @@
 	<th>결제 비용</th>
 	<th>결제 방법</th>
 	<th>결제 상태</th>
+	<th>취소 상태</th>
 </tr>
 </thead>
 <tbody>
@@ -87,7 +88,10 @@
 	</td>	
 	<td>
 		<p class="state type0${dto.rent_paystate }">${cateArr[dto.rent_paystate] }</p>
-	</td>	
+	</td>
+	<td>
+		${cancelCate['rent_state'] }
+	</td>
 </tr>
 </c:forEach>
 </tbody>
