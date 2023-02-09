@@ -6,7 +6,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="title" value="정비소 등록 신청 현황" />
+<c:set var="title" value="정비소 정보 수정 및 삭제" />
 
 <!DOCTYPE html>
 <html>
