@@ -178,7 +178,7 @@ function wdayReplace(wday){
 							</colgroup>
 							<thead>
 								<tr>
-									<th colspan="2">예약 완료 ${dto.user_id }</th>
+									<th colspan="2">[${cateArr[dto.rent_paystate] }] ${dto.rent_name }</th>
 								</tr>
 							</thead>
 							<tbody>

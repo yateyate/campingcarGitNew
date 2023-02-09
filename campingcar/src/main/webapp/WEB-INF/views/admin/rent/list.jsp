@@ -90,7 +90,7 @@
 		<p class="state type0${dto.rent_paystate }">${cateArr[dto.rent_paystate] }</p>
 	</td>
 	<td>
-		${cancelCate['rent_state'] }
+		${cancelArr[dto.rent_state] }
 	</td>
 </tr>
 </c:forEach>
