@@ -49,7 +49,7 @@
 <c:forEach items="${responseDTO.dtoList }" var="dto">
 <tr>
 	<th>${dto.car_regid }</th>
-	<td>${dto.comp_id }</td>
+	<td><a href="../company/read?comp_id=${dto.comp_id }">${companymap[dto.comp_id].comp_name }</a></td>
 	<td class="left"><a href="read?car_regid=${dto.car_regid }&comp_id=${dto.comp_id}">${dto.car_modelname } <span>　|　</span> ${dto.car_name }</a></td>
 	<td>${dto.car_number }</td>
 	<td>${dto.car_capa }</td>
@@ -107,7 +107,6 @@ document.querySelector(".pagination").addEventListener("click", function(e){
 	self.location = `list?page=\${num}`
 },false);
 </script>
-
 
 <!-- ================================================== -->
 	</div><!-- // #wrap end -->
