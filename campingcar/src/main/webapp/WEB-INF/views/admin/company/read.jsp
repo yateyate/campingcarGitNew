@@ -17,6 +17,9 @@
 <c:set var="title" value="대여 회사 승인 / 거절" />
 </head>
  <style>
+ select{
+ 	 text-align: center;
+ }
 
  </style>
 <body>
@@ -34,70 +37,64 @@
 				  <section class="content container-fluid">
 			<form role="form" method="post" action="stsmodify">
 			<div class="table-responsive">
-				  <div class="table-responsive">
+				  
 				  <div class="container text-center">
 				  <h4><b>대여 회사 상세 보기</b></h4>
 				  </div>
 				  <br>
-				  <table width="100%" border="1" class="table table-bordered text-center" >
+				  <table width="100%" class="table table-bordered center table-hover">
 				<colgroup>
 				</colgroup>
-				   <thead class="table-dark theadmm">
-				  <tr>
+				   
+				  <tr class="table-secondary">
 				  	<br>
-				  	<td><h5><b>회사번호</b></h5></td>
-				  	<td><h5><b>회사명</b></h5></td>
-				  	<td><h5><b>주소</b></h5></td>
-				  	<td><h5><b>전화번호</b></h5></td>
-				  	<td><h5><b>담당자</b></h5></td>
-				  	<td><h5><b>담당자 이메일</b></h5></td>
-				  	<td><h5><b>신청 상태</b></h5></td>
+				  	<th>회사번호</th>
+				  	<th>회사명</th>
+				  	<th>주소</th>
+				  	<th>전화번호</th>
+				  	<th>담당자</th>
+				  	<th>담당자 이메일</th>
+				  	<th>신청 상태</th>
 				  </tr>
-				 	</thead>
+				 	
 				 	<tr>
-				 	<td><h5><b>${company.comp_id}</b></h5></td>
-				 	<td><h5><b>${company.comp_name}</b></h5></td>
-				 	<td><h5><b>${company.comp_addr}</b></h5></td>
-				 	<td><h5><b>${company.comp_phone}</b></h5></td>
-				 	<td><h5><b>${company.comp_pic}</b></h5></td>
-				 	<td><h5><b>${company.comp_pic_email}</b></h5></td>
-				 	<td><h5><b>${company.comp_status}</b></h5></td>
+				 	<th>${company.comp_id}</th>
+				 	<td>${company.comp_name}</td>
+				 	<td>${company.comp_addr}</td>
+				 	<td>${company.comp_phone}</td>
+				 	<td>${company.comp_pic}</td>
+				 	<td>${company.comp_pic_email}</td>
+				 	<th>대기</th>
 				 	<br>
 				 	</tr>
 				  </table>
 				  </div>
-				  </div>
-				  </section>
 				  
 				  <input type="hidden" name="comp_id" value="${company.comp_id}">
 				  <input type="hidden" name="comp_status" value="${company.comp_status}">
-				 	<div class="form-group"  >
-				 	<table width="100%" border="1" class="table table-bordered text-center">
-				 	<tr>
-				 	 <div class="container text-right">
-				 		<h5><b>신청 상태 변경</b></h5><br>
-				 		</div>
-				 <div class="container text-right">
-				  <select id="company_status" name="count" size="1" style="border-radius: 5px; border:1px solid #ccc; width: 16%">
-				  		<option value=""><b>신청 상태를 선택하세요</b></option>
-				  		<option  value="1"><b>승인</b></option>
-						<option  value="-1"><b>거절</b></option>
-				  </select>
-				 </div>
-				 	</tr>
-				 	<br>
-				 <div class="container text-right">	
+				 	<div class="container text-center table-hover">
+				 	<table class="table table-bordered">
+				 	<tr class="table-secondary">
+				 		<th><h4><b>신청 상태 변경</b></h4></th>
+				  <td><select id="company_status" name="count" size="1" style="border-radius: 5px; border:1px solid #ccc; width: 33%" >
+				  		<option value="">신청 상태를 선택하세요</option>
+				  		<option  value="1">승인</option>
+						<option  value="-1">거절</option>
+				  </select>　　　　　　　
 				  <button type="button" class="btn btn-outline-dark" onclick="location.href='listForm'"><b>이전으로</b></button>
-				  <button type="submit" class="btn btn-outline-dark"><b>변경하기</b></button>
-				  </div>
+				  <button type="submit" class="btn btn-outline-dark"><b>변경하기</b></button></td>
+				 	</tr>
 				 	</table>
+				 	<br>
 				 	</div>
 				 	</div>
+					</form>		  
+				  </section>
+				  </div>
 				  <br>
 				  <br>
 				  <br>
-			</div>
-			</form>		  
+			
 				  <br><br><br><br><br><br>
 				 
 				
