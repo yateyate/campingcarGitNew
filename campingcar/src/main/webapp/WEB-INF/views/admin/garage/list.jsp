@@ -6,7 +6,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="title" value="정비소 등록 신청 현황" />
+<c:set var="title" value="정비소 정보 수정 및 삭제" />
 
 <!DOCTYPE html>
 <html>
@@ -153,6 +153,7 @@ geocoder.addressSearch(a, function(result, status) {
         infowindow.open(map, marker);
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
+        window.scrollTo({ left: 0, top: 0, behavior: "smooth" }); // 위치보기 클릭시 지도로 스크롤올리기
     } 
 });    
 }

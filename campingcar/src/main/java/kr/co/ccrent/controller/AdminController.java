@@ -63,8 +63,6 @@ public class AdminController {
 			// 정비회사 리스트 전부 가져오기
 			List<CompanyDTO> list3 = companyService.getAll3();
 			model.addAttribute("list", list3);
-	
-
 		} else {
 			System.out.println("<Controller> register GET ==============================");
 			// 정비회사 리스트 전부 가져오기
@@ -125,6 +123,7 @@ public class AdminController {
 		CompanyDTO companyDTO = companyService.get(comp_id);
 		model.addAttribute("companyDTO", companyDTO);
 
+
 	}
 
 	// 정비내역 등록 form
@@ -172,10 +171,8 @@ public class AdminController {
 		return "redirect:/admin/car/list";
 	}
 
-	/*
-	 * =============================================================================
-	 * ============= 예약 관리
-	 */
+	/* ============================================================================= 예약 관리 */ 
+
 	@GetMapping("/rent/today")
 	public void rentTodayGET(Model model) {
 		System.out.println("<Admin Controller> rent today GET");
@@ -251,6 +248,14 @@ public class AdminController {
 	public String rentRegisterPOST(RentDTO rentDTO) {
 		rentService.register(rentDTO);
 		return "redirect:/admin/rent/calendar";
+	}
+	
+	@PostMapping("/rent/cancel")
+	public String rentCancelPOST(RentDTO rentDTO, String listtype) {
+		System.out.println("<Admin Controller> rent cancel POST");
+		System.out.println(rentDTO);
+		rentService.modifyCancel(rentDTO);
+		return "redirect:/admin/rent/read?rent_id=" + rentDTO.getRent_id() + "&listtype=" + listtype;
 	}
 
 	// =======================================garage / 정비소
