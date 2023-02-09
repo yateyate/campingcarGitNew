@@ -12,7 +12,7 @@
  			<![CDATA[
  			select *
  			from company
- 			where comp_status>0
+ 			where comp_status > 0
  			limit #{pageStart},#{perPageNum}
  			]]>
 	</select>
