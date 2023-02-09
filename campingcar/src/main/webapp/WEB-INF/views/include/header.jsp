@@ -21,18 +21,26 @@
 <div id="header_outer">
 <div id="header">
 
-	<div id="gnb">
+	<div id="gnb" class="clearfix">
 	<ul>
-		<li><a href="${contextPath }/user/join">회원가입</a>　
-	<c:if test="${user.car_uid == null}">
-		<a class="one" href="${contextPath }/user/login">로그인</a>
-	</c:if>
-	<c:if test="${user.car_uid != null}">
-		<a class="nav-link one" href="${contextPath }/logout">로그아웃</a>
-	</c:if>
-	<c:if test="${user.car_uid == 'admin'}">
-		<a class="one" style="margin-left: 10px" href="${contextPath }/admin/" target="_blank">관리자</a>
-	</c:if>
+		<li>
+			<a href="${contextPath }/user/join">회원가입</a>
+		</li>
+		<c:if test="${user.car_uid == null}">
+			<li>
+				<a class="one" href="${contextPath }/user/login">로그인</a>
+			</li>
+		</c:if>
+		<c:if test="${user.car_uid != null}">
+			<li>
+				<a class="nav-link one" href="${contextPath }/logout">로그아웃</a>
+			</li>
+		</c:if>
+		<c:if test="${user.car_uid == 'admin'}">
+			<li>
+				<a class="one" style="margin-left: 10px" href="${contextPath }/admin/" target="_blank">관리자</a>
+			</li>
+		</c:if>
 	</ul>
 	</div>
 	
@@ -51,7 +59,7 @@
 					</ul>
 				</li>
 			</c:if>
-			</c:forEach>			
+			</c:forEach>
 			</ul>
 		</div><!-- // #topmenu end -->
 	</div><!-- // #topmenu_outer end -->
@@ -85,5 +93,9 @@ $(document).ready(function(){
 		logo.attr("src", logo.attr("src").replace("on", "off"));
 		$(this).find("#topmenu li > a").stop().animate({"width":"120px"},150, "easeOutCubic");
 	});	
+	
+	$("#topmenu li > a").each(function(index, item){
+	})	
+	
 });
 </script>

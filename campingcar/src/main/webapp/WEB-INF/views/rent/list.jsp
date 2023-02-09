@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="mn" value="3" />
+<c:set var="sn" value="1" />
 
 <%
 Calendar cal = Calendar.getInstance();
@@ -57,7 +59,7 @@ pageContext.setAttribute("nextMon", nextMon);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자바 캠핑카 - 실시간 예약</title>
+<title>실시간 예약 - 자바 캠핑카</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 </head>
@@ -69,18 +71,17 @@ pageContext.setAttribute("nextMon", nextMon);
    <!--// #header end -->
    
    <div id="body_head">
-      <h2>실시간 예약</h2>
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
       <div class="location">
-         HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>실시간 예약</span>
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
       </div>
    </div>
    
    <div id="wrap">
-      <div id="submenu">
-         <ul>
-            <li class="on"><a href="#">실시간 예약</a></li>
-         </ul>
-      </div>
+   
+      <!-- #submenu start -->
+      <%@ include file="../include/submenu.jsp" %>
+      <!-- // #submenu end -->
       
       <div id="body_contents">
 <!-- ================================================== -->
@@ -155,8 +156,10 @@ pageContext.setAttribute("nextMon", nextMon);
       </div> <!-- // #body_contents end -->
    </div><!-- // #wrap end -->
    
-   <div id="footer">
-   </div>
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
 </div><!-- // #container end -->
 
 </body>
