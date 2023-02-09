@@ -4,6 +4,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="mn" value="1" />
+<c:set var="sn" value="3" />
 
 <!DOCTYPE html>
 <html>
@@ -43,55 +45,66 @@ height: 80px;
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
-	<div id="body_head">
-		<h2>오시는 길</h2>
-		<div class="location">
-			HOME　<i class="fa-solid fa-circle-chevron-right"></i>　
-			<span>오시는 길</span>
-		</div>
-	</div>
+   <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
 	
 	<div id="wrap">
 
-		<div id="submenu">
-			<ul>
-				<li class="on"><a href="${contextPath }/direction">오시는 길</a></li>
-			</ul>
-		</div>
+      <!-- #submenu start -->
+      <%@ include file="../include/submenu.jsp" %>
+      <!-- // #submenu end -->
 	
 		
-		<div id="body_contents" style="padding: 10px 0px 120px 0px"; >
+		<div id="body_contents">
 <!-- ================================================== -->
 
-<!-- kakao map api start -->
-<table style="margin: 0 auto;">
+<style>
+.direction table {background:#f0f0f0; width:100%; border:1px solid #dcdcdc;}
+.direction td {padding:30px 30px 30px 0px;}
+.direction td:nth-child(1) {padding-left:30px;}
+.direction h3 {font-size:20px; padding:0px 0px 10px 0px; font-weight:bold;}
+.direction td p {padding:7px 0px 0px 0px;}
+
+</style>
+
+<div class="direction">
+
+	<!-- kakao map api start -->
+	<table>
+	<colgroup>
+		<col width="15%" />
+		<col width="35%" />
+		<col width="15%" />
+		<col width="35%" />
+	</colgroup>
 	<tr>
 		<td data-aos="zoom-out-right" data-aos-duration="1000" >
 			<img class="directionimg" src="${contextPath }/resources/img/direction/direction2.png" alt="위치마커" />
 		</td>
-		<td data-aos="zoom-out-right" data-aos-duration="1000" style="color: gray; padding-left: 15px; padding-right: 65px;" >
-			오시는길<br>
-			수원역 지하상가 13번출구 1분거리<br>
-			(CU편의점건물3층)
+		<td data-aos="zoom-out-right" data-aos-duration="1000">
+			<h3>오시는길</h3>
+			<p>수원역 지하상가 13번출구 1분거리 (CU편의점건물3층)</p>
+			<p>경기도 수원시 매산로1가 11-9,세진브론즈빌 3층</p>
 		</td>
-		
-		<td data-aos="zoom-out-left" data-aos-duration="1000" style="padding-left: 25px;">
+		<td data-aos="zoom-out-left" data-aos-duration="1000">
 			<img class="directionimg" src="${contextPath }/resources/img/direction/direction1.png" alt="핸드폰" />
 		</td>
-		<td data-aos="zoom-out-left" data-aos-duration="1000" style="color:gray;">
-			고객센터<br>
-			언제라도 문의 주세요.<br>
-			031)253-5225
+		<td data-aos="zoom-out-left" data-aos-duration="1000">
+			<h3>고객센터</h3>
+			<p>언제라도 문의 주세요.</p>
+			<p>031)253-5225</p>
 		</td>
 	</tr>
-</table>
+	</table>
 
-
-<hr>
-<div data-aos="zoom-out-up" data-aos-duration="1000">
-<p class="fs-6 text-center"
-style="padding: 0px 0px 15px 0px; color: gray">경기도 수원시 매산로1가 11-9,세진브론즈빌 3층</p>
-<div class="container" id="map" style="width:1000px;height:400px;"></div>
+	<div data-aos="zoom-out-up" data-aos-duration="1000">
+		<div class="container" id="map" style="width:1200px;height:400px;"></div>
+	</div>
+	
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=08c7f5459534f8433e8a8e73d7707bc1&libraries=services"></script>
@@ -163,11 +176,16 @@ geocoder.addressSearch(a, function(result, status) {
 		</div> <!-- // #body_contents end -->
 	</div><!-- // #wrap end -->
 	
-	<div id="footer">
-	</div>
-</div><!-- // #container end -->
-        <script> 
-            AOS.init(); // 자바스크립트로 init()을 해야 동작한다.
-        </script>
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
+</div>
+
+<!-- // #container end -->
+<script> 
+AOS.init(); // 자바스크립트로 init()을 해야 동작한다.
+</script>
+
 </body>
 </html>

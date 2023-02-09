@@ -38,7 +38,7 @@
 		padding: 15px
 	}
 	.tb-style > tr > td > a{
-		color:red;
+		color:blue;
 	}
 	.tb-style > tr > td > a:hover{
 		color : #000;

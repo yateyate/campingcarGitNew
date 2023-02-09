@@ -150,6 +150,7 @@ function rentCancel(rent_id){
 	
 	<div id="footer">
 	</div>
+	
 </div><!-- // #container end -->
 
 </body>

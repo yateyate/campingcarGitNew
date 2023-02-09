@@ -17,8 +17,8 @@ cateArr.put(99, "예약 불가");
 pageContext.setAttribute("cateArr", cateArr);
 
 HashMap<Integer, String> cancelArr = new HashMap<>();
-cancelArr.put(0, "일반");
-cancelArr.put(1, "취소 대기");
+cancelArr.put(0, "대기");
+cancelArr.put(1, "취소 신청");
 cancelArr.put(2, "취소 완료");
 pageContext.setAttribute("cancelArr", cancelArr);
 

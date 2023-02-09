@@ -54,23 +54,28 @@
 <tr>
 	<th>상태 변경</th>
 	<td>
-		<form action="read" method="post">
-		<input type="hidden" name="rent_id" value="${dto.rent_id }" />	
-		<input type="hidden" name="listtype" value="${param.listtype }" />
-		<select name="rent_paystate">
-		<c:forEach items="${cateArr }" var="cate">
-			<option value="${cate.key }" ${dto.rent_paystate eq cate.key?"selected":"" }>${cate.value }</option>	
-		</c:forEach>
-		</select>
-		<button type="submit">상태 변경</button>
-		</form>
+		<c:if test="${dto.rent_state==0 }">
+			<form action="read" method="post">
+			<input type="hidden" name="rent_id" value="${dto.rent_id }" />	
+			<input type="hidden" name="listtype" value="${param.listtype }" />
+			<select name="rent_paystate">
+			<c:forEach items="${cateArr }" var="cate">
+				<option value="${cate.key }" ${dto.rent_paystate eq cate.key?"selected":"" }>${cate.value }</option>	
+			</c:forEach>
+			</select>
+			<button type="submit">상태 변경</button>
+			</form>
+		</c:if>
+		<c:if test="${dto.rent_state!=0 }">
+			취소처리된 예약은 상태를 수정할 수 없습니다.
+		</c:if>
 	</td>
 	<th>예약 삭제</th>
 	<td>
 		<form action="remove" method="post" id="remove">
 		<input type="hidden" name="rent_id" value="${dto.rent_id }" />
 		<input type="hidden" name="listtype" value="${param.listtype }" />
-		<a class="btn btn-danger" href="#" role="button" onclick="confirmAlert();">예약 취소</a>
+		<a class="btn btn-danger btn-sm" href="#" role="button" onclick="confirmAlert();">예약 삭제</a>
 		</form>
 	</td>
 </tr>
@@ -93,12 +98,21 @@ function confirmAlert(){
 			<input type="hidden" name="rent_id" value="${dto.rent_id }" />
 			<input type="hidden" name="listtype" value="${param.listtype }" />
 			<input type="hidden" name="rent_state" value="2" />
-			<a class="btn btn-danger" href="#" role="button" onclick="confirmAlert();">예약 취소</a>
+			<a class="btn btn-danger btn-sm" href="#" role="button" onclick="cancelAlert();">예약 취소</a>
 			</form>		
 		</c:if>
 		<c:if test="${dto.rent_state==0 or  dto.rent_state==2 }">&nbsp;</c:if>
 	</td>
 </tr>
+<script>
+function cancelAlert(){
+	if(confirm("해당 예약을 취소처리 하시겠습니까?")){
+		$("#cancel").submit();
+	}else{
+		return;
+	}
+}
+</script>
 <tr><th>차량 정보</th><td colspan="3">(${dto.car.car_regid }) ${dto.car.car_modelname } ${dto.car.car_name }</td></tr>
 <tr><th>예약자</th><td>${dto.user_id }</td><th>유저 ID</th><td>${dto.user_id }</td></tr>
 <tr><th>필수 연락처</th><td>${dto.rent_phone1 }</td><th>예비 연락처</th><td>${dto.rent_phone2 }</td></tr>
