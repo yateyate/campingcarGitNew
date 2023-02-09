@@ -37,7 +37,8 @@
 <div class="category">
 	<a class="btn btn-outline-secondary" href="list">전체 목록</a>
 	<c:forEach items="${cateArr }" var="cate">
-		<a class="btn btn-outline-secondary" href="list?category=${cate.key }" role="button">${cate.value }</a>
+		<fmt:formatNumber var="catefmt" minIntegerDigits="2" value="${cate.key }" type="number"/>
+		<a class="btn btn-outline-secondary" href="list?category=${cate.key }" role="button" class="state type${catefmt }">${cate.value }</a>
 	</c:forEach>
 </div>
 
