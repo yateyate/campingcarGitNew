@@ -8,13 +8,10 @@
 #alliance_outer {background:#3b516e url("${contextPath }/resources/img/inc/alliance_bg.jpg") no-repeat center top;}
 #alliance {width:1200px; margin:0px auto; min-height:300px;}
 #alliance h3 {font-family: 'GmarketSansMedium'; font-size:42px; color:#ffffff; text-align:center; padding:60px 0px 0px 0px;}
-<<<<<<< HEAD
 #alliance a {color:#ffffff; border-color:rgba(255, 255, 255, 0.6);}
-=======
 #alliance a {color:#ffffff; border-color:rgba(255, 255, 255, 0.4);}
->>>>>>> upstream/master
 #alliance a:hover {color:#1a1a1a;}
-#alliance .desc {color:rgba(255, 255, 255, 0.6); text-align:center; padding:0px 0px 60px 0px;}
+#alliance .desc {color:rgba(255, 255, 255, 0.4); text-align:center; padding:0px 0px 60px 0px;}
 #alliance a {width:100%;}
 #alliance ul {}
 #alliance li {float:left; width:25%; padding:0px 5px 0px 0px;}
