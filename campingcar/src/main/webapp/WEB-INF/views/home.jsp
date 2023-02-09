@@ -23,7 +23,7 @@
 
 <style>
 #mainvisual {}
-.mainrow.para01 {background:url("${contextPath}/resources/img/main/dummy.jpg"); height:2120px;}
+.mainrow.para01 {background:url("${contextPath}/resources/img/main/dummy.jpg"); height:1879px;}
 
 </style>
 
@@ -43,8 +43,13 @@ $(document).ready(function(){
 </script>
 
 <!-- ================================================================================ -->		
-	</div>
-</div>
+	</div><!-- // #wrap end -->
+	
+	<!-- #footer start -->
+	<%@ include file="include/footer.jsp" %>
+	<!-- //#footer end -->
+	
+</div><!-- // #container end -->
 
 </body>
 </html>
