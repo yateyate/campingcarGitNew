@@ -94,7 +94,11 @@ public class AdminController {
 		model.addAttribute("responseDTO", carService.getList(pageRequestDTO));
 		// 대여 회사 불러오기
 		List<CompanyDTO> companylist = companyService.getAll3();
-		model.addAttribute("companylist", companylist);		
+		HashMap<Integer, Object> companymap = new HashMap<>();
+		for(int i=0; i<companylist.size(); i++) {
+			companymap.put(companylist.get(i).getComp_id(), companylist.get(i));
+		}
+		model.addAttribute("companymap", companymap);		
 	}
 
 	@GetMapping("/car/read")
