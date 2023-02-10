@@ -152,19 +152,12 @@
 			</div>
 			</div>
 		
-		    <div id="footer">
-			</div>
+		  
 		    <!-- /.content -->
 			</div>
+			<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
 		    </div>
-		  
-		    
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>		
 </body>
 </html>

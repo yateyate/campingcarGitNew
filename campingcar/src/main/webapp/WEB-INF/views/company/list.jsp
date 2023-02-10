@@ -133,13 +133,12 @@
 		    <br>
 		    <br>
 		    <br>
-		    <div id="footer">
-			</div>
+    </div>
+    </div>
+		   <!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
 		    <!-- /.content -->
     </div>
-    </div>
-    </div>
-    
-    
 </body>
 </html>
