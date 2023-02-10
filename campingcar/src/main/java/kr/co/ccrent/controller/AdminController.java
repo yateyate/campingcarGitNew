@@ -36,7 +36,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class AdminController {
- 
+
 	private final CarService carService;
 	private final RentService rentService;
 	private final BoardFileService boardFileService;
