@@ -61,17 +61,11 @@ public String registerPOST (FaqBoardDTO boardDTO,RedirectAttributes rttr) throws
 	
 	service.register(boardDTO);
 	
-	//model.addAttribute("result",boardDTO.getBno());
+	
 	rttr.addFlashAttribute("msg","success");
 	return "redirect:listAll";
 	}
 
-//@RequestMapping(value = "board/read", method = RequestMethod.GET)
-//public void read(@RequestParam("boardDTO") int bno, Model model)
-//throws Exception {
-//	
-//	model.addAttribute(service.read(bno));
-//}
 @RequestMapping(value = "/admin/faqboard/read", method = RequestMethod.GET)
 public ModelAndView read(@RequestParam("bno")int bno) throws Exception{
    ModelAndView mav = new ModelAndView();
@@ -99,7 +93,7 @@ public String modifyPOST(FaqBoardDTO boardDTO, RedirectAttributes rttr) throws E
 	service.modify(boardDTO);
 	rttr.addFlashAttribute("msg", "success");
 	System.out.println("접근중");
-	return "redirect:listAll";
+	return "redirect:listAll?keyword=";
 	
 }
 
