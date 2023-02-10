@@ -63,7 +63,7 @@
 				<button class="ajs ajsbutton4" type="submit" id="update">수정</button>
 				<button class="ajs ajsbutton1" type ="button"
 				onclick='location.href="${contextPath}/admin/faqboard/remove?bno=${board.bno}"'>삭제</button>
-				<button class="ajs ajsbutton2" type="button" onclick='location.href="${contextPath }/admin/faqboard/listAll?"'>돌아가기</button>
+				<button class="ajs ajsbutton2" type="button" onclick='location.href="${contextPath }/admin/faqboard/listAll?keyword="'>돌아가기</button>
 			</div>
 	</form>
 </div>
