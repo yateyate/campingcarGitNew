@@ -114,7 +114,7 @@ top: 16px;
 <br>
 <!-- ================================================== -->
 
-<div class="board_write" style="width: 50%; margin: 0 auto;">
+<div class="board_write" style="width: 60%; margin: 0 auto;">
 	<form action="register" method="post">
 		
 	<div class="input-group">
@@ -132,8 +132,9 @@ top: 16px;
 	</div>
 	<div class="input-group">
 		<span class="input-group-text" >정비소 영업상태</span>
-			<div class="group" style="margin: 0 auto; padding-top: 5px">
-				<input type="radio" name="garage_state" value="1" checked="checked"/>
+			<div class="group" style="text-align: center; padding-top: 5px; border:1px solid #d9d9d9; 
+			border-radius : 0px 5px 5px 0px; width: 72%">
+				<input type="radio" name="garage_state" value="1" checked="checked" style=""/>
 				<label for="rb1" style="padding-right: 50px">영업중</label>
 			    
 				<input type="radio" name="garage_state" value="2"  />
@@ -143,7 +144,7 @@ top: 16px;
 	<div class="input-group" style="width:100%">
 		<span class="input-group-text">정비소 지역</span>	
 					<select id="garage_code" name="garage_code" size="1" 
-					style="color:#6e6e6e; border-radius: 5px; border:1px solid #ccc; width: 66%">			
+					style="color:#6e6e6e; border-radius: 5px; border:1px solid #ccc; width: 72%">			
 							<option value="" >지역을 선택하세요.</option>
 							<option value="41820">가평군</option>
 							<option value="41610">경기광주시</option>
