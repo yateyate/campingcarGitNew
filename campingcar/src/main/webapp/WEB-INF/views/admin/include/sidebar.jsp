@@ -18,13 +18,25 @@
 		</li>
 		<li><a href="${contextPath }/admin/company/listForm"><i class="fa-solid fa-warehouse"></i>　대여 회사 관리</a>
 			<ul>
+<<<<<<< HEAD
+				<li><a href="${contextPath }/admin/company/listForm2">대여 회사 목록</a></li>
+			</ul>
+			<ul>
+				<li><a href="${contextPath }/admin/company/listForm">대여 회사 승인 및 거절</a></li>
+=======
 				<li><a href="${contextPath }/admin/company/listForm"><i class="fa-regular fa-circle"></i>　대여 회사 현황</a></li>
+>>>>>>> 1be1a6434264d05ff8196a7b08f44eeddbbcebf6
 			</ul>		
 		</li>
 		<li><a href="${contextPath }/admin/garage/register"><i class="fa-solid fa-wrench"></i>　정비소 관리</a>
 			<ul>
+<<<<<<< HEAD
+				<li><a href="${contextPath }/admin/garage/register">정비소 등록신청 현황</a></li>
+				<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 승인 및 거절</a></li>				
+=======
 				<li><a href="${contextPath }/admin/garage/register"><i class="fa-regular fa-circle"></i>　정비소 등록신청 현황</a></li>
 				<li><a href="${contextPath }/admin/garage/list?keyword="><i class="fa-regular fa-circle"></i>　정비소 정보 수정 및 삭제</a></li>				
+>>>>>>> 1be1a6434264d05ff8196a7b08f44eeddbbcebf6
 			</ul>		
 		</li>
 		<li><a href="${contextPath }/admin/faqboard/listAll?keyword="><i class="fa-solid fa-bars"></i>　게시판 관리</a>
