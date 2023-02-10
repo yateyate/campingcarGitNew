@@ -73,7 +73,6 @@ height: 80px;
 
 <div class="direction">
 
-
 	<!-- kakao map api start -->
 	<table>
 	<colgroup>
@@ -182,7 +181,7 @@ geocoder.addressSearch(a, function(result, status) {
 	<!-- //#footer end -->
 	
 </div>
-
+ 
 <!-- // #container end -->
 <script> 
 AOS.init(); // 자바스크립트로 init()을 해야 동작한다.

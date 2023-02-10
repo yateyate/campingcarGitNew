@@ -42,7 +42,7 @@
 
         <div class="form-group">
           <label>내용</label>
-          <textarea class="form-control" rows="3" name='내용'
+          <textarea  class="form-control" rows="4" name='내용'
             readonly="readonly"><c:out value="${board.content}" /></textarea>
         </div>
 
@@ -50,61 +50,19 @@
           <label>글쓴이</label> <input class="form-control" name='작성자'
             value='<c:out value="${board.writer }"/>' readonly="readonly">
         </div>
-        
-        <!--
-        <form role="form" method="post" action="/board/read">
-         <div class="table-responsive">
-              <table class="table-secondary" >
-              <br>
-              <div id="cover">
-              
-              </div>
-              <tr>
-                 <br>
-                 <td><h5>　글번호</h5></td>
-                 <td><h5>　제목 </h5></td>
-                 <td><h5>　　내용 </h5></td>
-                 <td><h5>　　글쓴이 </h5></td>
-                 
-              </tr>
-                <tr>
-                <td><h5>　 　${board.bno}</h5></td>
-                <td><h5>${board.title}</h5></td>
-                <td><h5>　${board.content}</h5></td>
-                <td><h5>　${board.writer}</h5></td>
-               
-                <br>
-                </tr>
-              </table>
-        -->
-        
+
         
 
-<%-- 		<button data-oper='modify' class="btn btn-default">
-        <a href="/board/modify?bno=<c:out value="${board.bno}"/>">Modify</a></button>
-        <button data-oper='list' class="btn btn-info">
-        <a href="/board/list">List</a></button> --%>
 
 
-<button type="button" class="ajs ajsbutton4" 
+<button type="button" class="ajs ajsbutton4 btn btn-outline-dark" 
 			 onclick='location.href="${contextPath}/admin/faqboard/modifyForm?bno=${board.bno}"'>수정</button>
+<button type="button" class="btn btn-outline-dark" onclick="location.href='listAll?keyword='">목록</button>
 </form>
-<button type="button" class="btn btn-outline-dark" onclick="location.href='listAll'">목록</button>
 
-<%-- <form id='operForm' action="/board/modify" method="get">
-  <input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
-</form> --%>
 
-<!-- 
-<form id='operForm' action="modifyForm" method="get">
-  <input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
-  <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-  <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-  <input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
-  <input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>  
- 
+
 </form>
-       -->
       </div>
       <!--  end panel-body -->
     </div>

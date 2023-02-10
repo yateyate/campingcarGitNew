@@ -90,6 +90,51 @@ $("#deletesubmit").on("click", function(){
 <!-- ================================================== -->
 
 <div class="carread clearfix">
+
+	<div>
+		<img src="${contextPath }/resources/data/car/${dto.car_file }" alt="" />
+	</div>
+	<table class="table table-bordered">
+	<colgroupd>
+		<col width="30%" />
+		<col width="*" />
+	</colgroupd>
+	<tr>
+		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
+	</tr>
+	<tr>
+
+		<th class="table-secondary">대여 회사</th><td><a href="../company/read?comp_id=${dto.comp_id }">${companyDTO.comp_name }</a></td>
+
+		<th class="table-secondary">대여 회사</th><td><a href="../company/read?comp_id=26">${companyDTO.comp_name }</a></td>
+
+	</tr>
+	<tr>
+		<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">차량 이름</th><td>${dto.car_name }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">차량 번호</th><td>${dto.car_number }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">탑승 인원</th><td>${dto.car_capa }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">내부 옵션</th><td>${fn:replace(dto.car_option, ',', ', ')}</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">세부 내용</th><td>${dto.car_detail }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
+	</tr>
+	<tr>
+		<th class="table-secondary">등록 일</th><td>${dto.car_regdate }</td>
+	</tr>
+	</table>
+
 <table class="layout">
 <colgroup>
 	<col width="430px" />
@@ -137,6 +182,7 @@ $("#deletesubmit").on("click", function(){
 	</td>
 </tr>
 </table>
+
 </div>
 
 <button onclick="location.href='list';" class="btn btn-secondary" id="btn-list">목록</button>
