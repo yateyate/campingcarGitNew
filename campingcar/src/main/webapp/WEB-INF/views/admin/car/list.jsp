@@ -26,7 +26,7 @@
 
 
 	<div id="topmenu">
-		<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　차량 목록</h2>
+		<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　차량 관리　<i class="fa-solid fa-angle-right"></i>　차량 목록</h2>
 		<div id="gnb"></div>
 	</div>
 	

@@ -51,9 +51,10 @@ pageContext.setAttribute("optionArr", optionArr);
 	<%@ include file="../include/sidebar.jsp" %>
 	<!-- // #sidebar end -->
 
-	<!-- #topmenu start -->
-	<%@ include file="../include/topmenu.jsp" %>
-	<!-- // #topmenu end -->
+	<div id="topmenu">
+		<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　차량 관리　<i class="fa-solid fa-angle-right"></i>　차량 등록</h2>
+		<div id="gnb"></div>
+	</div>
 
 	<div id="wrap">
 <!-- ================================================== -->
@@ -68,13 +69,6 @@ pageContext.setAttribute("optionArr", optionArr);
 		<c:forEach items="${list }" var="companyDTO">
 			<option value="${companyDTO.comp_id }" <c:if test="${dto.comp_id==companyDTO.comp_id }">selected</c:if>>${companyDTO.comp_name }</option>					
 		</c:forEach>
-	<select class="form-control" name="comp_id" required >
-		<option value="">캠핑카 대여 회사를 선택해주세요</option>
-		<c:forEach items="${list }" var="companyDTO">
-			<option value="${companyDTO.comp_id }" <c:if test="${companyDTO.comp_id==dto.comp_id }">selected</c:if>>${companyDTO.comp_name }</option>					
-
-		</c:forEach>
-		
 	</select>
 </div>
 <div class="input-group">
@@ -145,7 +139,7 @@ pageContext.setAttribute("optionArr", optionArr);
 	<input type="text" name="car_rentprice" value="${dto.car_rentprice }" class="form-control" required />
 </div>
 
-<button type="submit">차량 등록</button>
+<button type="submit" class="btn btn-primary" style="margin:30px 0px 0px 0px;">차량 등록</button>
 </form>
 
 
