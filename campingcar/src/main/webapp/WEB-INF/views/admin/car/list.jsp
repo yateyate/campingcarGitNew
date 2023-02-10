@@ -23,9 +23,12 @@
 	<%@ include file="../include/sidebar.jsp" %>
 	<!-- // #sidebar end -->
 
-	<!-- #topmenu start -->
-	<%@ include file="../include/topmenu.jsp" %>
-	<!-- // #topmenu end -->	
+
+
+	<div id="topmenu">
+		<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　차량 관리　<i class="fa-solid fa-angle-right"></i>　차량 목록</h2>
+		<div id="gnb"></div>
+	</div>
 	
 	<div id="wrap">
 <!-- ================================================== -->
@@ -38,7 +41,7 @@
 <tr class="table-secondary">
 	<th>#</th>
 	<th>대여 회사</th>
-	<th>모델명 / 차량 이름</th>
+	<th>모델 명 / 차량 이름</th>
 	<th>차량 번호</th>
 	<th>수용 인원</th>
 	<th>비용</th>
@@ -49,7 +52,7 @@
 <c:forEach items="${responseDTO.dtoList }" var="dto">
 <tr>
 	<th>${dto.car_regid }</th>
-	<td><a href="../company/read?comp_id=26">${companymap[dto.comp_id].comp_name }</a></td>
+	<td><a href="../company/read?comp_id=${dto.comp_id }">${companymap[dto.comp_id].comp_name }</a></td>
 	<td class="left"><a href="read?car_regid=${dto.car_regid }&comp_id=${dto.comp_id}">${dto.car_modelname } <span>　|　</span> ${dto.car_name }</a></td>
 	<td>${dto.car_number }</td>
 	<td>${dto.car_capa }</td>
@@ -82,7 +85,7 @@
 		</ul>
 	</nav>
 	<div>
-		<button onclick="location.href='${contextPath}/admin/car/register';" class="btn btn-primary">차량 등록</button>
+		<button onclick="location.href='${contextPath}/admin/car/register';" class="btn btn-primary" style="width:100px;">차량 등록</button>
 	</div>
 </div>
 <form action="list" method="get">
@@ -90,8 +93,11 @@
 <div class="search">
 	<input type="checkbox" name="types" value="car_modelname" /> 모델명
 	<input type="checkbox" name="types" value="car_name" /> 차량명
-	<input type="text" name="keyword" class="form-control" value="" />
-	<button type="submit">검색</button>
+
+	<div class="input-group mb-3">
+		<input type="text" name="keyword" class="form-control" value="" />
+		<button type="submit" class="btn btn-outline-primary" style="width:100px;">검색</button>
+	</div>	
 </div>
 </form>
 

@@ -123,7 +123,7 @@ var marker = new kakao.maps.Marker({
 // 마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
 
-var iwContent = '<div class="ajsmm">자바 캠핑카</div>', 	
+var iwContent = '<div style="padding:5px;">자바 캠핑카</div>', 	
 // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 // 인포윈도우에 표출된 글자 변경하는 class = ajsmm
     iwPosition = new kakao.maps.LatLng(37.268070, 127.000157); //인포윈도우 표시 위치입니다
@@ -164,18 +164,12 @@ geocoder.addressSearch(a, function(result, status) {
 });    
 }
 </script>
-<style> 
-.ajsmm{ 
 
-}
-
-
-
-</style>
 <!-- kakao map api end -->
 
 
 
+<c:if test="${pageMaker.cri.keyword !=null }">
 <div   class="container text-center" > <br>
 
 	
@@ -222,7 +216,6 @@ geocoder.addressSearch(a, function(result, status) {
 
 </div>
 
-<c:if test="${pageMaker.cri.keyword !=null }">
 	<div class="container text-center">
 	 
 		<ul>

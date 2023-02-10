@@ -22,7 +22,9 @@
 <!-- ================================================================================ -->
 
 <style>
-#mainvisual {}
+
+.mainrow.para01 {background:url("${contextPath}/resources/img/main/dummy.jpg"); height:1877px;}
+
 .mainrow.para01 {background:url("${contextPath}/resources/img/main/dummy.jpg"); height:1879px;}
 
 </style>
@@ -34,6 +36,8 @@
 	&nbsp;
 </div>
 
+
+
 <script>
 $(document).ready(function(){
 	var windowHeight = window.innerHeight;
@@ -43,6 +47,7 @@ $(document).ready(function(){
 </script>
 
 <!-- ================================================================================ -->		
+
 	</div><!-- // #wrap end -->
 	
 	<!-- #footer start -->
@@ -50,6 +55,7 @@ $(document).ready(function(){
 	<!-- //#footer end -->
 	
 </div><!-- // #container end -->
+
 
 </body>
 </html>

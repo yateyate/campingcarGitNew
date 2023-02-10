@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,7 @@ import kr.co.ccrent.config.DateProcess;
 import kr.co.ccrent.dto.CarDTO;
 import kr.co.ccrent.dto.CompanyDTO;
 import kr.co.ccrent.dto.Criteria;
+import kr.co.ccrent.dto.FaqBoardDTO;
 import kr.co.ccrent.dto.GarageDTO;
 import kr.co.ccrent.dto.PageMaker;
 import kr.co.ccrent.dto.PageRequestDTO;
@@ -27,6 +29,7 @@ import kr.co.ccrent.dto.RepairDTO;
 import kr.co.ccrent.service.BoardFileService;
 import kr.co.ccrent.service.CarService;
 import kr.co.ccrent.service.CompanyService;
+import kr.co.ccrent.service.FaqBoardService;
 import kr.co.ccrent.service.GarageService;
 import kr.co.ccrent.service.RentService;
 import kr.co.ccrent.service.RepairService;
@@ -44,6 +47,7 @@ public class AdminController {
 	private final RepairService repairService;
 	private final GarageService garageService;
 	private final CompanyService companyService;
+	private final FaqBoardService faqBoardService;
 
 	@GetMapping(value = { "/", "" })
 	public String indexGET() {
@@ -76,7 +80,6 @@ public class AdminController {
 		// carService.register(carDTO, file, request, request.getParameter("order"));
 		carService.register(carDTO, request);
 		return "redirect:/admin/car/list";
-
 	}
 
 	@PostMapping("/car/modify")
@@ -93,11 +96,15 @@ public class AdminController {
 		System.out.println(pageRequestDTO);
 		// model.addAttribute("dtolist", carService.getAll());
 		model.addAttribute("responseDTO", carService.getList(pageRequestDTO));
+
 		List<CompanyDTO> companylist = companyService.getAll3();
 		HashMap<Integer, Object> companymap = new HashMap<>();
 		for(int i=0; i<companylist.size(); i++) {
 			companymap.put(companylist.get(i).getComp_id(), companylist.get(i));
 		}
+
+		model.addAttribute("companymap", companymap);		
+
 		model.addAttribute("companymap", companymap);
 		System.out.println(companymap);
 	}
@@ -348,5 +355,87 @@ public class AdminController {
 
 		return "redirect:/admin/garage/list?keyword=";
 	}
+	
+	
+	//===========================faq admin controller
+	@RequestMapping(value = "/faqboard/registerForm", method = RequestMethod.GET)
+	public void registerGET(FaqBoardDTO boardDTO, Model model) throws Exception {
+		System.out.println("==<admin Controller> faq_register = registerGet");
+		
+	}
+	
+	//faq게시글 작성
+	@RequestMapping(value = "/faqboard/register", method = RequestMethod.POST)
+	public String registerPOST (FaqBoardDTO boardDTO,RedirectAttributes rttr) throws Exception {
+		System.out.println("==<admin Controller> faq_register = registerpost");
+		
+		faqBoardService.register(boardDTO);
+		return "redirect:listAll";
+	}
+	
+	//faq게시글 상세보기<
+	@RequestMapping(value = "/faqboard/read", method = RequestMethod.GET)
+	public ModelAndView read(@RequestParam("bno")int bno) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		System.out.println("faq글번호 : "+ bno);
+		FaqBoardDTO boardDTO = faqBoardService.read(bno);
+		mav.setViewName("/admin/faqboard/read"); //뷰의 이름
+		mav.addObject("board", boardDTO); //뷰로 보낼 데이터 값 ( 변수명 , 변수에넣을 데이터 값)
+		System.out.println("==<admin Controller> faq_read = read");
+		return mav;
+	}
+
+		
+		
+		
+
+
+	   
+	//faq게시글 수정폼 이동
+	@RequestMapping(value = "/faqboard/modifyForm", method = RequestMethod.GET)
+	public void modifyGET(int bno, Model model) throws Exception {
+		
+		FaqBoardDTO boardDTO = faqBoardService.read(bno);
+		model.addAttribute("board", boardDTO);
+		
+	}
+		
+	//faq게시글 수정 메소드
+	@RequestMapping(value = "/faqboard/modify", method = RequestMethod.POST)
+	public String modifyPOST(FaqBoardDTO boardDTO, RedirectAttributes rttr) throws Exception {
+		
+		faqBoardService.modify(boardDTO);
+		System.out.println("==<admin Controller> faq_modify = success");
+		
+		return "redirect:/admin/faqboard/listAll?keyword=";	
+	}
+		
+	//faq 게시글 삭제
+	@RequestMapping(value ="/faqboard/remove", method = RequestMethod.GET)
+	public String remove(int bno ,RedirectAttributes rttr) throws Exception {
+		
+		faqBoardService.remove(bno);
+
+		System.out.println("==<admin Controller> faq_remove = success");
+		return "redirect:/admin/faqboard/listAll?keyword=";
+	}
+		
+	//faq게시글 전부불러오기
+	@GetMapping(value="/faqboard/listAll")
+	public void faqlist_admin(Criteria cri, Model model) throws Exception{
+	   System.out.println(cri.toString());
+	   model.addAttribute("list", faqBoardService.faq_get(cri));
+	   
+	   //페이징처리
+	   PageMaker pageMaker = new PageMaker();
+	   
+	   pageMaker.setCri(cri);
+	   pageMaker.setTotalCount(faqBoardService.faq_get_count(cri));
+	   
+	   model.addAttribute("cri",cri);
+	   model.addAttribute("pageMaker",pageMaker);
+	}
+	
+	
 
 }

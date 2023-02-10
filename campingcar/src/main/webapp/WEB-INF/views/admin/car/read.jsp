@@ -82,70 +82,80 @@ $("#deletesubmit").on("click", function(){
 	<%@ include file="../include/sidebar.jsp" %>
 	<!-- // #sidebar end -->
 
-	<!-- #topmenu start -->
-	<%@ include file="../include/topmenu.jsp" %>
-	<!-- // #topmenu end -->
+	<div id="topmenu">
+		<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　차량 관리　<i class="fa-solid fa-angle-right"></i>　차량 조회</h2>
+		<div id="gnb"></div>
+	</div>
 	
 	<div id="wrap">
 <!-- ================================================== -->
 
-
-<style>
-.table th {border:1px solid #c8c8c8; text-align:center;}
-</style>
-
 <div class="carread clearfix">
-	<div>
-		<img src="${contextPath }/resources/data/car/${dto.car_file }" alt="" />
-	</div>
-	<table class="table table-bordered">
-	<colgroupd>
-		<col width="30%" />
-		<col width="*" />
-	</colgroupd>
-	<tr>
-		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">대여 회사</th><td><a href="../company/read?comp_id=26">${companyDTO.comp_name }</a></td>
-	</tr>
-	<tr>
-		<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">차량 이름</th><td>${dto.car_name }</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">차량 번호</th><td>${dto.car_number }</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">탑승 인원</th><td>${dto.car_capa }</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">내부 옵션</th><td>${fn:replace(dto.car_option, ',', ', ')}</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">세부 내용</th><td>${dto.car_detail }</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
-	</tr>
-	<tr>
-		<th class="table-secondary">등록 일</th><td>${dto.car_regdate }</td>
-	</tr>
-	</table>
+<table class="layout">
+<colgroup>
+	<col width="430px" />
+	<col width="*" />
+</colgroup>
+<tr>
+	<td><img src="${contextPath }/resources/data/car/${dto.car_file }" alt="" /></td>
+	<td>
+		<table class="table table-bordered">
+		<colgroupd>
+			<col width="30%" />
+			<col width="*" />
+		</colgroupd>
+		<tr>
+			<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">대여 회사</th><td><a href="../company/read?comp_id=26">${companyDTO.comp_name }</a></td>
+		</tr>
+		<tr>
+			<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">차량 이름</th><td>${dto.car_name }</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">차량 번호</th><td>${dto.car_number }</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">탑승 인원</th><td>${dto.car_capa }</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">내부 옵션</th><td>${fn:replace(dto.car_option, ',', ', ')}</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">세부 내용</th><td>${dto.car_detail }</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
+		</tr>
+		<tr>
+			<th class="table-secondary">등록 일</th><td>${dto.car_regdate }</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+
 </div>
 
+<button onclick="location.href='list';" class="btn btn-secondary" id="btn-list">목록</button>
+<button onclick="location.href='register?car_regid=${dto.car_regid }';"  class="btn btn-primary">차량 수정</button>
 
-<button onclick="location.href='list';">목록</button>
-<button onclick="location.href='register?car_regid=${dto.car_regid }';">수정</button>
+<script>
+document.querySelector("#btn-list").addEventListener("click",function(e){
+	location.href="list?${pageRequestDTO.link }";
+},false);
+</script>
 
 <!-- 모달&모달테스트 -->
 		
 		
 		<c:if test="${repair.repair_no == null }">
 		
-		<button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">정비내역 등록</button>
+		<button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" class="btn btn-primary">정비내역 등록</button>
 		<div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
 		  <div class="modal-dialog modal-dialog-centered">
 		    <div class="modal-content">
@@ -221,7 +231,7 @@ $("#deletesubmit").on("click", function(){
 		
 		</c:if>
 		<c:if test="${repair.repair_no !=null }">
-	    <button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">정비내역 수정</button>
+	    <button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"  class="btn btn-primary">정비내역 수정</button>
 		</c:if>
 		
 		<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
@@ -315,9 +325,9 @@ $("#deletesubmit").on("click", function(){
 
 
 
-<form action="remove" method="post">
+<form action="remove" method="post" style="display:inline;">
 	<input type="hidden" name="car_regid" value="${dto.car_regid }" />
-	<button type="submit">삭제</button>
+	<button type="submit"  class="btn btn-danger">삭제</button>
 </form>
 <!-- ================================================== -->
 	</div><!-- // #wrap end -->
