@@ -7,6 +7,7 @@
 <%@ include file="category.jsp" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="title" value="목록형 예약 현황" />
+<!-- ${fn:substring(dto.rent_phone1,0,3) }-${fn:substring(dto.rent_phone1,3,7) }-${fn:substring(dto.rent_phone1,7,11) } -->
 
 <!DOCTYPE html>
 <html>
@@ -73,8 +74,8 @@
 		<c:if test="${dto.car_uid eq '' or dto.car_uid eq null }"><p style="color:#c8c8c8;">비회원</p></c:if>
 	</td>	
 	<td>${dto.rent_name }</td>	
-	<td>${fn:substring(dto.rent_phone1,0,3) }-${fn:substring(dto.rent_phone1,3,7) }-${fn:substring(dto.rent_phone1,7,11) }</td>	
-	<td>${fn:substring(dto.rent_phone2,0,3) }-${fn:substring(dto.rent_phone2,3,7) }-${fn:substring(dto.rent_phone2,7,11) }</td>	
+	<td>${dto.rent_phone1 }</td>	
+	<td>${dto.rent_phone2 }</td>	
 	<td>${dto.rent_startdate }</td>	
 	<td>${dto.rent_enddate }</td>	
 	<td><input type="checkbox" disabled <c:if test="${dto.rent_option1==1 }">checked</c:if> /></td>	
