@@ -4,6 +4,8 @@
 <%@ page session="true" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<c:set var="mn" value="6" />
+<c:set var="sn" value="3" />
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -11,13 +13,12 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <head>
 <meta charset="UTF-8">
-<title>전체조회목록</title>
+<title>자바 캠핑카</title>
 <%@ include file="../include/plugin.jsp" %>
-<link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+</head>
 <c:set var="title" value="FAQ" />
 <script>
-
-
    function search(){//검색기능
          var $keyword = $('#keyword');
          $('#searchBtn').on('click',function(){
@@ -31,19 +32,30 @@
 </script>
 </head>
 <body>
-
- <div id="container">
-				  <!-- #sidebar start -->
-
-	<!-- // #sidebar end -->
-
-	<!-- #topmenu start -->
-
-	<!-- // #topmenu end -->
+<div id="container">
+	<!-- #header start -->
+	<%@ include file="../include/header.jsp" %>
+	<!--// #header end -->
+	
+	<div id="body_head">
+		<h2>FAQ</h2>
+		<div class="location">
+			HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>자주하는 질문</span>
+		</div>
+	</div>
 	<div id="wrap">
+		<div id="submenu">
+			<ul>
+				<li class="on"><a href="#">자주하는 질문</a></li>
+			</ul>
+		</div>
+		
+		<div id="body_contents">
+ 
 
 			<div class="panel-heading">
-				질문목록
+				
+				
 				
 			</div>
 
@@ -118,8 +130,8 @@
     <span>
     <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
     placeholder="검색하세요" />
-    
-   <button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
+    　　　
+   <button style="margin-left: -6px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
    id="searchBtn" class="btn btn-secondary btn-sm">검색</button>
    
    </span>      
@@ -127,7 +139,15 @@
 </form>
 </div>
 </div>
-
+<!-- ================================================== -->		
+		</div> <!-- // #body_contents end -->
+	</div><!-- // #wrap end -->
+	
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
+</div><!-- // #container end -->
 
 </body>
 </html>
