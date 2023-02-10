@@ -89,7 +89,7 @@ menuMap.put("6", new HashMap<String, Object>(){{
 		}});
 		put("3",new HashMap<String, Object>(){{
 			put("title", "자주하는 질문");	
-			put("url", "#");	
+			put("url", contextPath+"/faqboard/listAll?keyword=");	
 		}});	
 	}});
 }});
