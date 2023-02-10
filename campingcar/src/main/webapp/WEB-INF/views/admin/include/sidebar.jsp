@@ -27,8 +27,11 @@
 				<li><a href="${contextPath }/admin/garage/list?keyword=">정비소 정보 수정 및 삭제</a></li>				
 			</ul>		
 		</li>
-		<li><a href="#">게시판 관리</a></li>
-		
+		<li><a href="#">게시판 관리</a>
+		<ul>
+				<li><a href="${contextPath }/admin/faqboard/listAll?keyword=">FAQ게시판</a></li>							
+			</ul>
+			</li>
 		<li><a href="${contextPath }/admin/user/list?keyword=">회원 정보</a></li>
 	</ul>
 </div>
