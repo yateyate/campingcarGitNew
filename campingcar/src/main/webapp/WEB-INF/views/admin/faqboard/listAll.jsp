@@ -117,8 +117,8 @@
 
     <span>
     <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
-    placeholder="정비소를 검색하세요" />
-    
+    placeholder="글을 검색하세요" />
+    　　　　
    <button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
    id="searchBtn" class="btn btn-secondary btn-sm">검색</button>
    
