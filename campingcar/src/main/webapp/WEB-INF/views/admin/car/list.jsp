@@ -23,9 +23,12 @@
 	<%@ include file="../include/sidebar.jsp" %>
 	<!-- // #sidebar end -->
 
-	<!-- #topmenu start -->
-	<%@ include file="../include/topmenu.jsp" %>
-	<!-- // #topmenu end -->	
+
+
+	<div id="topmenu">
+		<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　차량 목록</h2>
+		<div id="gnb"></div>
+	</div>
 	
 	<div id="wrap">
 <!-- ================================================== -->
@@ -82,7 +85,7 @@
 		</ul>
 	</nav>
 	<div>
-		<button onclick="location.href='${contextPath}/admin/car/register';" class="btn btn-primary">차량 등록</button>
+		<button onclick="location.href='${contextPath}/admin/car/register';" class="btn btn-primary" style="width:100px;">차량 등록</button>
 	</div>
 </div>
 <form action="list" method="get">
