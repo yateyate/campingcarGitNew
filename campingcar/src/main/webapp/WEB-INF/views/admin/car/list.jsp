@@ -41,7 +41,7 @@
 <tr class="table-secondary">
 	<th>#</th>
 	<th>대여 회사</th>
-	<th>모델명 / 차량 이름</th>
+	<th>모델 명 / 차량 이름</th>
 	<th>차량 번호</th>
 	<th>수용 인원</th>
 	<th>비용</th>
@@ -52,11 +52,7 @@
 <c:forEach items="${responseDTO.dtoList }" var="dto">
 <tr>
 	<th>${dto.car_regid }</th>
-
 	<td><a href="../company/read?comp_id=${dto.comp_id }">${companymap[dto.comp_id].comp_name }</a></td>
-
-	<td><a href="../company/read?comp_id=26">${companymap[dto.comp_id].comp_name }</a></td>
-
 	<td class="left"><a href="read?car_regid=${dto.car_regid }&comp_id=${dto.comp_id}">${dto.car_modelname } <span>　|　</span> ${dto.car_name }</a></td>
 	<td>${dto.car_number }</td>
 	<td>${dto.car_capa }</td>
