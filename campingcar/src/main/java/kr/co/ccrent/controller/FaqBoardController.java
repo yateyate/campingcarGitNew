@@ -26,28 +26,7 @@ private static final Logger logger = LoggerFactory.getLogger(FaqBoardController.
 @Autowired
 FaqBoardService service;
 	
-//	@GetMapping("board/listAll")
-//	public String list(Model model) {
-//		log.info("list");
-//	return "board/listAll";
-//	}
-//@RequestMapping(value = "/listAll", method = RequestMethod.GET)
-//public ModelAndView list() throws Exception {
-//	logger.info("listAll");
-//	ModelAndView mav = new ModelAndView();
-//	List<BoardDTO> list = service.getList();
-//	mav.addObject("list",list);
-//	mav.setViewName("list");	
-//	return mav;
-//}
-//@RequestMapping(value = "board/listAll", method = RequestMethod.GET)
-//public String list(Model model) throws Exception{
-//	logger.info("listAll");
-//	
-//	model.addAttribute("list",service.getList());
-//		
-//	return "board/listAll";	
-//	}
+
 
 @RequestMapping(value = "admin/faqboard/registerForm", method = RequestMethod.GET)
 public void registerGET(FaqBoardDTO boardDTO, Model model) throws Exception {
@@ -122,6 +101,8 @@ public void list1(Criteria cri, Model model) throws Exception{
    model.addAttribute("pageMaker",pageMaker);
 }
 
+
+//faq게시판 글 상세보기
 @RequestMapping(value = "/faqboard/read", method = RequestMethod.GET)
 public ModelAndView read_member(@RequestParam("bno")int bno) throws Exception{
    ModelAndView mav = new ModelAndView();
@@ -132,6 +113,7 @@ public ModelAndView read_member(@RequestParam("bno")int bno) throws Exception{
    return mav;
 }
 
+//faq게시판 글 전체보기/검색기능
 @GetMapping(value="/faqboard/listAll")
 public void list_member(Criteria cri, Model model) throws Exception{
    System.out.println(cri.toString());
@@ -147,6 +129,7 @@ public void list_member(Criteria cri, Model model) throws Exception{
    model.addAttribute("pageMaker",pageMaker);
 }	
 	
+
 }
 
 
