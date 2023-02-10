@@ -139,15 +139,21 @@ $("#deletesubmit").on("click", function(){
 </table>
 </div>
 
-<button onclick="location.href='list';" class="btn btn-secondary">목록</button>
+<button onclick="location.href='list';" class="btn btn-secondary" id="btn-list">목록</button>
 <button onclick="location.href='register?car_regid=${dto.car_regid }';"  class="btn btn-primary">차량 수정</button>
+
+<script>
+document.querySelector("#btn-list").addEventListener("click",function(e){
+	location.href="list?${pageRequestDTO.link }";
+},false);
+</script>
 
 <!-- 모달&모달테스트 -->
 		
 		
 		<c:if test="${repair.repair_no == null }">
 		
-		<button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">정비내역 등록</button>
+		<button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" class="btn btn-primary">정비내역 등록</button>
 		<div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
 		  <div class="modal-dialog modal-dialog-centered">
 		    <div class="modal-content">
