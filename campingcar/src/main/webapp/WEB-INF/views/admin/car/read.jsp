@@ -107,7 +107,11 @@ $("#deletesubmit").on("click", function(){
 		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
 	</tr>
 	<tr>
+
 		<th class="table-secondary">대여 회사</th><td><a href="../company/read?comp_id=${dto.comp_id }">${companyDTO.comp_name }</a></td>
+
+		<th class="table-secondary">대여 회사</th><td><a href="../company/read?comp_id=26">${companyDTO.comp_name }</a></td>
+
 	</tr>
 	<tr>
 		<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
