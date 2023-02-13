@@ -16,13 +16,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회사 소개 - 자바 캠핑카카</title>
+<title>회사 소개 - 자바 캠핑카</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
-<style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-</style>
-</head>
+ 
+
 <body>
 
 <div id="container">
@@ -46,24 +48,37 @@
 		<div id="body_contents">
 <!-- ================================================== -->
 
+<!-- 메인 페이지 이미지 삽입 영역 -->
+	
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="1" class="active"></li>								
+			</ol>
+			<div class="carousel-inner">
 
-<h3><c:out value="${menuMap[mn]['title'] }" /></h3>
-<h4><c:out value="${menuMap[mn]['sub'][sn]['title'] }" /></h4>
+	<div class="slider">
+				<div class="item active">
+					<img src="${contextPath }/resources/img/html/eza03.jpg" width="1223" height="894">
+				</div>
+				
+				</div>
+				
+			</div>
+		 
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+		
+		</div>
+	</div>
 
-<hr>
 
-<ul>
-<c:forEach items="${menuMap }" var="menu">
-	<li>
-		<h3><a href="${menu.value['url'] }">${menu.value['title'] }</a></h3>
-		<ul>
-		<c:forEach items="${menu.value['sub'] }" var="sub">
-			<li><a href="${sub.value['url'] }">${sub.value['title'] }</a></li>
-		</c:forEach>
-		</ul>
-	</li>
-</c:forEach>
-</ul>
+<br>
+
+
 
 <!-- ================================================== -->		
 		</div> <!-- // #body_contents end -->
