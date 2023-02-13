@@ -63,7 +63,7 @@ select{
 						<td>${company.comp_phone}</td>
 						<td>${company.comp_pic}</td>
 						<td>${company.comp_pic_email}</td>
-						<th>대기</th>
+						<th style="color:blue">대기</th>
 					<br>
 					</tr>
 				</table>

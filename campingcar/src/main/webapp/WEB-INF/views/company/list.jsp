@@ -66,6 +66,7 @@
 				  	<td><h5><b>전화번호</b></h5></td>
 				  	<td><h5><b>담당자</b></h5></td>
 				  	<td><h5><b>담당자 이메일</b></h5></td>
+				  	<td><h5><b>신청 상태</b></h5></td>
 				  </tr>
 				  </thead>
 				  <div class="container text-center">
@@ -79,6 +80,7 @@
 				 	<td><h5><b>${company.comp_phone}</b></h5></td>
 				 	<td><h5><b>${company.comp_pic}</b></h5></td>
 				 	<td><h5><b>${company.comp_pic_email}</b></h5></td>
+				 	<td><h5 style="color:red"><b>승인</b></h5></td>
 				</c:if>
 				 	</tr>
 				</c:forEach>
