@@ -23,18 +23,30 @@
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
+
+   <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
+   
+	<div id="wrap">
+	<%@ include file="../include/submenu.jsp" %>
+
 	<div id="body_head">
-		<h2>회사 소개</h2>
+		<h2>FAQ</h2>
 		<div class="location">
-			HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>FAQ</span>
+			HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>자주하는 질문</span>
 		</div>
 	</div>
 	<div id="wrap">
 		<div id="submenu">
 			<ul>
-				<li class="on"><a href="#">회사 소개</a></li>
+				<li class="on"><a href="#">자주하는 질문</a></li>
 			</ul>
 		</div>
+
 		
 		<div id="body_contents">
 
@@ -54,7 +66,7 @@
 
         <div class="form-group">
           <label>내용</label>
-          <textarea class="form-control" rows="3" name='내용'
+          <textarea class="form-control" rows="15" name='내용'
             readonly="readonly"><c:out value="${board.content}" /></textarea>
         </div>
 
