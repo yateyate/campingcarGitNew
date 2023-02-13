@@ -18,10 +18,6 @@ menuMap.put("1", new HashMap<String, Object>(){{
 			put("url", contextPath+"/html/intro");	
 		}});
 		put("2",new HashMap<String, Object>(){{
-			put("title", "포트폴리오");	
-			put("url", "#");		
-		}});
-		put("3",new HashMap<String, Object>(){{
 			put("title", "오시는 길");	
 			put("url", contextPath+"/html/direction");
 		}});		

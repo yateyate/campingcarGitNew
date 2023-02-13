@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<c:set var="title" value="대여 회사 목록" />
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
 </head>
@@ -19,8 +20,17 @@
 
 </style>
 <body>
-					  <div id="container">
+									 
+				  <div id="container">
+				  <!-- #sidebar start -->
+	<%@ include file="../include/sidebar.jsp" %>
+	<!-- // #sidebar end -->
 
+	<!-- #topmenu start -->
+	<%@ include file="../include/topmenu.jsp" %>
+	<!-- // #topmenu end -->
+	<div id="wrap">
+	
 		
 			<section class="content container-fluid">
 				<div class="table-responsive">
@@ -55,6 +65,38 @@
 			 	</tr>
 			</c:forEach>
 			  </table>
+			  <c:if test="${pageMaker.cri.page!=null }">
+   <div class="container text-center">
+    
+      <ul>
+      <b>
+         <c:if test="${pageMaker.prev }">         
+            <a class="btn btn-outline-secondary "  href = "listForm2${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>            
+         </c:if>      
+         
+         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">            
+            <c:choose>
+            
+            <c:when test="${cri.page != idx }">
+            <a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "listForm2${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            </c:when>
+            
+            <c:otherwise>
+            <a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "listForm2${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            </c:otherwise>
+            
+            </c:choose>   
+         </c:forEach>
+            
+         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+            <a class="btn btn-outline-secondary " href = "listForm2${pageMaker.makeSearch(pageMaker.endPage +1 )}">&raquo;</a>
+         </c:if>
+      </b>
+      </ul>
+
+            
+</div>
+</c:if>
 			  
 
       
