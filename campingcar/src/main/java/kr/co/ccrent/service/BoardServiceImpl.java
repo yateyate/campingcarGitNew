@@ -73,35 +73,38 @@ public class BoardServiceImpl implements BoardService {
 		BoardVO boardVO = modelMapper.map(boardDTO, BoardVO.class);
 		boardMapper.insert(boardVO);
 		int wr_id = boardMapper.selectMaxId(boardDTO.getBo_table());
+		System.out.println("File : "+file.length);
 		
 		int i = 0;
 		for(MultipartFile multipartFile : file) {
 			System.out.println("Upload File Name: "+multipartFile.getOriginalFilename());
-			Long unixtime =  System.currentTimeMillis();
-			String fileName = unixtime + "_" + multipartFile.getOriginalFilename();
-			try{
-				String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/data/"+boardDTO.getBo_table()+"/");
-				System.out.println(path);
-	            File folder = new File(path);
-	            if (!folder.exists()) folder.mkdirs();
-	            File destination = new File(path + File.separator + fileName);
-	            multipartFile.transferTo(destination);
-	            System.out.println(destination);
-	            BoardFileVO boardFileVO = BoardFileVO.builder()
-	            		.bo_table(boardDTO.getBo_table())
-	            		.wr_id(wr_id)
-	            		.bf_no(i)
-	            		.bf_file(multipartFile.getOriginalFilename())
-	            		.bf_source(fileName)
-	            		.build();
-	            boardFileMapper.insert(boardFileVO);
-	            System.out.println("success!");
-	        }catch (Exception e){
-	            System.out.println("error!");
-	        }
-			i++;
+			if(!multipartFile.getOriginalFilename().equals("")) {
+				Long unixtime =  System.currentTimeMillis();
+				String fileName = unixtime + "_" + multipartFile.getOriginalFilename();
+				try{
+					String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/data/"+boardDTO.getBo_table()+"/");
+					System.out.println(path);
+		            File folder = new File(path);
+		            if (!folder.exists()) folder.mkdirs();
+		            File destination = new File(path + File.separator + fileName);
+		            multipartFile.transferTo(destination);
+		            System.out.println(destination);
+		            BoardFileVO boardFileVO = BoardFileVO.builder()
+		            		.bo_table(boardDTO.getBo_table())
+		            		.wr_id(wr_id)
+		            		.bf_no(i)
+		            		.bf_file(multipartFile.getOriginalFilename())
+		            		.bf_source(fileName)
+		            		.build();
+		            boardFileMapper.insert(boardFileVO);
+		            System.out.println("success!");
+		        }catch (Exception e){
+		            System.out.println("error!");
+		        }
+				i++;
+			} // end of if
 		} // end of for
-		
+	
 	}
 	
 	@Override
