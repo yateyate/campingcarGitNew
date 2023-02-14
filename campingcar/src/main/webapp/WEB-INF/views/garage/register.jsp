@@ -3,7 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
+<c:set var="mn" value="8" />
+<c:set var="sn" value="2" />
 
 <!DOCTYPE html>
 <html>
@@ -64,21 +65,16 @@ top: 16px;
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
-	<div id="body_head">
-		<h2>정비소 등록신청</h2>
-		<div class="location">
-			정비소 <i class="fa-solid fa-circle-chevron-right"></i> 　<span>정비소 등록신청</span>
-		</div>
-	</div>
+   <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
 	
 	<div id="wrap">
-		<div id="submenu">
-			<ul>
-				<li><a href="${contextPath }/garage/list">정비소 검색</a></li>
-				<li class="on"><a href="${contextPath }/garage/register">정비소 등록신청</a></li>
-			</ul>
-		</div>
-		
+		<%@ include file="../include/submenu.jsp" %>
+			
 		<div id="body_contents" style="padding: 30px 0px 120px 0px">
 
 <p class="fs-2"style="text-align: center">정비소 등록 신청  
