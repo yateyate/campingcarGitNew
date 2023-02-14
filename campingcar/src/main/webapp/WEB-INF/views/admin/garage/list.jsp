@@ -199,9 +199,9 @@ geocoder.addressSearch(a, function(result, status) {
   			<c:if test="${admin==1}">
 			</c:if>
 			<th>			
-			<button type="button" class="ajs ajsbutton4" 
+			<button type="button" class="btn btn-outline-success" 
 			 onclick='location.href="${contextPath}/admin/garage/update?garage_no=${GarageDTO.garage_no}"'>수정</button>
-			<button type="button" class="ajs ajsbutton2" style="padding: 5px 10px 5px 10px;"
+			<button type="button" class="btn btn-outline-danger" style="padding: 5px 10px 5px 10px;"
 			onclick='location.href="${contextPath}/admin/garage/update_delete?garage_no=${GarageDTO.garage_no}"'>삭제</button>
 			</th>
 			
@@ -220,7 +220,7 @@ geocoder.addressSearch(a, function(result, status) {
 			 <!-- 카카오맵이용해서 창띄우기 
 			<a href="https://map.kakao.com/link/search/${GarageDTO.garage_addr }" target="_blank">지도보기</a>
 			-->
-			<button type="button" class="ajs ajsbutton3" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
+			<button type="button" class="btn btn-outline-info" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
 			</th>
 			
 		</tr>
@@ -269,7 +269,7 @@ geocoder.addressSearch(a, function(result, status) {
 	
 
     <span>
-    <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    <input autocomplete="off" class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
     placeholder="정비소를 검색하세요" />
     
 	<button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 

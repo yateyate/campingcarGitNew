@@ -58,7 +58,7 @@
 
 	<div class="slider">
 				<div class="item active">
-					<img src="${contextPath }/resources/img/html/eza03.jpg" width="1223" height="894">
+					<img src="../resources/img/html/eza03.jpg" width="1223" height="894">
 				</div>
 				
 				</div>

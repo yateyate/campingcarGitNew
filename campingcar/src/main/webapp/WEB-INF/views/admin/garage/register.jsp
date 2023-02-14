@@ -135,15 +135,15 @@ geocoder.addressSearch(a, function(result, status) {
 	<th name="garage_code" value="${GarageDTO.garage_code }"
 		style="display: none">${GarageDTO.garage_code}</th>
 	<th>
-	<button type="button" class="ajs ajsbutton3"
+	<button type="button" class="btn btn-outline-info"
 	onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')">지도보기</button>
 	</th>
 	<th>							
-		<button  type="button" class="ajs ajsbutton1" 
+		<button  type="button" class="btn btn-outline-primary" 
 		onclick='location.href="${contextPath}/admin/garage/insert?garage_no=${GarageDTO.garage_no}"'>등록완료
 		</button>
 	
-		<button type="button" class="ajs ajsbutton2"
+		<button type="button" class="btn btn-outline-danger"
 		onclick='location.href="${contextPath}/admin/garage/delete?garage_no=${GarageDTO.garage_no}"'>등록취소
 		</button>
 	</th>
