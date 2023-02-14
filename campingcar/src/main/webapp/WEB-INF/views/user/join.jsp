@@ -215,6 +215,7 @@ form {
 																						"none");
 																	}
 																} //success종료
+																
 															}); //ajax 종료
 												}); //function 종료
 							</script>
