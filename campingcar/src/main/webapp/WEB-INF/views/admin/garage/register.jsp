@@ -15,7 +15,7 @@
 <title>자바 캠핑카 - 관리자 페이지</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
-<link href="${contextPath}/resources/css/ajsbutton.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/kakaomap.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -37,44 +37,52 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=08c7f5459534f8433e8a8e73d7707bc1&libraries=services"></script>
 <script>
-
-
-
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(37.268070, 127.000157), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
+  mapOption = { 
+        center: new kakao.maps.LatLng(37.268049, 127.000299), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
-//마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(37.268070, 127.000157); 
+var imageSrc = '${contextPath}/resources/img/direction/campingcarlogo.png', // 마커이미지의 주소입니다    
+    imageSize = new kakao.maps.Size(40, 45), // 마커이미지의 크기입니다
+    imageOption = {offset: new kakao.maps.Point(22, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new kakao.maps.LatLng(37.268049, 127.000299); // 마커가 표시될 위치입니다
 
 // 마커를 생성합니다
 var marker = new kakao.maps.Marker({
-    position: markerPosition
+  position: markerPosition,
+  image: markerImage // 마커이미지 설정 
 });
 
 // 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
+marker.setMap(map);  
 
-var iwContent = '<div style="padding:5px;">자바 캠핑카</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    iwPosition = new kakao.maps.LatLng(37.268070, 127.000157); //인포윈도우 표시 위치입니다
+// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var content = '<div class="customoverlay">' +    
+    '    <span class="title">자바 캠핑카</span>' +    
+    '</div>';
 
-// 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({
-    position : iwPosition, 
-    content : iwContent 
+// 커스텀 오버레이가 표시될 위치입니다 
+var position = new kakao.maps.LatLng(37.268049, 127.000290);  
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new kakao.maps.CustomOverlay({
+    map: map,
+    position: position,
+    content: content,
+    yAnchor: 1 
 });
-  
-// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-infowindow.open(map, marker); 
-
 //===================================
 	
 function garage_search(a,b) {
+
+
+
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 // 주소로 좌표를 검색합니다
@@ -83,15 +91,35 @@ geocoder.addressSearch(a, function(result, status) {
      if (status === kakao.maps.services.Status.OK) {
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         // 결과값으로 받은 위치를 마커로 표시합니다
+    var imageSrc = '${contextPath}/resources/img/direction/garagelogo.png', // 마커이미지의 주소입니다    
+    imageSize = new kakao.maps.Size(40, 45), // 마커이미지의 크기입니다
+    imageOption = {offset: new kakao.maps.Point(22, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+    //마커 생성
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+    
+    //마커 옵션
         var marker = new kakao.maps.Marker({
             map: map,
-            position: coords
+            position: coords,
+            image: markerImage // 마커이미지 설정            
         });
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content:'　'+b
-        });
-        infowindow.open(map, marker);
+     
+    
+
+     // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+     var content = '<div class="customoverlay">' +    
+  '    <span class="title">'+b+'</span>' +    
+  '</div>';
+
+     // 커스텀 오버레이를 생성합니다
+     var customOverlay = new kakao.maps.CustomOverlay({
+         map: map,
+         position: coords,
+         content: content,
+         yAnchor: 1 
+     });
+     
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
         window.scrollTo({ left: 0, top: 0, behavior: "smooth" }); // 위치보기 클릭시 지도로 스크롤올리기
