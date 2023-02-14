@@ -221,17 +221,17 @@ geocoder.addressSearch(a, function(result, status) {
 			</c:if>		
 			
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">				
-				<c:choose>
-				
+			
+				<c:choose>				
 				<c:when test="${cri.page != idx }">
 				<a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
 				</c:when>
 				
 				<c:otherwise>
 				<a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "list${pageMaker.makeSearch(idx)}"  >${idx }</a>
-				</c:otherwise>
-				
+				</c:otherwise>				
 				</c:choose>	
+				
 			</c:forEach>
 
 				
