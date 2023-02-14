@@ -99,7 +99,7 @@
 
 
 
-<button data-oper='list' class="btn btn-info">목록</button>
+<button type="button" class="btn btn-outline-dark" onclick="location.href='listAll?keyword='">목록</button>
 
 <%-- <form id='operForm' action="/board/modify" method="get">
   <input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
