@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<c:set var="mn">${boardConfig.bo_mn }</c:set>
+<c:set var="sn">${boardConfig.bo_sn }</c:set>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -20,20 +22,61 @@
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
-	<div id="body_head">
-	</div>
+  <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
 	
 	<div id="wrap">
-		<div id="submenu">
-			내용
-		</div>
+      
+      <!-- #submenu start -->
+      <%@ include file="../include/submenu.jsp" %>
+      <!-- // #submenu end -->
 		
 		<div id="body_contents">
 <!-- ================================================== -->
 
-<div>
-내용
+<c:if test="${empty dto or empty boardConfig}">
+<div class="board_error">
+	<h3><i class="fa-solid fa-triangle-exclamation"></i> ERROR</h3>
+	테이블 혹은 테이블 설정이 존재하지 않습니다. 데이터베이스를 확인하세요.
 </div>
+</c:if>
+
+<c:if test="${not empty dto and not empty boardConfig }">
+<div class="board_view">
+	<table class="table board_table">
+	<colgroup>
+		<col width="15%" /> 
+		<col width="35%" /> 
+		<col width="15%" /> 
+		<col width="35%" /> 
+	</colgroup>
+	<thead>
+		<th colspan="4">${dto.wr_subject }</th>
+	</thead>
+	<tbody>
+	<tr>
+		<th class="table-light">작성자</th><td>${dto.wr_name }</td>
+		<th class="table-light">작성일</th><td>${dto.wr_datetime }</td>
+	</tr>
+	</tbody>
+	</table>
+	<div class="content">
+		<c:if test="${not empty filelist }">
+		<ul class="filelist">
+		<c:forEach items="${filelist }" var="file">
+			<li><img src="${contextPath }/resources/data/${param.bo_table }/${file.bf_source }" /></li>
+		</c:forEach>
+		</ul>
+		</c:if>
+		${dto.wr_content }
+	</div>
+</div>
+</c:if>
+
 <button class="btn btn-primary" id="btn-list">목록</button>
 
 <script>

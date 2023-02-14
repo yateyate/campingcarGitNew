@@ -2,6 +2,22 @@
 
 .board_list thead th {font-weight:bold;}
 .board_list td span {color:#c8c8c8; font-size:12px; position:relative; top:-2px;}
+.board_table thead th {background:#cfe2ff; color:#0d6efd; text-align:center; border:1px solid #9ec5fe; border-left:none; border-right:none;}
+/* .board_table tbody tr:hover {background:#f0f0f0;}*/
+.board_table tbody th {text-align:center;}
+
+.board_bot {padding:25px 0px 0px 0px;}
+.board_bot nav {}
+.board_bot div {text-align:right; margin:-38px 0px 0px 0px;}
+.search {padding:40px 0px 0px 0px;}
+.pagination li {cursor:pointer;}
+
+.board_view a.btn {color:#ffffff;}
+.board_view .content {padding:60px 0px 60px 0px; min-height:300px; border-bottom:1px solid #c8c8c8; margin:0px 0px 60px 0px;}
+.board_view .filelist li {padding:0px 0px 30px 0px;}
+
+.board_error {background:#f0f0f0; border:1px solid #dcdcdc; padding:60px; text-align:center;}
+.board_error h3 {padding:0px 0px 10px 0px; color:#dc3545;}
 
 .board_write .input-group {margin:0px 0px 10px 0px;}
 .board_write .input-group-text {width:200px; text-align:center;}
@@ -11,14 +27,6 @@
 .daterangepicker .calendar-table th:nth-child(1){color:#ff0000;}
 .daterangepicker .calendar-table tbody tr td:nth-child(1){color:#ff0000;}
 .daterangepicker tbody tr td.disabled {text-decoration:none; color:#dcdcdc !important;}
-
-.board_bot {padding:25px 0px 0px 0px;}
-.board_bot nav {}
-.board_bot div {text-align:right; margin:-38px 0px 0px 0px;}
-.search {padding:40px 0px 0px 0px;}
-.pagination li {cursor:pointer;}
-
-.board_view a.btn {color:#ffffff;}
 
 /* ================================================================================ 사용자 > 예약 > 달력 */
 

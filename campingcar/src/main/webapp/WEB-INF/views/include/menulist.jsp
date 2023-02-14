@@ -81,7 +81,7 @@ menuMap.put("6", new HashMap<String, Object>(){{
 		}});
 		put("2",new HashMap<String, Object>(){{
 			put("title", "공지 사항");	
-			put("url", "#");	
+			put("url", contextPath+"/board/list?bo_table=notice");	
 		}});
 		put("3",new HashMap<String, Object>(){{
 			put("title", "자주하는 질문");	
