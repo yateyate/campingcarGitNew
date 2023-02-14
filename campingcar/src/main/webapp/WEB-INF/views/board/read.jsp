@@ -89,8 +89,10 @@ document.querySelector("#btn-list").addEventListener("click",function(e){
 		</div> <!-- // #body_contents end -->
 	</div><!-- // #wrap end -->
 	
-	<div id="footer">
-	</div>
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
 </div><!-- // #container end -->
 
 </body>
