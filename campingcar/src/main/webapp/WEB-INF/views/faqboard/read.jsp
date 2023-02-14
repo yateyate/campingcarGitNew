@@ -33,20 +33,6 @@
    
 	<div id="wrap">
 	<%@ include file="../include/submenu.jsp" %>
-
-	<div id="body_head">
-		<h2>FAQ</h2>
-		<div class="location">
-			HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>자주하는 질문</span>
-		</div>
-	</div>
-	<div id="wrap">
-		<div id="submenu">
-			<ul>
-				<li class="on"><a href="#">자주하는 질문</a></li>
-			</ul>
-		</div>
-
 		
 		<div id="body_contents">
 
@@ -111,7 +97,7 @@
 
 
 
-<button data-oper='list' class="btn btn-info">목록</button>
+<button type="button" class="btn btn-outline-dark" onclick="location.href='listAll?keyword='">목록</button>
 
 <%-- <form id='operForm' action="/board/modify" method="get">
   <input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>

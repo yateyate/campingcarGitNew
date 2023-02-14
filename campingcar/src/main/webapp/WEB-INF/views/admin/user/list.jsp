@@ -46,6 +46,26 @@
 	.text-center{
 		margin-top: 50px;
 	}
+	#keyword{
+		height: 38px;
+		border-radius: 4px;
+		font-size: 15px;
+		font-size: 15px;
+		border: 0;
+		outline: none;
+		padding-left: 10px;
+		background-color: rgb(233, 233, 233);  
+	}
+	#searchBtn{
+    	margin-top: -5px;
+    	margin-left: -4px;
+		transition : all 0.5s;
+	}
+	#keyword:focus {
+		background: #fff;
+		outline: 1px solid #0d6efd;
+		transition : 0.5s;
+	}
 
 </style>
 </head>
@@ -131,8 +151,6 @@
 </form>
 <div class="box-footer">
          <button class="btn btn-success">메인</button>
-         <button class="btn btn-warning">수정</button>
-         <button class="btn btn-danger">삭제</button>
          <button class="btn btn-primary">목록</button>
       </div>
       <script>

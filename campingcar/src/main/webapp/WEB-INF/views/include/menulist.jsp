@@ -121,7 +121,7 @@ menuMap.put("8", new HashMap<String, Object>(){{
 		}});
 		put("4",new HashMap<String, Object>(){{
 			put("title", "정비소 정보 수정 및 삭제");	
-			put("url", contextPath+"/admin/garage/list");	
+			put("url", contextPath+"/admin/garage/list?keyword=");	
 		}});		
 	}});
 }});
