@@ -3,9 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.sql.Timestamp" %>
 <c:set var="mn">${boardConfig.bo_mn }</c:set>
 <c:set var="sn">${boardConfig.bo_sn }</c:set>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="datetime" value="${dto.wr_datetime }" />
 
 <!DOCTYPE html>
 <html>
@@ -60,7 +62,8 @@
 	<tbody>
 	<tr>
 		<th class="table-light">작성자</th><td>${dto.wr_name }</td>
-		<th class="table-light">작성일</th><td>${dto.wr_datetime }</td>
+		<th class="table-light">작성일</th>
+		<td><fmt:formatDate value="${dto.wr_datetime }" pattern="yyyy-MM-dd HH:mm" type="date"/></td>
 	</tr>
 	</tbody>
 	</table>

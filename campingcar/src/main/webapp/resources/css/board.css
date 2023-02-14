@@ -5,6 +5,7 @@
 .board_table thead th {background:#cfe2ff; color:#0d6efd; text-align:center; border:1px solid #9ec5fe; border-left:none; border-right:none;}
 /* .board_table tbody tr:hover {background:#f0f0f0;}*/
 .board_table tbody th {text-align:center;}
+.board_table tbody td {font-weight:normal !important;}
 
 .board_bot {padding:25px 0px 0px 0px;}
 .board_bot nav {}

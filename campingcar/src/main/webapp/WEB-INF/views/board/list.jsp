@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>\
 <c:set var="mn">${boardConfig.bo_mn }</c:set>
 <c:set var="sn">${boardConfig.bo_sn }</c:set>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -63,7 +64,7 @@
 	<th>${dto.wr_id }</th>
 	<td class="left"><a href="${contextPath }/board/read?bo_table=${param.bo_table }&wr_id=${dto.wr_id}&${pageRequestDTO.link}">${dto.wr_subject }</a></td>
 	<td>${dto.wr_name }</td>
-	<td>${dto.wr_datetime }</td>
+	<td><fmt:formatDate value="${dto.wr_datetime }" pattern="yyyy-MM-dd" type="date"/></td>
 	<td>${dto.wr_hit }</td>
 </tr>
 </c:forEach>

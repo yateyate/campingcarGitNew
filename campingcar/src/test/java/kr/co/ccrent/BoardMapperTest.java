@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import kr.co.ccrent.dto.BoardDTO;
+import kr.co.ccrent.dto.PageRequestDTO;
+import kr.co.ccrent.dto.PageResponseDTO;
 import kr.co.ccrent.mapper.BoardMapper;
 
 @ExtendWith(SpringExtension.class)
@@ -27,11 +30,12 @@ public class BoardMapperTest {
 		System.out.println(boardMapper.selectBoardConfig("free"));
 	}
 	
-	@Test
+	// @Test
 	public void selectOneTest() {
 		HashMap<String, Object> varmap = new HashMap<>();
 		varmap.put("bo_table", "notice");
 		varmap.put("wr_id", 1);
 		System.out.println(boardMapper.selectOne(varmap));
 	}
+
 }
