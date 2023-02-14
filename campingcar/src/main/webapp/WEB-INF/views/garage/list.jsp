@@ -197,7 +197,7 @@ geocoder.addressSearch(a, function(result, status) {
 			 <!-- 카카오맵이용해서 창띄우기 
 			<a href="https://map.kakao.com/link/search/${GarageDTO.garage_addr }" target="_blank">지도보기</a>
 			-->
-			<button type="button" class="btn btn-outline-primary btn-sm" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
+			<button type="button" class="btn btn-outline-success btn-sm" onclick="garage_search('${GarageDTO.garage_addr }','${GarageDTO.garage_name }')" >지도보기</button>
 			</th>
 			
 		</tr>

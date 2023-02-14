@@ -133,9 +133,9 @@ $(document).ready(function(){
 						</select>
 			</div>
 			<div style="float: right">	
-				<button class="ajs ajsbutton4" type="submit" id="update">수정</button>
-				<button class="ajs ajsbutton1" type ="reset" value="초기화">초기화</button>
-				<button class="ajs ajsbutton2" type="button" onclick='location.href="${contextPath }/admin/garage/list?keyword="'>돌아가기</button>
+				<button class="btn btn-outline-success" type="submit" id="update">수정</button>
+				<button class="btn btn-outline-danger" type ="reset" value="초기화">초기화</button>
+				<button class="btn btn-outline-dark" type="button" onclick='location.href="${contextPath }/admin/garage/list?keyword="'>돌아가기</button>
 			</div>
 	</form>
 </div>
