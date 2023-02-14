@@ -27,13 +27,23 @@
 .calendar tbody p {padding:10px 0px 10px 0px;}
 .calendar .d-grid {min-height:240px;}
 
+/* ================================================================================ 사용자 > 차량 */
+
+.carread {border-bottom:1px solid #dcdcdc; padding:0px 0px 50px 0px; margin:0px 0px 60px 0px;}
+.carread .table th {border:1px solid #c8c8c8; text-align:center;}
+.carread div,
+.carread table {float:left;}
+.carread div {width:430px;}
+.carread img {width:400px;}
+.carread table {width:770px;}
+
 /* ================================================================================ 관리자 > 차량 */
 
-.carread {border-bottom:1px solid #c8c8c8; padding:0px 0px 60px 0px; margin:0px 0px 60px 0px;}
-.carread .layout {width:100%; background:transparent;}
-.carread .layout img {width:400px;}
-.carread .layout tr {vertical-align:top;}
-.carread .table th {border:1px solid #c8c8c8; text-align:center;}
+.admcarread {border-bottom:1px solid #c8c8c8; padding:0px 0px 60px 0px; margin:0px 0px 60px 0px;}
+.admcarread .layout {width:100%; background:transparent;}
+.admcarread .layout img {width:400px;}
+.admcarread .layout tr {vertical-align:top;}
+.admcarread .table th {border:1px solid #c8c8c8; text-align:center;}
 
 /* ================================================================================ 관리자 > 예약 > 달력 */
 

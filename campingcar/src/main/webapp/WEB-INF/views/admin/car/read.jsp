@@ -90,7 +90,7 @@ $("#deletesubmit").on("click", function(){
 	<div id="wrap">
 <!-- ================================================== -->
 
-<div class="carread clearfix">
+<div class="admcarread clearfix">
 <table class="layout">
 <colgroup>
 	<col width="430px" />
