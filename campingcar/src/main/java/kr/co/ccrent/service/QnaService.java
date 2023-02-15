@@ -19,9 +19,9 @@ public interface QnaService {
 	// 문의글 총 갯수
 	public int getTotal();
 	// 문의 게시판 전체 조회
-	public List<QnaDTO> getAll(Criteria cri) throws Exception;
+	public List<QnaDTO> qna_get(Criteria cri) throws Exception;
 
-	public int getAll_Count(Criteria cri) throws Exception;
+	public int qna_get_Count(Criteria cri) throws Exception;
 	
 	
 

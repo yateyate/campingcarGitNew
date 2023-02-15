@@ -61,16 +61,17 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public List<QnaDTO> getAll(Criteria cri) throws Exception {
+	public List<QnaDTO> qna_get(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.selectAll(cri);
+		return mapper.qna_select(cri);
 	}
 
 	@Override
-	public int getAll_Count(Criteria cri) throws Exception {
-
-		return mapper.selectAll_Count(cri);
+	public int qna_get_Count(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.qna_select_count(cri);
 	}
+
 
 
 }

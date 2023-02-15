@@ -24,9 +24,9 @@ public interface QnaMapper {
 	public int getTotal();
 
 	// 문의 게시판 페이징처리
-	List<QnaDTO> selectAll(Criteria cri) throws Exception;
+	List<QnaDTO> qna_select(Criteria cri) throws Exception;
 
-	public int selectAll_Count(Criteria cri) throws Exception;
+	public int qna_select_count(Criteria cri) throws Exception;
 	
 	
 

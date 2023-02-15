@@ -52,15 +52,15 @@ public class QnaController {
 //	} 
 
 //  문의 게시판 listAll 페이징처리
-	@GetMapping(value = "/qna/listAll")
+	@GetMapping(value = "/qna/qnalist")
 	public void qna_list(Criteria cri, Model model) throws Exception {
 		System.out.println(cri.toString());
-		model.addAttribute("list", service.getAll(cri));
+		model.addAttribute("list", service.qna_get(cri));
 
 		// 페이징처리
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.getAll_Count(cri));
+		pageMaker.setTotalCount(service.qna_get_Count(cri));
 
 		model.addAttribute("cri", cri);
 		model.addAttribute("pageMaker", pageMaker);
@@ -76,7 +76,7 @@ public class QnaController {
 	public String qna_remove(int qna_no) throws Exception {
 
 		service.remove(qna_no);
-		return "redirect:/qna/listAll";
+		return "redirect:/qna/qnalist?keyword=";
 	}
 
 	@RequestMapping(value = "/qna/modifyForm", method = RequestMethod.GET)
@@ -92,7 +92,7 @@ public class QnaController {
 		
 		service.modify(qna);
 		System.out.println(cri.toString());
-		model.addAttribute("list", service.getAll(cri));
+		model.addAttribute("list", service.qna_get(cri));
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addFlashAttribute("msg", "SUCCESS");
@@ -101,12 +101,12 @@ public class QnaController {
 		// 페이징처리
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.getAll_Count(cri));
+		pageMaker.setTotalCount(service.qna_get_Count(cri));
 
 		model.addAttribute("cri", cri);
 		model.addAttribute("pageMaker", pageMaker);
 
-		return "redirect:/qna/listAll";
+		return "redirect:/qna/qnalist?keyword=";
 	}
 
 }
