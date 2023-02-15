@@ -18,12 +18,7 @@
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 
-<!-- 제목 위에 마우스 올릴 경우 이벤트 발생(빨강색으로 변경됨) -->
-<style>
-a:hover{
-color: red;
-}
-</style>
+
 
 <script>
 function search(){//검색기능
@@ -66,30 +61,41 @@ function search(){//검색기능
 	
 	<div class="panel-body">
 	
-	<table class="table table-bordered table-hover">
-		<tr align="center" bgcolor="gray" class="a">
+	<table class="table board_table center">
+		<tbody>
+			<colgroup>
+				<col width="10%" />
+				<col width="*" />
+				<col width="10%" />
+				<col width="20%" />
+				<col width="10%" />
+			</colgroup>
+			<thead>
+		 <tr>
 			<th>글번호</th>
 			<th>제목</th>
 			<th>내용</th>
 			<th>작성자</th>
 			<th>작성일</th>
-		</tr>
-
+		 </tr>
+			</thead>
+			<tbody>
 		<c:forEach items="${list}" var="QnaVO">
 			<tr align="center">
 				<td>${QnaVO.qna_no}</td>
-				<td><a href='read?qna_no=${QnaVO.qna_no}'>${QnaVO.qna_title}</a></td>
+				<td class="left"><a href='read?qna_no=${QnaVO.qna_no}'>${QnaVO.qna_title}</a></td>
 				<td>${QnaVO.qna_content}</td>
 				<td>${QnaVO.qna_writer}</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${QnaVO.qna_regdate}" /></td>
 			</tr>
 		</c:forEach>
+			</tbody>
 	</table>
 
 	<c:if test="${pageMaker.cri.page!=null }">
 		
 		<div class="container text-right" style="margin-left: 15px">
-			<button type="button" class="btn btn-outline-dark" onclick="location.href='register'"><b>문의글 작성</b></button>
+			<button type="button" class="btn btn-primary" onclick="location.href='register'"><b>문의글 작성</b></button>
 		</div>
 		
 		<form name="search_QnA" autocomplete="on">

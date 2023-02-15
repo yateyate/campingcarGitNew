@@ -28,87 +28,85 @@
 			<h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
 			<div class="location">
 				HOME <i class="fa-solid fa-circle-chevron-right"></i>
-				${menuMap[mn]['title'] } <i class="fa-solid fa-circle-chevron-right"></i>
-				<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+				${menuMap[mn]['title'] } <i class="fa-solid fa-circle-chevron-right"></i><span>${menuMap[mn]['sub'][sn]['title'] }</span>
 			</div>
 		</div>
 
 		<div id="wrap">
-			<%@ include file="../include/submenu.jsp"%>
-
+			 
+			 <!-- #submenu start -->
+      		 <%@ include file="../include/submenu.jsp" %>
+      		 <!-- // #submenu end -->
+		<div class="board_view">
 			<div id="body_contents">
+<!-- ================================================== -->
+				
+		<div class="board_view"><!-- board_view end --></div>
+			<table class="table board_table">		
+			<colgroup>
+				<col width="15%" /> 
+				<col width="35%" /> 
+				<col width="15%" /> 
+				<col width="35%" /> 
+			</colgroup>
+			
+			<thead>
+				<th colspan="4">${qnaVO.qna_title }</th>
+			</thead>
+			
+				<form role="form" action="modifyForm" method="GET">
+					<input type='hidden' name='qna_no' value="${qnaVO.qna_no}">
+				</form>
+					
+			<tbody>
+			<tr>
+				<th class="table-light">작성자</th><td>${qnaVO.qna_writer }</td>
+				<th class="table-light">작성일</th>
+				<td><fmt:formatDate value="${qnaVO.qna_regdate }" pattern="yyyy-MM-dd" type="date"/></td>
+			</tr>
+			</tbody>
+			</table>	
 
-				<!-- /.panel-heading -->
-				<div class="panel-body">
-
-					<form role="form" action="modifyForm" method="GET">
-						<input type='hidden' name='qna_no' value="${qnaVO.qna_no}">
-						<div class="box-body">
-
-							<div class="form-group">
-								<label for="exampleInputPassword1">글번호</label><input type="text"
-									name='qna_no' class="form-control"
-									value="${qnaVO.qna_no}" readonly="readonly">
-							</div>
-							<div class="form-group">
-								<label for="exampleInputEmail1">제목</label><input type="text"
-									name='qna_title' class="form-control"
-									value="${qnaVO.qna_title}" readonly="readonly">
-							</div>
-
-							<div class="form-group">
-								<label for="exampleInputPassword1">내용</label>
-								<textarea class="form-control" name="qna_content" rows="3"
-									readonly="readonly">${qnaVO.qna_content}</textarea>
-							</div>
-
-							<div class="form-group">
-								<label for="exampleInputEmail1">작성자</label> <input type="text"
-									name="qna_writer" class="form-control"
-									value="${qnaVO.qna_writer}" readonly="readonly">
-							</div>
-						</div>
-						<!-- /.box-body -->
-
-						<div class="box-footer">
-							<a href="modifyForm?qna_no=${qnaVO.qna_no}" role="button"
-								class="btn btn-warning">수정</a> <a
-								href="remove?qna_no=${qnaVO.qna_no}" role="button"
-								class="btn btn-danger">삭제</a> <a href="qnalist?keyword="
-								role="button" class="btn btn-primary">목록</a>
-						</div>
-					</form>
+			<div class="content">
+			
+				${qnaVO.qna_content }
+			</div>						
+						
+				<div class="box-footer">
+					<a href="modifyForm?qna_no=${qnaVO.qna_no}" role="button" class="btn btn-warning">수정</a>
+					<a href="remove?qna_no=${qnaVO.qna_no}" role="button" class="btn btn-danger">삭제</a> 
+					<a href="qnalist?keyword=" role="button" class="btn btn-primary">목록</a>
+				</div>
 
 
-					<script>
-						$(document).ready(function() {
-							var formObj = $("form[role='form']");
-							console.log(formObj);
+	<script>
+	$(document).ready(function() {
+	var formObj = $("form[role='form']");
+	console.log(formObj);
 
-							// 수정
-							$(".btn-warning").on("click", function() {
-								formObj.attr("action", "qna/modify");
-								formObj.attr("method", "get");
-								formObj.submit();
-							});
+	// 수정
+	$(".btn-warning").on("click", function() {
+	formObj.attr("action", "qna/modify");
+	formObj.attr("method", "get");
+	formObj.submit();
+	});
 
-							// 삭제
-							$(".btn-danger").on("click", function() {
-								formObj.attr("action", "qna/remove");
-								formObj.submit();
-							});
+	// 삭제
+	$(".btn-danger").on("click", function() {
+	formObj.attr("action", "qna/remove");
+	formObj.submit();
+	});
 
-							// 목록
-							$(".btn-primary").on("click", function() {
-								self.location = "qna/qnalist?keyword=";
-							});
-						});
-					</script>
+	// 목록
+	$(".btn-primary").on("click", function() {
+	self.location = "qna/qnalist?keyword=";
+	});
+	});
+	</script>				
 
 				</div>
 				<!--  end panel-body -->
-			</div>
-			<!-- // #body_contents end -->
+			
 		</div>
 		<!-- // #wrap end -->
 	</div>
