@@ -196,8 +196,10 @@ top: 16px;
 		</div> <!-- // #body_contents end -->
 	</div><!-- // #wrap end -->
 	
-	<div id="footer">
-	</div>
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
 </div><!-- // #container end -->
 
 </body>
