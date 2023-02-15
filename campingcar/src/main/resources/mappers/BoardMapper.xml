@@ -25,8 +25,30 @@
 		select * from write_${bo_table} order by wr_id desc
 	</select>
 	
+	<!-- 검색 처리 -->
+	<sql id="search">
+	<where>
+		<if test="types != null and types.length > 0">
+			<foreach collection="types" item="type" open="(" close=")" separator=" OR ">
+				<if test="type=='wr_name'.toString()">
+					wr_name like concat('%', #{keyword}, '%')
+				</if>
+				<if test="type=='wr_subject'.toString()">
+					wr_subject like concat('%', #{keyword}, '%')
+				</if>				
+			</foreach>
+		</if>
+		<if test="category != null and category != '' ">
+			<trim prefix="and">
+				ca_name = ${category}
+			</trim>
+		</if>
+	</where>	
+	</sql>	
 	<select id="selectList" resultType="kr.co.ccrent.domain.BoardVO">
-		select * from write_${bo_table} order by wr_id desc limit #{skip}, #{size}
+		select * from write_${bo_table}
+		<include refid="search"></include>
+		order by wr_id desc limit #{skip}, #{size}
 	</select>
 	
 	<select id="selectCount" resultType="int">

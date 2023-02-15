@@ -39,8 +39,6 @@
 		<div id="body_contents">
 <!-- ================================================== -->
 
-${sessionScope.user}
-
 <c:if test="${not empty responseDTO and not empty boardConfig }">
 <table class="table board_table center">
 <tbody>
@@ -89,14 +87,20 @@ ${sessionScope.user}
 <button onclick="location.href='${contextPath}/board/register?bo_table=${param.bo_table }';" class="btn btn-primary">글쓰기</button>
 </div>
 
-<div class="search">
 <form action="list" method="get">
 <input type="hidden" name="bo_table" value="${param.bo_table }" />
-<input type="hidden" name="size" value="" />
-<input type="hidden" name="" value="" />
-<input type="hidden" name="" value="" />
-</form>
+<input type="hidden" name="size" value="${pageRequestDTO.size }" />
+<div class="search">
+	<div style="padding:0px 0px 10px 0px;">
+		<input type="checkbox" name="types" value="wr_name" class="form-check-input" /> 작성자
+		<input type="checkbox" name="types" value="wr_subject" class="form-check-input" /> 제목
+	</div>
+	<div class="input-group mb-3">
+		<input type="text" name="keyword" class="form-control" value="" />
+		<button type="submit" class="btn btn-outline-primary" style="width:100px;">검색</button>
+	</div>	
 </div>
+</form>
 
 <script>
 document.querySelector(".pagination").addEventListener("click", function(e){
@@ -110,6 +114,8 @@ document.querySelector(".pagination").addEventListener("click", function(e){
 	self.location = `list?bo_table=${param.bo_table}&page=\${num}`
 },false);
 </script>
+
+
 </c:if>
 
 <c:if test="${empty responseDTO or empty boardConfig}">
