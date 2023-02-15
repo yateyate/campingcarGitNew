@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>\
+<%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="mn">${boardConfig.bo_mn }</c:set>
 <c:set var="sn">${boardConfig.bo_sn }</c:set>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -38,6 +38,8 @@
 		
 		<div id="body_contents">
 <!-- ================================================== -->
+
+${sessionScope.user}
 
 <c:if test="${not empty responseDTO and not empty boardConfig }">
 <table class="table board_table center">
