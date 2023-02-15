@@ -99,18 +99,18 @@ function search(){//검색기능
       <ul>
       <b>
          <c:if test="${pageMaker.prev }">         
-            <a class="btn btn-outline-secondary "  href = "listAll${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>            
+            <a class="btn btn-outline-secondary "  href = "qnalist${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>            
          </c:if>      
          
          <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">            
             <c:choose>
             
             <c:when test="${cri.page != idx }">
-            <a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "listAll${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            <a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "qnalist${pageMaker.makeSearch(idx)}"  >${idx }</a>
             </c:when>
             
             <c:otherwise>
-            <a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "listAll${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            <a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "qnalist${pageMaker.makeSearch(idx)}"  >${idx }</a>
             </c:otherwise>
             
             </c:choose>   
