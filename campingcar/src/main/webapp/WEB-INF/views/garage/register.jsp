@@ -130,7 +130,7 @@ top: 16px;
 		<span class="input-group-text" >정비소 영업상태</span>
 			<div class="group" style="text-align: center; padding-top: 5px; border:1px solid #d9d9d9; 
 			border-radius : 0px 5px 5px 0px; width: 72%">
-				<input type="radio" name="garage_state" value="1" checked="checked" style=""/>
+				<input type="radio" name="garage_state" value="1" checked="checked"/>
 				<label for="rb1" style="padding-right: 50px">영업중</label>
 			    
 				<input type="radio" name="garage_state" value="2"  />

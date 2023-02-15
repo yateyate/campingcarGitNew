@@ -6,13 +6,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class Criteria {
 	
-		private int page;
+		private int page; 
 		private int perPageNum;
-		private String keyword;
-	
-		
-		
-		
+		private String keyword;		
 
 
 		public String makeQuery(int page) { //url주소 고정시키기
