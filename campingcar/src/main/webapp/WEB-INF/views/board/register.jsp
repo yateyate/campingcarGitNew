@@ -3,13 +3,41 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<c:set var="mn">${boardConfig.bo_mn }</c:set>
+<c:set var="sn">${boardConfig.bo_sn }</c:set>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 조회</title>
+<%@ include file="../include/plugin.jsp" %>
+<link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+</head>
+<body>
 
-<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<div id="container">
+	<!-- #header start -->
+	<%@ include file="../include/header.jsp" %>
+	<!--// #header end -->
+	
+  <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
+	
+	<div id="wrap">
+      
+      <!-- #submenu start -->
+      <%@ include file="../include/submenu.jsp" %>
+      <!-- // #submenu end -->
+		
+		<div id="body_contents">
+<!-- ================================================== -->
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
@@ -154,30 +182,46 @@ $('body').on('click', '.cvf_upload_btn', function(e){
 });
 </script>
 
-<div class = "container-fluid">
-<h3>Sort Files before upload</h3>
-<br />
-<form action="register" method="post" enctype="multipart/form-data">
-<input type="hidden" name="bo_table" value="free" />
-<table border="1" width="600px">
-<tr><td>제목</td><td><input type="text" name="wr_subject" /></td></tr>
-<tr><td>내용</td><td><textarea cols="100" rows="5" name="wr_content"></textarea></td></tr>
-<tr><td>이름</td><td><input type="text" name="wr_name" /></td></tr>
-<tr><td>비번</td><td><input type="text" name="wr_password" /></td></tr>
-</table>
+<div class="board_write">
+	<form action="register" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="bo_table" value="${param.bo_table }" />
+	<div class="input-group">
+		<span class="input-group-text">제목</span>
+		<input type="text" name="wr_subject" class="form-control "/>
+	</div>
+	<div class="input-group">
+		<span class="input-group-text">작성자</span>
+		<input type="text" name="wr_name" class="form-control "/>
+	</div>
+	<div class="input-group">
+		<span class="input-group-text">비밀번호</span>
+		<input type="text" name="wr_password" class="form-control "/>
+	</div>	
+	<div class="input-group">
+		<span class="input-group-text">내용</span>
+		<textarea name="wr_content" class="form-control" rows="10"></textarea>
+	</div>
 
-
-<div class = "col-md-6">
-<div class = "form-group">
 	<label>Select Images</label>
 	<input type = "file" name = "file" multiple = "true" class = "form-control user_picked_files" />                 
-</div>                     
-<div class = "form-group cvf_order">                           
+                                 
 	<label>Order</label>                               
-	<input type = "text" class = "form-control cvf_hidden_field" value = "" disabled = "disabled" />   
-</div>                     
-<ul class = "cvf_uploaded_files"></ul>
-<button onclick="cvf_reload_order();">전송</button>
+	<input type = "text" class = "form-control cvf_hidden_field" value = "" disabled = "disabled" />               
+	<ul class = "cvf_uploaded_files"></ul>
+	<button onclick="cvf_reload_order();">전송</button>
+	</form>
+
 </div>
-</div>
-</form>
+
+<!-- ================================================== -->		
+		</div> <!-- // #body_contents end -->
+	</div><!-- // #wrap end -->
+	
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
+</div><!-- // #container end -->
+
+</body>
+</html>
