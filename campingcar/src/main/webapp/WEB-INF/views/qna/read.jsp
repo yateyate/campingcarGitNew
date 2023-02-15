@@ -44,7 +44,7 @@
 				class="btn btn-warning">수정</a> <a
 				href="remove?qna_no=${qnaVO.qna_no}" role="button"
 				class="btn btn-danger">삭제</a> <a
-				href="listAll?qna_no=${qnaVO.qna_no}" role="button"
+				href="qnalist?keyword=" role="button"
 				class="btn btn-primary">목록</a>
 		</div>
 	</form>
@@ -69,7 +69,7 @@
 
 			// 목록
 			$(".btn-primary").on("click", function() {
-				self.location = "qna/listAll";
+				self.location = "qna/qnalist?keyword=";
 			});
 		});
 	</script>
