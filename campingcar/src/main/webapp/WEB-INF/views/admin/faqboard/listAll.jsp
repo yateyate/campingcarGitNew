@@ -43,20 +43,20 @@
 	<div id="wrap">
 
 			<div class="panel-heading">
-				질문목록
-				<button id='regBtn' type="button" class="btn btn-xs pull-right" onclick="location.href= 'registerForm' "> 새로운 글 작성 </button>
+		
+				<button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
+    			id="searchBtn" class="btn btn-secondary btn-sm" onclick="location.href= 'registerForm' " >새로운 글 작성</button>
 			</div>
 
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
-						<tr>
+						<tr align="center">
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
-							<th>작성일</th>
-							
+							<th>작성일</th>					
 						</tr>
 					</thead>
 
@@ -116,6 +116,7 @@
    
 
     <span>
+    
     <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
     placeholder="글을 검색하세요" />
     　　　　
