@@ -17,6 +17,7 @@
 .board_view a.btn {color:#ffffff;}
 .board_view .content {padding:60px 0px 60px 0px; min-height:300px; border-bottom:1px solid #c8c8c8; margin:0px 0px 60px 0px;}
 .board_view .filelist li {padding:0px 0px 30px 0px;}
+.board_view .filelist li img {max-width:1200px;}
 
 .board_error {background:#f0f0f0; border:1px solid #dcdcdc; padding:60px; text-align:center;}
 .board_error h3 {padding:0px 0px 10px 0px; color:#dc3545;}
