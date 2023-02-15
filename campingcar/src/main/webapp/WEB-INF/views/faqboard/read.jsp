@@ -23,18 +23,16 @@
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
-	<div id="body_head">
-		<h2>FAQ</h2>
-		<div class="location">
-			HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>자주하는 질문</span>
-		</div>
-	</div>
+
+   <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
+   
 	<div id="wrap">
-		<div id="submenu">
-			<ul>
-				<li class="on"><a href="#">자주하는 질문</a></li>
-			</ul>
-		</div>
+	<%@ include file="../include/submenu.jsp" %>
 		
 		<div id="body_contents">
 

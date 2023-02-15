@@ -69,17 +69,17 @@ $(document).ready(function(){
 			
 			<div class="input-group">
 				<span class="input-group-text">정비소 명</span>
-				<input type="text" class="form-control" id="garage_name" name="garage_name"  placeholder="정비소명 입력"
+				<input autocomplete="off" type="text" class="form-control" id="garage_name" name="garage_name"  placeholder="정비소명 입력"
 				value="${dto.garage_name }"/>
 			</div>
 			<div class="input-group">
 				<span class="input-group-text">정비소 주소</span>
-				<input type="text" class="form-control" id="garage_addr" name="garage_addr"  placeholder="정비소 주소 입력"
+				<input autocomplete="off" type="text" class="form-control" id="garage_addr" name="garage_addr"  placeholder="정비소 주소 입력"
 				value="${dto.garage_addr }" />
 			</div>
 			<div class="input-group">
 				<span class="input-group-text">정비소 연락처</span>
-				<input type="text" class="form-control" name="garage_phone" placeholder="정비소 연락처 입력" 
+				<input autocomplete="off" type="text" class="form-control" name="garage_phone" placeholder="정비소 연락처 입력" 
 				value="${dto.garage_phone }"/>
 			</div>
 			<div class="input-group">
@@ -133,9 +133,9 @@ $(document).ready(function(){
 						</select>
 			</div>
 			<div style="float: right">	
-				<button class="ajs ajsbutton4" type="submit" id="update">수정</button>
-				<button class="ajs ajsbutton1" type ="reset" value="초기화">초기화</button>
-				<button class="ajs ajsbutton2" type="button" onclick='location.href="${contextPath }/admin/garage/list?keyword="'>돌아가기</button>
+				<button class="btn btn-outline-success" type="submit" id="update">수정</button>
+				<button class="btn btn-outline-danger" type ="reset" value="초기화">초기화</button>
+				<button class="btn btn-outline-dark" type="button" onclick='location.href="${contextPath }/admin/garage/list?keyword="'>돌아가기</button>
 			</div>
 	</form>
 </div>

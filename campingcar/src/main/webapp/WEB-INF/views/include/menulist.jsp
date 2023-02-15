@@ -77,11 +77,11 @@ menuMap.put("6", new HashMap<String, Object>(){{
 	put("sub", new HashMap<String, Object>(){{
 		put("1",new HashMap<String, Object>(){{
 			put("title", "이용 문의");	
-			put("url", "#");	
+			put("url", contextPath+"/qna/qnalist?keyword=");	
 		}});
 		put("2",new HashMap<String, Object>(){{
 			put("title", "공지 사항");	
-			put("url", "#");	
+			put("url", contextPath+"/board/list?bo_table=notice");	
 		}});
 		put("3",new HashMap<String, Object>(){{
 			put("title", "자주하는 질문");	
@@ -121,7 +121,7 @@ menuMap.put("8", new HashMap<String, Object>(){{
 		}});
 		put("4",new HashMap<String, Object>(){{
 			put("title", "정비소 정보 수정 및 삭제");	
-			put("url", contextPath+"/admin/garage/list");	
+			put("url", contextPath+"/admin/garage/list?keyword=");	
 		}});		
 	}});
 }});

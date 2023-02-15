@@ -58,12 +58,12 @@
 			<c:forEach var="company" items="${list2}">
 			 	<tr>
 				 	<th>${company.comp_id}</th>
-				 	<td><a href="read?comp_id=${company.comp_id}" style="color:blue">${company.comp_name}</a></td>
+				 	<td><a href="read?comp_id=${company.comp_id}" style="color:#3399ff"><b>${company.comp_name}</b></a></td>
 				 	<td>${company.comp_addr}</td>
 				 	<td>${company.comp_phone}</td>
 				 	<td>${company.comp_pic}</td>
 				 	<td>${company.comp_pic_email}</td>
-				 	<th>대기</th> 
+				 	<th style="color:#bdbdbd">대기</th> 
 			 	</tr>
 			</c:forEach>
 			 </table>	

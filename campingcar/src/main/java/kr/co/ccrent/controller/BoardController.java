@@ -28,11 +28,12 @@ public class BoardController {
 	private final BoardFileService boardFileService;
 	
 	@GetMapping("/register")
-	public void register() {
-		System.out.println("<Board Controller> register GET");
+	public void register(Model model, String bo_table) {
+		System.out.println("<Board Controller> register GET"); 
+		model.addAttribute("boardConfig", boardService.getBoardConfig(bo_table));
 	}
 	@PostMapping("/register")
-	public String registerPOST(String bo_table, @RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, BoardDTO boardDTO, HttpServletRequest request) {
+	public String registerPOST(Model model, String bo_table, @RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, BoardDTO boardDTO, HttpServletRequest request) {
 		System.out.println("<Board Controller> register POST");
 		System.out.println(boardDTO);
 		boardService.register(boardDTO, file, request);
@@ -41,6 +42,7 @@ public class BoardController {
 	@GetMapping("/list")
 	public void listGET(Model model, PageRequestDTO pageRequestDTO) {
 		System.out.println("<Board Controller> list GET");
+		model.addAttribute("boardConfig", boardService.getBoardConfig(pageRequestDTO.getBo_table()));
 		model.addAttribute("responseDTO", boardService.getList(pageRequestDTO));
 	}
 	@GetMapping("/read")
@@ -50,6 +52,8 @@ public class BoardController {
 		fieldmap.put("bo_table", bo_table);
 		fieldmap.put("wr_id", wr_id);
 		model.addAttribute("filelist", boardFileService.getFileList(fieldmap));
+		model.addAttribute("boardConfig", boardService.getBoardConfig(bo_table));
+		model.addAttribute("dto", boardService.getOne(fieldmap));
 	}
 
 }

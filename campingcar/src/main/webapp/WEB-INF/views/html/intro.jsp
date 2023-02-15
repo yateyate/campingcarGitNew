@@ -124,6 +124,7 @@ img {vertical-align: middle;}
          </ol>
          <div class="carousel-inner">
 
+<<<<<<< HEAD
    <div class="slider">
             <div class="item active">
                <img src="${contextPath }/resources/img/html/eza03.jpg" width="1223" height="894">
@@ -142,6 +143,26 @@ img {vertical-align: middle;}
       
       </div>
    </div>
+=======
+	<div class="slider">
+				<div class="item active">
+					<img src="../resources/img/html/eza03.jpg" width="1223" height="894">
+				</div>
+				
+				</div>
+				
+			</div>
+		 
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+		
+		</div>
+	</div>
+>>>>>>> upstream/master
  -->
  
  
