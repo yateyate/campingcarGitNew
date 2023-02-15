@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>\
+<c:set var="mn">${boardConfig.bo_mn }</c:set>
+<c:set var="sn">${boardConfig.bo_sn }</c:set>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -20,42 +23,53 @@
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
-	<div id="body_head">
-		<h2>일반 게시판</h2>
-		<div class="location">
-			HOME　<i class="fa-solid fa-circle-chevron-right"></i>　
-			<span>일반 게시판</span>
-		</div>
-	</div>
+   <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
 	
 	<div id="wrap">
-		<div id="submenu">
-			<ul>
-				<li class="on"><a href="#">서브 메뉴</a></li>
-				<li><a href="#">서브 메뉴</a></li>
-				<li><a href="#">서브 메뉴</a></li>
-				<li><a href="#">서브 메뉴</a></li>
-				<li><a href="#">서브 메뉴</a></li>
-			</ul>
-		</div>
+      
+      <!-- #submenu start -->
+      <%@ include file="../include/submenu.jsp" %>
+      <!-- // #submenu end -->
 		
 		<div id="body_contents">
 <!-- ================================================== -->
 
-<table class="table table-bordered">
+<c:if test="${not empty responseDTO and not empty boardConfig }">
+<table class="table board_table center">
+<tbody>
+<colgroup>
+	<col width="10%" />
+	<col width="*" />
+	<col width="10%" />
+	<col width="20%" />
+	<col width="10%" />
+</colgroup>
+<thead>
+<tr>
+	<th>#</th>
+	<th>제목</th>
+	<th>작성자</th>
+	<th>작성 시간</th>
+	<th>조회수</th>
+</tr>
+</thead>
 <tbody>
 <c:forEach items="${responseDTO.dtoList }" var="dto">
 <tr>
 	<th>${dto.wr_id }</th>
-	<td><a href="${contextPath }/board/read?bo_table=${param.bo_table }&wr_id=${dto.wr_id}&${pageRequestDTO.link}">${dto.wr_subject }</a></td>
+	<td class="left"><a href="${contextPath }/board/read?bo_table=${param.bo_table }&wr_id=${dto.wr_id}&${pageRequestDTO.link}">${dto.wr_subject }</a></td>
 	<td>${dto.wr_name }</td>
-	<td>${dto.wr_datetime }</td>
+	<td><fmt:formatDate value="${dto.wr_datetime }" pattern="yyyy-MM-dd" type="date"/></td>
 	<td>${dto.wr_hit }</td>
 </tr>
 </c:forEach>
 </tbody>
 </table>
-
 <nav aria-label="Page navigation example">
 	 <ul class="pagination">
 	 	<c:if test="${responseDTO.prev }">
@@ -69,7 +83,6 @@
 	 	</c:if>
 	</ul>
 </nav>
-
 <div class="board_bot">
 <button onclick="location.href='${contextPath}/board/register?bo_table=${param.bo_table }';" class="btn btn-primary">글쓰기</button>
 </div>
@@ -95,13 +108,22 @@ document.querySelector(".pagination").addEventListener("click", function(e){
 	self.location = `list?bo_table=${param.bo_table}&page=\${num}`
 },false);
 </script>
+</c:if>
 
+<c:if test="${empty responseDTO or empty boardConfig}">
+<div class="board_error">
+	<h3><i class="fa-solid fa-triangle-exclamation"></i> ERROR</h3>
+	테이블 혹은 테이블 설정이 존재하지 않습니다. 데이터베이스를 확인하세요.
+</div>
+</c:if>
 <!-- ================================================== -->		
 		</div> <!-- // #body_contents end -->
 	</div><!-- // #wrap end -->
 	
-	<div id="footer">
-	</div>
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
 </div><!-- // #container end -->
 
 </body>

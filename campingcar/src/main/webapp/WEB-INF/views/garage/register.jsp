@@ -115,16 +115,16 @@ top: 16px;
 		
 	<div class="input-group">
 		<span class="input-group-text">정비소 명</span>
-		<input type="text" class="form-control" id="garage_name" name="garage_name"  placeholder="정비소명 입력"/>
+		<input autocomplete="off" type="text" class="form-control" id="garage_name" name="garage_name"  placeholder="정비소명 입력"/>
 	</div>
 		
 	<div class="input-group">
 		<span class="input-group-text">정비소 주소</span>
-		<input type="text" class="form-control" id="garage_addr" name="garage_addr"  placeholder="정비소 주소 입력" />
+		<input autocomplete="off" type="text" class="form-control" id="garage_addr" name="garage_addr"  placeholder="정비소 주소 입력" />
 	</div>
 	<div class="input-group">
 		<span class="input-group-text">정비소 연락처</span>
-		<input type="text" class="form-control" name="garage_phone" placeholder="정비소 연락처 입력" />
+		<input autocomplete="off" type="text" class="form-control" name="garage_phone" placeholder="정비소 연락처 입력" />
 	</div>
 	<div class="input-group">
 		<span class="input-group-text" >정비소 영업상태</span>
@@ -196,8 +196,10 @@ top: 16px;
 		</div> <!-- // #body_contents end -->
 	</div><!-- // #wrap end -->
 	
-	<div id="footer">
-	</div>
+	<!-- #footer start -->
+	<%@ include file="../include/footer.jsp" %>
+	<!-- //#footer end -->
+	
 </div><!-- // #container end -->
 
 </body>

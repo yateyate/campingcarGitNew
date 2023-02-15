@@ -56,15 +56,6 @@ width:120px;
 		<div id="body_contents">
 <!-- ================================================== -->
 
-<style>
-.table th {border:1px solid #c8c8c8; text-align:center;}
-.carread div,
-.carread table {float:left;}
-.carread div {width:430px;}
-.carread img {width:400px;}
-.carread table {width:770px;}
-</style>
-
 <div class="carread clearfix">
 	<div>
 		<img src="${contextPath }/resources/data/car/${dto.car_file }" alt="" />
@@ -119,7 +110,7 @@ width:120px;
 </div>
 
 
-<div style="text-align:center; padding:60px 0px 0px 0px; border-top:1px solid #dcdcdc; margin:50px 0px 0px 0px;">
+<div style="text-align:center;">
 <button onclick="location.href='list';" class="btn btn-primary" style="width:150px; height:40px;">목록</button>
 </div>
 <!-- 모달&모달테스트 -->

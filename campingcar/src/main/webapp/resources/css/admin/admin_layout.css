@@ -6,7 +6,7 @@ table {background:#ffffff;}
 /* 레이아웃 */
 #container {position:relative;}
 #topmenu {height:50px; width:2000px; background:#ffffff; position:fixed; padding:0px 0px 0px 300px; border-bottom:1px solid #dcdcdc; z-index:999998;}
-#sidebar {background:#0b131c; min-height:1080px; width:250px; position:fixed; top:0; left:0; padding:10px; z-index:999999;}
+#sidebar {background:#0b131c; height:100%; width:250px; position:fixed; top:0; left:0; padding:10px; z-index:999999;}
 #wrap {padding:110px 60px 60px 300px;}
 
 /* 탑메뉴 */
