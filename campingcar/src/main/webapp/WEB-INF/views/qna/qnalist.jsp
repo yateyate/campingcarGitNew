@@ -18,12 +18,19 @@
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 
+<!-- 제목 위에 마우스 올릴 경우 이벤트 발생(빨강색으로 변경됨) -->
+<style>
+a:hover{
+color: red;
+}
+</style>
+
 <script>
 function search(){//검색기능
 	var $keyword = $('#keyword');
 	$('#searchBtn').on('click',function(){
 		var keywordVal = $keyword.val();
-		var url = "listAll?page=1"
+		var url = "qnalist?page=1"
 			+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"			
 			+ "&keyword=" + encodeURIComponent(keywordVal);
 		window.location.href = url;			
@@ -54,10 +61,13 @@ function search(){//검색기능
 		<div id="body_contents">
 <!-- ================================================== -->
 	
-	<h4 align="center">문의 사항 내용에 연락처 및 내용을 남겨주시면 담당자가 확인 후 연락드리겠습니다</h3>
+	<h4 align="center">문의 사항 내용에 연락처 및 내용을 남겨주시면 담당자가 확인 후 연락드리겠습니다</h4>
 	<br>
-	<table class="table table-bordered">
-		<tr>
+	
+	<div class="panel-body">
+	
+	<table class="table table-bordered table-hover">
+		<tr align="center" bgcolor="gray" class="a">
 			<th>글번호</th>
 			<th>제목</th>
 			<th>내용</th>
@@ -66,7 +76,7 @@ function search(){//검색기능
 		</tr>
 
 		<c:forEach items="${list}" var="QnaVO">
-			<tr>
+			<tr align="center">
 				<td>${QnaVO.qna_no}</td>
 				<td><a href='read?qna_no=${QnaVO.qna_no}'>${QnaVO.qna_title}</a></td>
 				<td>${QnaVO.qna_content}</td>
@@ -99,31 +109,30 @@ function search(){//검색기능
       <ul>
       <b>
          <c:if test="${pageMaker.prev }">         
-            <a class="btn btn-outline-secondary "  href = "listAll${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>            
+            <a class="btn btn-outline-secondary "  href = "qnalist${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a>            
          </c:if>      
          
          <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var = "idx">            
             <c:choose>
             
             <c:when test="${cri.page != idx }">
-            <a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "listAll${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            <a class="<c:if test="${cri.page != idx }">btn btn-outline-secondary</c:if>" href = "qnalist${pageMaker.makeSearch(idx)}"  >${idx }</a>
             </c:when>
             
             <c:otherwise>
-            <a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "listAll${pageMaker.makeSearch(idx)}"  >${idx }</a>
+            <a style="color: white;" class="<c:if test="${cri.page == idx }">btn btn-secondary</c:if>" href = "qnalist${pageMaker.makeSearch(idx)}"  >${idx }</a>
             </c:otherwise>
             
             </c:choose>   
          </c:forEach>
             
          <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-            <a class="btn btn-outline-secondary " href = "listAll${pageMaker.makeSearch(pageMaker.endPage +1 )}">&raquo;</a>
+            <a class="btn btn-outline-secondary " href = "qnalist${pageMaker.makeSearch(pageMaker.endPage +1 )}">&raquo;</a>
          </c:if>
       </b>
       </ul>           
 		</div>
 	</c:if>
-</div>
 
 	<script>
 		var result = '${msg}';
@@ -144,16 +153,20 @@ function search(){//검색기능
 		$(".pageInfo a").on("click", function(e) {
 			e.preventDefault();
 			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-			moveForm.attr("action", "qna/listAll");
+			moveForm.attr("action", "qna/qnalist?keyword=");
 			moveForm.submit();
 		});
 		
 	</script>
 	
-	</div>
-	   <!-- #footer start -->
+			</div> <!-- panel-body end -->
+		</div><!-- // #body_contents end -->
+	</div><!-- // #wrap end -->
+	
+		<!-- #footer start -->
 	<%@ include file="../include/footer.jsp" %>
-	<!-- //#footer end -->
+		<!-- //#footer end -->
+	
 	   <!-- /.content -->
 	</div>
 </body>

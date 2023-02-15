@@ -39,7 +39,7 @@ public class QnaController {
 		service.regist(qna);
 
 		rttr.addFlashAttribute("msg", "success");
-		return "redirect:/qna/listAll";
+		return "redirect:/qna/qnalist?keyword=";
 	}
 
 //  페이징 처리 전 listAll
