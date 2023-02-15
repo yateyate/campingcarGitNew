@@ -61,7 +61,7 @@
 				 	<td>${company.comp_phone}</td>
 				 	<td>${company.comp_pic}</td>
 				 	<td>${company.comp_pic_email}</td>
-				 	<th>승인</th> 
+				 	<th style="color:#6699ff">승인</th> 
 			 	</tr>
 			</c:forEach>
 			  </table>
