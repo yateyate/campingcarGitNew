@@ -21,6 +21,11 @@
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 </head>
+<style>
+	.trr{
+		 background-color: #b3e5fc;
+	}
+</style>
 
 <body>
 
@@ -46,19 +51,19 @@
 <!-- ================================================== -->
     	<section class="content container-fluid">
 			<div class="table-responsive">
-				  <table width="100%" border="1" class="table table-bordered text-center">
+				<div class="container text-center table-hover">
+				  <table class="table table-bordered text-center">
 				  <colgroup> 
 				</colgroup>
-				<thead>
-				</thead>
-				<tbody>
+			
+				
 				<div class="container text-center">
 				  <h4 ><b>현재 등록되어 있는 대여 업체 입니다</b></h4>
 				  </div>
 				  <br>
 				  <br>
-				  <thead class="table-dark theadmm">
-				  <tr >
+				 
+				  <tr class="trr"  style="color:#6699ff">
 				  
 				  	<td><h5><b>회사번호</b></h5></td>
 				  	<td><h5><b>회사명</b></h5></td>
@@ -66,13 +71,12 @@
 				  	<td><h5><b>전화번호</b></h5></td>
 				  	<td><h5><b>담당자</b></h5></td>
 				  	<td><h5><b>담당자 이메일</b></h5></td>
-				  	<td><h5><b>신청 상태</b></h5></td>
 				  </tr>
-				  </thead>
+				 
 				  <div class="container text-center">
 				<c:forEach var="company" items="${list}">
 				<c:if test="${company.comp_status == 1 }">
-				 	<tr>
+				 	<tr >
 				 	
 				 	<td><h5><b>${company.comp_id}</b></h5></td>
 				 	<td><h5><b>${company.comp_name}</b></h5></td>
@@ -80,12 +84,11 @@
 				 	<td><h5><b>${company.comp_phone}</b></h5></td>
 				 	<td><h5><b>${company.comp_pic}</b></h5></td>
 				 	<td><h5><b>${company.comp_pic_email}</b></h5></td>
-				 	<td><h5 style="color:red"><b>승인</b></h5></td>
 				</c:if>
 				 	</tr>
 				</c:forEach>
 				</div>
-				</tbody>
+			
 				  </table>
 				  
  <c:if test="${pageMaker.cri.page!=null }">
@@ -127,9 +130,10 @@
 				  <br>
 				  	<div class="box">
 				<div class="container text-right">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='registerForm'"><b>파트너 제휴 신청하러 가기 ←</b></button>
+					<button type="button" class="btn btn-primary" onclick="location.href='registerForm'"><b>파트너 제휴 신청하러 가기 ←</b></button>
 				</div>
 			</div>
+				</div>
 				</div>
 		    </section>
 		    <br>
