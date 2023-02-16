@@ -15,34 +15,42 @@
 <c:set var="title" value="대여 회사 목록" />
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
+<script>
+   function search2(){//검색기능
+         var $keyword = $('#keyword');
+         $('#searchBtn2').on('click',function(){
+            var keywordVal = $keyword.val();
+            var url = "listForm2?page=1"
+               + "&perPageNum=" + "${pageMaker.cri.perPageNum}"         
+               + "&keyword=" + encodeURIComponent(keywordVal);
+            window.location.href = url;         
+         })   
+   }
+</script>
 </head>
 <style>
 
 </style>
 <body>
 									 
-				  <div id="container">
-				  <!-- #sidebar start -->
-	<%@ include file="../include/sidebar.jsp" %>
-	<!-- // #sidebar end -->
+				<div id="container">
+				<!-- #sidebar start -->
+				<%@ include file="../include/sidebar.jsp" %>
+				<!-- // #sidebar end -->
+			
+				<div id="topmenu">
+					<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　대여 회사 관리　<i class="fa-solid fa-angle-right"></i>　대여 회사 목록</h2>
+					<div id="gnb"></div>
+				</div>
+				<div id="wrap">
+			<!-- ================================================== -->
 
-	<!-- #topmenu start -->
-	<%@ include file="../include/topmenu.jsp" %>
-	<!-- // #topmenu end -->
-	<div id="wrap">
 	
-		
-			<section class="content container-fluid">
-				<div class="table-responsive">
-				  <div class="container text-center">
-				  </div>
-				 <div class="container text-center table-hover">
-			<table class="table table-bordered">
-			<colgroup>
+						<div class="board_list">
+				<table width="100%" class="table table-bordered center table-hover">
+				<colgroup>
 				</colgroup>
-			  <h4><b>현재 승인되어 있는 업체</b></h4><br>
-			  
-				
+				<thead>
 			  <tr class="table-secondary">
 				  	<th>회사번호</th>
 				  	<th>회사명</th>
@@ -52,6 +60,9 @@
 				  	<th>담당자 이메일</th>
 				  	<th>신청 상태</th>
 			  </tr>
+			  </thead>
+				<tbody>
+			  
 			 
 			<c:forEach var="company" items="${list3}">
 			 	<tr>
@@ -65,6 +76,10 @@
 			 	</tr>
 			</c:forEach>
 			  </table>
+				  </div>
+				  <br>
+<!-- ============================================================================================= -->
+				<!--  페이징 처리 -->
 			  <c:if test="${pageMaker.cri.page!=null }">
    <div class="container text-center">
     
@@ -97,6 +112,22 @@
             
 </div>
 </c:if>
+<!-- ============================================================================================= -->
+<br>
+<br>
+			<!-- 검색 기능 -->				  
+			<form name="search2_company" items="${list3}" autocomplete="on">
+		<div class="input-group mb-3 ">
+    <input class="form-control" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    placeholder=" 회사명으로 검색" />
+    
+	<button type="submit" id="searchBtn2" class="btn btn-outline-primary" style="width:100px;">　검색　</button>
+		
+	</div>
+		</form>
+		<br>
+		<br>
+<!-- ============================================================================================= -->
 			  
 
       
@@ -106,15 +137,5 @@
 				</section>
 				
 				</div>
-			  <br>
-			  <br>
-			  <br>
-			  <br>
-			  <br>
-			  
-			  
-		
-
-
 </body>
 </html>

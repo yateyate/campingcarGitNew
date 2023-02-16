@@ -93,5 +93,12 @@ public class CompanyServiceImpl implements CompanyService{
 		return (List<CompanyDTO>) companyMapper.getAll3();
 	}
 
+	@Override
+	public CompanyDTO get2(int comp_id) {
+		
+		return companyMapper.get(comp_id);
+	}
+
+
 
 }

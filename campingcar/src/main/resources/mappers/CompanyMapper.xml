@@ -12,7 +12,7 @@
  			<![CDATA[
  			select *
  			from company
- 			where comp_status > 0
+ 			where comp_status > 0 and comp_name like CONCAT('%',#{keyword},'%')
  			limit #{pageStart},#{perPageNum}
  			]]>
 	</select>
@@ -23,7 +23,7 @@
 	 		<![CDATA[
 	 		select count(comp_status)
 	 		from company
-	 		where comp_status > 0
+	 		where comp_status > 0 and comp_name like CONCAT('%',#{keyword},'%')
 	 		]]>
 	</select>
 	
@@ -34,7 +34,7 @@
  			<![CDATA[
  			select *
  			from company
- 			where comp_status > 0
+ 			where comp_status > 0 and comp_name like CONCAT('%',#{keyword},'%')
  			limit #{pageStart},#{perPageNum}
  			]]>
 	</select>
@@ -45,7 +45,7 @@
 	 		<![CDATA[
 	 		select count(comp_status)
 	 		from company
-	 		where comp_status > 0
+	 		where comp_status > 0 and comp_name like CONCAT('%',#{keyword},'%')
 	 		]]>
 	</select>
 
@@ -57,7 +57,7 @@
  			<![CDATA[
  			select *
  			from company
- 			where comp_status = 0
+ 			where comp_status = 0 and comp_name like CONCAT('%',#{keyword},'%')
  			limit #{pageStart},#{perPageNum}
  			]]>
 	</select>
@@ -68,7 +68,7 @@
 	 		<![CDATA[
 	 		select count(comp_status)
 	 		from company
-	 		where comp_status = 0
+	 		where comp_status = 0 and comp_name like CONCAT('%',#{keyword},'%')
 	 		]]>
 	</select>
 	
@@ -105,6 +105,12 @@
 		where comp_id =#{comp_id}
 	</select>
 	
+	<select id="get2" parameterType="java.lang.Integer" resultType="kr.co.ccrent.dto.CompanyDTO">
+		select * 
+		from company 
+		where comp_id =#{comp_id}
+	</select>
+	
 	<insert id="register" parameterType="kr.co.ccrent.dto.CompanyDTO">
 		insert into company(comp_id,comp_name,comp_addr,comp_phone,comp_pic,comp_pic_email,comp_status)
  		values (#{comp_id},#{comp_name},#{comp_addr},#{comp_phone},#{comp_pic},#{comp_pic_email},0) 	
@@ -117,13 +123,15 @@
 	where
 	comp_id = #{comp_id}
 	</update>
-	
+
 	<!-- 정비소 정보 삭제 -->
 	<delete id="stsmodify2" parameterType="java.lang.Integer">
 		delete from
 		company
 		where comp_id = #{comp_id}
 	</delete>
+	
+
 
 	
 	

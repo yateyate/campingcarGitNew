@@ -27,11 +27,11 @@ public interface CompanyMapper {
 	
 	
 	CompanyDTO get(int comp_id);
+	CompanyDTO get2(int comp_id);
 	
 	int register(CompanyDTO companyDTO);
 
 	int stsmodify(CompanyDTO companyDTO);
-	
 	int stsmodify2(int comp_status);
 	
 

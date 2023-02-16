@@ -18,8 +18,8 @@
 		</li>
 		<li><a href="${contextPath }/admin/company/listForm2"><i class="fa-solid fa-warehouse"></i>　대여 회사 관리</a>
 			<ul>
-				<li><a href="${contextPath }/admin/company/listForm2"><i class="fa-regular fa-circle"></i>　대여 회사 목록</a></li>
-				<li><a href="${contextPath }/admin/company/listForm"><i class="fa-regular fa-circle"></i>　대여 회사 현황</a></li>
+				<li><a href="${contextPath }/admin/company/listForm2?keyword="><i class="fa-regular fa-circle"></i>　대여 회사 목록</a></li>
+				<li><a href="${contextPath }/admin/company/listForm?keyword="><i class="fa-regular fa-circle"></i>　대여 회사 현황</a></li>
 			</ul>		
 		</li>
 		<li><a href="${contextPath }/admin/garage/register"><i class="fa-solid fa-wrench"></i>　정비소 관리</a>

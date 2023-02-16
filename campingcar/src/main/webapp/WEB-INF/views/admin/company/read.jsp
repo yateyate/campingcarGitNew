@@ -25,28 +25,27 @@ select{
 	
 </style>
 <body>
+		    
 	<div id="container">
-		<!-- #sidebar start -->
-		<%@ include file="../include/sidebar.jsp" %>
-		<!-- // #sidebar end -->
-		
-		<!-- #topmenu start -->
-		<%@ include file="../include/topmenu.jsp" %>
-		<!-- // #topmenu end -->
-		<div id="wrap">	
-	<section class="content container-fluid">
-		<div class="table-responsive">
+	<!-- #sidebar start -->
+	<%@ include file="../include/sidebar.jsp" %>
+	<!-- // #sidebar end -->
 
-			<div class="container text-center">
-				<h4><b>대여 회사 상세 보기</b></h4>
-			</div>
-			<br>
-				<table width="100%" class="table table-bordered center table-hover">
+
+
+	<div id="topmenu">
+		<h2><i class="fa-solid fa-house"></i> 관리자　<i class="fa-solid fa-angle-right"></i>　대여 회사 관리　<i class="fa-solid fa-angle-right"></i>　대여 회사 현황 <i class="fa-solid fa-angle-right"></i>　상세 보기</h2>
+		<div id="gnb"></div>
+	</div>
+	
+	<div id="wrap">
+<!-- ================================================== -->
+					<div class="board_list">
+					<table width="100%" class="table table-bordered center table-hover">
 					<colgroup>
 					</colgroup>
- 
+					<thead>
 					<tr class="table-secondary">
-					<br>
 						<th>회사번호</th>	
 						<th>회사명</th>
 						<th>주소</th>
@@ -55,6 +54,8 @@ select{
 						<th>담당자 이메일</th>
 						<th>신청 상태</th>
 					</tr>
+					</thead>
+					<tbody>
 					<tr>
 						<th>${company.comp_id}</th>
 						<td>${company.comp_name}</td>
@@ -65,6 +66,7 @@ select{
 						<th style="color:#bdbdbd">대기</th>
 					<br>
 					</tr>
+					</tbody>
 				</table>
 		</div>
 		<table>
@@ -74,7 +76,7 @@ select{
 		<form role="form" method="post" action="stsmodify" style="display:inline;">
 			<input type="hidden" name="comp_id" value="${company.comp_id}">
 			<input type="hidden" name="comp_status" value="${company.comp_status}">
- 				<h4 style="text-align:center;"><b>　　　신청 상태 변경　</b></h4>
+ 				<h4 style="text-align:center;"><b>신청 상태 변경</b></h4>
 			<table width="100%">
 			<colgroup>
 				<col width="33%" />
@@ -91,7 +93,7 @@ select{
 					<button type="submit" class="btn btn-danger"><b>　　　　거절　　　　</b></button>
 				</td>
 　		</form>
-				<td style="text-align:right;"><button type="button" class="btn btn-secondary" onclick="location.href='listForm'"><b>　　　이전으로　　　</b></button></td>
+				<td style="text-align:right;"><button type="button" class="btn btn-secondary" onclick="location.href='listForm?keyword='"><b>　　　이전으로　　　</b></button></td>
 				
  			</table>
 	</section>
