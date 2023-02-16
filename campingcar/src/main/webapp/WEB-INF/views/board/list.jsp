@@ -39,6 +39,8 @@
 		<div id="body_contents">
 <!-- ================================================== -->
 
+${sessionScope.user}
+
 <c:if test="${not empty responseDTO and not empty boardConfig }">
 <table class="table board_table center">
 <tbody>
