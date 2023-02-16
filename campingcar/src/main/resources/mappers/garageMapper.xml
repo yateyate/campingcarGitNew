@@ -86,8 +86,10 @@
 		garage_state=#{garage_state},	garage_code=#{garage_code}
 		where garage_no	= #{garage_no}
 	</update>
-		<!-- 정비소 등록승인(no가져오기(정비소 정보수정이랑 이어지는 쿼리문)) -->
-	<select id="garage_update_select"	parameterType="java.lang.Integer"	resultType="kr.co.ccrent.dto.GarageDTO">
+	
+	<!-- 정비소 정보 no가져와서 확인하기 (수정하기) -->
+	<select id="garage_update_select"	parameterType="java.lang.Integer"	
+	resultType="kr.co.ccrent.dto.GarageDTO">
 		select *
 		from garage
 		where garage_no = #{garage_no}
