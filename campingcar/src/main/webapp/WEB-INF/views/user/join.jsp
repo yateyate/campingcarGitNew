@@ -63,7 +63,6 @@
 				$(".id_input_re_2").focus();
 				return false;
 			}
-			
 		});
 	})
 </script>
@@ -90,7 +89,7 @@
 }
 
 form {
-	padding: 15px;
+	padding: 30px 0 30px 0;
 }
 
 #submenu {
@@ -137,6 +136,9 @@ form {
 	position: absolute;
 	left: 20px;
 	top: 55px;
+}
+#body_contents{
+	padding: 0;
 }
 </style>
 </head>
@@ -324,10 +326,14 @@ form {
 							value="다시쓰기" id="cencle">
 					</div>
 				</form>
-				<hr>
+				
 
 
 			</div>
+				<!-- #footer start -->
+				<%@ include file="../include/footer.jsp"%>
+				<!-- //#footer end -->
+		</div>
 			<!-- // #container end -->
 </body>
 <script

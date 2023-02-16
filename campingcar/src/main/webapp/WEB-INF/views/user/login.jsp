@@ -15,9 +15,8 @@
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 
 <style>
-
 	form{
-		padding: 15px;
+		padding: 100px 0 150px 0;
 	}
 	#submenu{
 		margin-bottom: 15px;
@@ -106,10 +105,8 @@
 				<li class="on"><a href="#">로그인</a></li>
 			</ul>
 		</div>
-		<h1>
-	로그인
-</h1>
 <form method="post" action="login">
+		<h1>로그인</h1>
       
    <div class="input-group">
       <span class="input-group-text">아이디</span>
@@ -125,10 +122,12 @@
 
 	</form>
 	</div>
-<hr>
 
 		</div>
 	</div><!-- // #wrap end -->
+	<!-- #footer start -->
+				<%@ include file="../include/footer.jsp"%>
+				<!-- //#footer end -->
 </div><!-- // #container end -->
 
 </body>
