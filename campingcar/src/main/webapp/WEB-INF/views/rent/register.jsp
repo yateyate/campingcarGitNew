@@ -81,7 +81,9 @@ String limitdate = sdf.format(lastcal.getTime());
 		<span class="input-group-text">차량 선택</span>
 		<select name="car_regid" class="form-control" onchange="if(this.value) location.href='register?car_regid='+(this.value)+'&rent_startdate=${param.rent_startdate}';">
 			<c:forEach items="${carlist }" var="car">
+				<c:if test="${car.car_state==1 }">
 				<option value="${car.car_regid }" <c:if test="${param.car_regid==car.car_regid }">selected</c:if>>[${car.car_name }] ${car.car_modelname } </option>
+				</c:if>
 			</c:forEach>
 		</select>
 	</div>
