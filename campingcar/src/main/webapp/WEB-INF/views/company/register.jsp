@@ -142,7 +142,7 @@
 			<br>
 			  <table width="100%">
 				 <tr>
-					<td><button type="button" class="btn btn-outline-dark btn-block" onclick="location.href='list'"><b>이전 으로</b></button></td>
+					<td><button type="button" class="btn btn-outline-dark btn-block" onclick="location.href='list?keyword='"><b>이전 으로</b></button></td>
 					<td><button type="submit" class="btn btn-outline-dark btn-block"><b>신청 하기</b></button></td>
 				</tr>
 			</table>

@@ -20,16 +20,34 @@
 <title>자바 캠핑카</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
+<script>
+   function search(){//검색기능
+         var $keyword = $('#keyword');
+         $('#searchBtn').on('click',function(){
+            var keywordVal = $keyword.val();
+            var url = "list?page=1"
+               + "&perPageNum=" + "${pageMaker.cri.perPageNum}"         
+               + "&keyword=" + encodeURIComponent(keywordVal);
+            window.location.href = url;         
+         })   
+   }
+</script>
+
 </head>
-<style>
-	.trr{
-		 background-color: #b3e5fc;
-	}
-</style>
 
 <body>
 
 <div id="container">
+<style>
+.dropmenu{
+	background-color: transparent;
+	border-color: transparent;
+	width: 250px;	
+}
+.one{
+	display: inline-block;
+}
+</style>
 	<!-- #header start -->
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
@@ -47,50 +65,50 @@
       <%@ include file="../include/submenu.jsp" %>
       <!-- // #submenu end -->
 		
-		<div id="body_contents">
+			<div id="body_contents">
 <!-- ================================================== -->
-    	<section class="content container-fluid">
-			<div class="table-responsive">
-				<div class="container text-center table-hover">
-				  <table class="table table-bordered text-center">
-				  <colgroup> 
-				</colgroup>
-			
-				
-				<div class="container text-center">
-				  <h4 ><b>현재 등록되어 있는 대여 업체 입니다</b></h4>
-				  </div>
-				  <br>
-				  <br>
-				 
-				  <tr class="trr"  style="color:#6699ff">
+
+
+					<table class="table board_table center">
+					<tbody>
+					<colgroup>
+						<col width="10%" />
+						<col width="*" />
+						<col width="10%" />
+						<col width="20%" />
+						<col width="10%" />
+					</colgroup>
+					<thead>
+				  <tr>
 				  
-				  	<td><h5><b>회사번호</b></h5></td>
-				  	<td><h5><b>회사명</b></h5></td>
-				  	<td><h5><b>주소</b></h5></td>
-				  	<td><h5><b>전화번호</b></h5></td>
-				  	<td><h5><b>담당자</b></h5></td>
-				  	<td><h5><b>담당자 이메일</b></h5></td>
+				  	<th>회사번호</th>
+				  	<th>회사명</th>
+				  	<th>주소</th>
+				  	<th>전화번호</th>
+				  	<th>담당자</th>
+				  	<th>담당자 이메일</th>
 				  </tr>
+				  </thead>
+					<tbody>
 				 
-				  <div class="container text-center">
 				<c:forEach var="company" items="${list}">
 				<c:if test="${company.comp_status == 1 }">
 				 	<tr >
 				 	
-				 	<td><h5><b>${company.comp_id}</b></h5></td>
-				 	<td><h5><b>${company.comp_name}</b></h5></td>
-				 	<td><h5><b>${company.comp_addr}</b></h5></td>
-				 	<td><h5><b>${company.comp_phone}</b></h5></td>
-				 	<td><h5><b>${company.comp_pic}</b></h5></td>
-				 	<td><h5><b>${company.comp_pic_email}</b></h5></td>
-				</c:if>
+				 	<td>${company.comp_id}</td>
+				 	<td class="left">${company.comp_name}</td>
+				 	<td>${company.comp_addr}</td>
+				 	<td>${company.comp_phone}</td>
+				 	<td>${company.comp_pic}</td>
+				 	<td>${company.comp_pic_email}</td>
 				 	</tr>
+				</c:if>
 				</c:forEach>
-				</div>
-			
-				  </table>
-				  
+					</tbody>
+				</table>
+				<br>
+<!-- ============================================================================================= -->
+<!--  페이징 처리 -->			  
  <c:if test="${pageMaker.cri.page!=null }">
    <div class="container text-center">
     
@@ -123,10 +141,26 @@
             
 </div>
 </c:if>
-				  
-				  
-				  <br>
-				  <br>
+<!-- ========================================================================================================================== -->
+<br>
+<br>
+			<!--  검색 기능 -->
+		<form name="search_company" items="${list}" autocomplete="on">
+			  	
+		<div class="input-group mb-3">
+    <input class="form-control" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    placeholder=" 회사명으로 검색" />
+    
+	<button type="submit" id="searchBtn" class="btn btn-outline-primary" style="width:100px;">　검색　</button>
+		
+	</div>
+		</form>
+	
+		<br>
+		<br>
+				 
+<!-- ============================================================================================= -->
+
 				  <br>
 				  	<div class="box">
 				<div class="container text-right">
@@ -136,9 +170,6 @@
 				</div>
 				</div>
 		    </section>
-		    <br>
-		    <br>
-		    <br>
     </div>
     </div>
 		   <!-- #footer start -->

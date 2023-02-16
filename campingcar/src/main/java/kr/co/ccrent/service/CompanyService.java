@@ -27,6 +27,7 @@ public interface CompanyService {
 
 //	랜트카 대여 회사 상세 조회
 	public CompanyDTO get(int comp_id);
+	public CompanyDTO get2(int comp_id);
 	
 //	회사 정보 추가 하기
 	public int register(CompanyDTO companyDTO);
@@ -41,6 +42,7 @@ public interface CompanyService {
 	
 //	회사 정보 추가시 관리자 모드에서 거절       ( status를 -1로 변경하여 거절한다.실제로 지워지진않고 거절당한걸 볼수있게 남겨둠 )
 	public  int stsmodify2(int comp_status);
+
 	
 //	- - - - - - - - - - - - - - -  - -- - - - - - - - -
 
