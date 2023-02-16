@@ -48,8 +48,10 @@
           <div class="form-group">
             <label>작성자</label> <input class="form-control" name='writer'>
           </div>
-          <button type="submit" class="btn btn-default"> 확인 </button>
-          <button type="reset" class="btn btn-default"> 초기화 </button>
+         <button type="submit" class="btn btn-outline-success" 
+			 onclick='location.href="${contextPath}/admin/faqboard/listAll?keyword="'>생성</button>
+         
+          <button type="reset" class="btn btn-outline-default"> 초기화 </button>
         </form>
 
       </div>

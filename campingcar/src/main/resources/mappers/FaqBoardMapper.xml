@@ -65,7 +65,7 @@
           ]]>
    </select>
    
-   <!-- 정비소 검색조건에 해당하는 페이지조회 -->
+   <!-- 글 검색조건에 해당하는 페이지조회 -->
 	<select id="faq_select"
 		resultType="kr.co.ccrent.dto.FaqBoardDTO">
  		<![CDATA[
@@ -76,7 +76,7 @@
  		]]>
 	</select>
 
-	<!-- 정비소 검색조건에 해당하는 전체 게시물 수 조회 -->
+	<!-- 글 검색조건에 해당하는 전체 게시물 수 조회 -->
 	<select id="faq_select_count" resultType="int">
 		<![CDATA[
 		select 	count(bno)
