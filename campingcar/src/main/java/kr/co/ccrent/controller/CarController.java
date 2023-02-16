@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.ccrent.dto.CarDTO;
+import kr.co.ccrent.dto.CompanyDTO;
 import kr.co.ccrent.dto.PageRequestDTO;
 import kr.co.ccrent.dto.RepairDTO;
 import kr.co.ccrent.service.BoardFileService;
 import kr.co.ccrent.service.CarService;
+import kr.co.ccrent.service.CompanyService;
 import kr.co.ccrent.service.RepairService;
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +26,7 @@ public class CarController {
 	private final CarService carService;
 	private final BoardFileService boardFileService;
 	private final RepairService repairService;
+	private final CompanyService companyService;
 	
 	@GetMapping("/register")
 	public void registerGET(Model model, String car_regid) {
@@ -59,19 +62,22 @@ public class CarController {
 	@GetMapping("/read")
 	public void readGET(Model model, int car_regid) {
 		System.out.println("<Controller> read GET ==============================");
-		model.addAttribute("dto", carService.getOne(car_regid));
+		CarDTO carDTO = carService.getOne(car_regid);
+		model.addAttribute("dto", carDTO);
+		// 파일 불러오기
 		HashMap<String, Object> fieldmap = new HashMap<>();
 		fieldmap.put("bo_table", "car");
 		fieldmap.put("wr_id", car_regid);
 		model.addAttribute("filelist", boardFileService.getFileList(fieldmap));		
 		
+		// 대여회사 불러오기
+		CompanyDTO companyDTO = companyService.get(carDTO.getComp_id());
+		model.addAttribute("companyDTO", companyDTO);
 		
 		//repair접근(회원용 조회 DTO접근)
 		System.out.println("==<Controller> repairData = read");
 		RepairDTO dto = repairService.repair_getOne(car_regid); 
 		model.addAttribute("repair",dto);
-		
-		
 	}
 	@PostMapping("/remove")
 	public String removePOST(int car_regid) {

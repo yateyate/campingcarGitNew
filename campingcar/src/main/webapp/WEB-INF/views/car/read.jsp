@@ -69,7 +69,7 @@ width:120px;
 		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
 	</tr>
 	<tr>
-		<th class="table-secondary">대여 회사</th><td>${dto.comp_id }</td>
+		<th class="table-secondary">대여 회사</th><td>${companyDTO.comp_name }<!-- ${dto.comp_id } --></td>
 	</tr>
 	<tr>
 		<th class="table-secondary">모델 명</th><td>${dto.car_modelname }</td>
@@ -90,7 +90,8 @@ width:120px;
 		<th class="table-secondary">세부 내용</th><td>${dto.car_detail }</td>
 	</tr>
 	<tr>
-		<th class="table-secondary">대여 비용 (1일 기준)</th><td>${dto.car_rentprice }</td>
+		<th class="table-secondary">대여 비용 (1일 기준)</th><td><fmt:formatNumber value="${dto.car_rentprice }" pattern="#,###" /></td>
+
 	</tr>
 	<tr>
 		<th class="table-secondary">등록 일</th><td>${dto.car_regdate }</td>
