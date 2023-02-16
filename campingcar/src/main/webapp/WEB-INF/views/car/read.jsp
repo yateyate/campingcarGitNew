@@ -66,6 +66,13 @@ width:120px;
 		<col width="*" />
 	</colgroupd>
 	<tr>
+		<th class="table-secondary">차량 상태</th>
+		<td>
+			<c:if test="${dto.car_state==1 }"><strong style="color:#0d6efd; font-weight:bold;">사용 가능</strong></c:if>
+			<c:if test="${dto.car_state==0 }"><strong style="color:#dc3545; font-weight:bold;">사용 불가</strong></c:if>
+		</td>
+	</tr>	
+	<tr>
 		<th class="table-secondary">등록 번호</th><td>${dto.car_regid }</td>
 	</tr>
 	<tr>
@@ -112,7 +119,9 @@ width:120px;
 
 
 <div style="text-align:center;">
-<button onclick="location.href='list';" class="btn btn-primary" style="width:150px; height:40px;">목록</button>
+
+<c:if test="${dto.car_state==1 }"><button onclick="location.href='${contextPath }/rent/register?car_regid=${dto.car_regid }';" class="btn btn-primary" style="width:150px; height:40px;">예약</button></c:if>
+<button onclick="location.href='list';" class="btn btn-secondary" style="width:150px; height:40px;">목록</button>
 </div>
 <!-- 모달&모달테스트 -->
 		
