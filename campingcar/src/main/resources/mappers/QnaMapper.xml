@@ -63,6 +63,7 @@
  		select * from qna
 		where qna_no > 0 and qna_title like CONCAT('%',#{keyword},'%') || 
 		qna_content like CONCAT('%',#{keyword},'%')
+		order by qna_no desc
  		limit #{pageStart},#{perPageNum}
  		]]>
 	</select>

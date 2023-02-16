@@ -111,7 +111,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var imageSrc = '${contextPath}/resources/img/direction/campingcarlogo.png', // 마커이미지의 주소입니다    
     imageSize = new kakao.maps.Size(40, 45), // 마커이미지의 크기입니다
     imageOption = {offset: new kakao.maps.Point(22, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
+							 
 // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     markerPosition = new kakao.maps.LatLng(37.268049, 127.000299); // 마커가 표시될 위치입니다
@@ -145,7 +145,6 @@ var customOverlay = new kakao.maps.CustomOverlay({
 function garage_search(a,b) {
 
 
-
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 // 주소로 좌표를 검색합니다
@@ -154,6 +153,7 @@ geocoder.addressSearch(a, function(result, status) {
      if (status === kakao.maps.services.Status.OK) {
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         // 결과값으로 받은 위치를 마커로 표시합니다
+        
     var imageSrc = '${contextPath}/resources/img/direction/garagelogo.png', // 마커이미지의 주소입니다    
     imageSize = new kakao.maps.Size(40, 45), // 마커이미지의 크기입니다
     imageOption = {offset: new kakao.maps.Point(22, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
@@ -187,7 +187,8 @@ geocoder.addressSearch(a, function(result, status) {
         map.setCenter(coords);
         window.scrollTo({ left: 0, top: 550, behavior: "smooth" }); // 위치보기 클릭시 지도로 스크롤올리기
     } 
-});    
+});
+
 }
 </script>
 

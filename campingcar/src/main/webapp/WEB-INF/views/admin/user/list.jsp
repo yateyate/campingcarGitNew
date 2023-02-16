@@ -60,6 +60,7 @@
     	margin-top: -5px;
     	margin-left: -4px;
 		transition : all 0.5s;
+			
 	}
 	#keyword:focus {
 		background: #fff;
