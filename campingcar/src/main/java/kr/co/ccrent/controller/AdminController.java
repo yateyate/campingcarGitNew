@@ -370,7 +370,7 @@ public class AdminController {
 		System.out.println("==<admin Controller> faq_register = registerpost");
 		
 		faqBoardService.register(boardDTO);
-		return "redirect:listAll";
+		return "redirect:listAll?keyword=";
 	}
 	
 	//faq게시글 상세보기<

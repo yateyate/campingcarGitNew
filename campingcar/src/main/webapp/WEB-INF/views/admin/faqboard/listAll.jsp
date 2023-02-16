@@ -5,6 +5,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="title" value="FAQ" />
 <!DOCTYPE html>
 <html>
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -14,9 +15,8 @@
 <title>전체조회목록</title>
 <%@ include file="../../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/admin/admin_all.css" rel="stylesheet" />
-<c:set var="title" value="FAQ" />
+<link href="${contextPath}/resources/css/kakaomap.css" rel="stylesheet" />
 <script>
-
 
    function search(){//검색기능
          var $keyword = $('#keyword');
@@ -41,14 +41,21 @@
 	<%@ include file="../include/topmenu.jsp" %>
 	<!-- // #topmenu end -->
 	<div id="wrap">
+	
+	<section class="content container-fluid">
+			<div class="table-responsive">
+			 <div class="container text-center table-hover">
+			<table class="table table-bordered">
+			<colgroup>
+				</colgroup>
+			  <h4><b>전체 글 목록입니다.</b></h4><br>
 
-			<div class="panel-heading">
-		
-				<button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
-    			id="searchBtn" class="btn btn-secondary btn-sm" onclick="location.href= 'registerForm' " >새로운 글 작성</button>
-			</div>
 
 			<!-- /.panel-heading -->
+			
+			
+			  
+			  
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
@@ -66,7 +73,7 @@
 						  <td >
 						  ${board.bno}
 						  </td>
-						   <td> <a href = "read?bno=${board.bno }">
+						   <td class="left"> <a href = "read?bno=${board.bno }" style="color:#3399ff">
 						  ${board.title}</a>
 						  </td>
 						   <td>
@@ -109,23 +116,26 @@
 			      </ul>
 			            
 			</div>
-			  
-		<form name="search_garage" autocomplete="on">
-   <div class="container text-center" style="padding-top: 15px"> 
+			<br><br>	  
+		<form name="search_faq" autocomplete="on">
+		
+   <div class="input-group mb-3" style="width:100%;">
    
+    <input class="form-control" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    placeholder="  글을 검색하세요." />  
+   <button type="submit" id="searchBtn" class="btn btn-outline-primary" style="width:100px;">　검색　</button>
+	　　<button type="button"  border-radius: 5px 5px 5px 5px; border:0;" 
+                 id="searchBtn" class="btn btn-primary" onclick="location.href= 'registerForm' " >　새로운 글 작성　</button>
+      
+   </div>
    
-
-    <span>
-    
-    <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
-    placeholder="글을 검색하세요" />
-    　　　　
-   <button style="margin-left: -3px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
-   id="searchBtn" class="btn btn-secondary btn-sm">검색</button>
-   
-   </span>      
+	<div class="container text-right"" style="padding-bottom: 15px"> 
+   </div>
    </div>
 </form>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
 </div>
 </div>
 

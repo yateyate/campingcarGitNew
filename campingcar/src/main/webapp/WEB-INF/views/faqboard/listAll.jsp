@@ -9,11 +9,10 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <head>
 <meta charset="UTF-8">
-<title>자바 캠핑카</title>
+<title>자주하는 질문</title>
 <%@ include file="../include/plugin.jsp" %>
 <link href="${contextPath}/resources/css/sub_all.css" rel="stylesheet" />
 </head>
@@ -37,31 +36,24 @@
 	<%@ include file="../include/header.jsp" %>
 	<!--// #header end -->
 	
-	<div id="body_head">
-		<h2>FAQ</h2>
-		<div class="location">
-			HOME　<i class="fa-solid fa-circle-chevron-right"></i> 　<span>자주하는 질문</span>
-		</div>
-	</div>
+	 <div id="body_head">
+      <h2>${menuMap[mn]['sub'][sn]['title'] }</h2>
+      <div class="location">
+         HOME　<i class="fa-solid fa-circle-chevron-right"></i>　${menuMap[mn]['title'] }　<i class="fa-solid fa-circle-chevron-right"></i>　<span>${menuMap[mn]['sub'][sn]['title'] }</span>
+      </div>
+   </div>
+	
 	<div id="wrap">
-		<div id="submenu">
-			<ul>
-				<li class="on"><a href="#">자주하는 질문</a></li>
-			</ul>
-		</div>
+      
+      <!-- #submenu start -->
+      <%@ include file="../include/submenu.jsp" %>
+      <!-- // #submenu end -->
 		
 		<div id="body_contents">
- 
-
-			<div class="panel-heading">
-				
-				
-				
-			</div>
-
+<!-- ================================================== -->
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table board_table center">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -78,7 +70,7 @@
 						  <td >
 						  ${board.bno}
 						  </td>
-						   <td> <a href = "read?bno=${board.bno }">
+						   <td class="left"> <a href = "read?bno=${board.bno }">
 						  ${board.title}</a>
 						  </td>
 						   <td>
@@ -121,21 +113,18 @@
 			      </ul>
 			            
 			</div>
-			  
-		<form name="search_garage" autocomplete="on">
-   <div class="container text-center" style="padding-top: 15px"> 
+		
+		<br><br>	  
+		<form name="search_faq" autocomplete="on">
+		
+   <div class="input-group mb-3" style="width:100%;">
    
-   
-
-    <span>
-    <input class="basic-slide" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
-    placeholder="검색하세요" />
-    　　　
-   <button style="margin-left: -6px; height: 44px; margin-bottom:2px; border-radius: 0px 3px 3px 0px; border:0;" 
-   id="searchBtn" class="btn btn-secondary btn-sm">검색</button>
-   
-   </span>      
+    <input class="form-control" id="keyword" name="keyword" type="search" value="${pageMaker.cri.keyword}" 
+    placeholder="  글을 검색하세요." />  
+   <button type="submit" id="searchBtn" class="btn btn-outline-primary" style="width:100px;">　검색　</button>
+      
    </div>
+   
 </form>
 </div>
 </div>
