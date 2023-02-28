@@ -117,7 +117,7 @@ public class CarUserController {
 	
 //	회원정보 수정이동 
 	@RequestMapping(value = "admin/user/update", method = RequestMethod.GET)
-	public String update(@RequestParam("car_uno")int car_uno, Model model) throws Exception{
+	public String updatemove(@RequestParam("car_uno")int car_uno, Model model) throws Exception{
 		CarUserDTO carUserDTO = car.detail(car_uno);
 		model.addAttribute("list", carUserDTO);
 		System.out.println(car_uno);
@@ -131,7 +131,7 @@ public class CarUserController {
 		
 		if(r > 0) {
 			rttr.addFlashAttribute("수정 완료하였습니다.");
-			return "redirect:detail?car_uno="+car_uno;
+			return "redirect:detail?car_uno=" + car_uno;
 		}
 		return "redirect:detail?car_uno=" + car_uno;
 	}

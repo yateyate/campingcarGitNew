@@ -44,5 +44,7 @@
     <bean id="uploadPath" class="java.lang.String">
     	<constructor-arg value="/resources/data/"/>
     </bean>	
+    
+    
 	
 </beans>

@@ -97,7 +97,7 @@
 		update usercumstomers
 		set 
 		car_udriverid=#{car_udriverid}, car_uid=#{car_uid}, car_upw = #{car_upw}, car_uname=#{car_uname}, car_uyear=#{car_uyear}, car_uaddr=#{car_uaddr},
-		car_uemail=#{car_uemail}, car_uphone=#{car_uphone}, car_pdate=#{car_pdate}, car_ptype=#{car_ptype}
+		car_uemail=#{car_uemail}, car_uphone=#{car_uphone}, car_ptype=#{car_ptype}
 		where car_uno = #{car_uno}
 	</update>
 
